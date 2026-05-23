@@ -2,7 +2,7 @@
    INTERACTIVE LOGIC & ENGAGEMENT SCRIPT - ASSEMBLE: AGENTIC AI
    ========================================================================== */
 
-document.addEventListener('DOMContentLoaded', () => {
+function initAll() {
   // Initialize all interactive modules
   initCountdown();
   initStickyCTA();
@@ -20,7 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // Custom Modules (Phase 3)
   initCurriculumTabs();
   initExitIntentForm();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initAll);
+} else {
+  initAll();
+}
 
 /* ==========================================================================
    COUNTDOWN TIMER (June 19, 2026, at 08:30 — Day 1 of 3-day workshop)

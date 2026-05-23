@@ -3279,3 +3279,192 @@ select.form-control {
   line-height: 1.4;
 }
 
+/* ==========================================================================
+   REDESIGN & OVERRIDES (PHASE 4)
+   ========================================================================== */
+
+/* Hero Top Bar Badges */
+.hero-top-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+  margin-bottom: 1.75rem;
+}
+.hero-top-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.95rem;
+  background: rgba(123, 47, 242, 0.05);
+  border: 1px solid rgba(123, 47, 242, 0.15);
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--accent-primary);
+  box-shadow: 0 1px 2px rgba(123, 47, 242, 0.02);
+}
+.hero-top-badge i {
+  font-size: 0.95rem;
+  color: var(--accent-primary);
+}
+.hero-top-badge--highlight {
+  background: rgba(255, 122, 0, 0.06);
+  border-color: rgba(255, 122, 0, 0.25);
+  color: var(--accent-secondary);
+}
+.hero-top-badge--highlight i {
+  color: var(--accent-secondary);
+}
+
+/* Trust Strip Subtitle & Background override */
+.trust-strip {
+  background-color: #F5F4FF !important;
+}
+.trust-subtitle {
+  font-size: 1.0625rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+/* 4-Layer Framework Split Layout */
+.framework-content-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+  margin-top: 3.5rem;
+}
+@media (min-width: 992px) {
+  .framework-content-split {
+    grid-template-columns: 1.1fr 1fr;
+    align-items: start;
+  }
+  .framework-diagram-wrapper {
+    position: sticky;
+    top: 120px;
+  }
+}
+.framework-diagram-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Outcomes Premium Cards & Numbers overlay */
+.output-card {
+  position: relative;
+  overflow: hidden;
+  padding-top: 2.5rem;
+}
+.output-card-number {
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: rgba(123, 47, 242, 0.07);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+.output-card:hover .output-card-number {
+  color: rgba(255, 122, 0, 0.15);
+  transform: scale(1.1);
+  transition: all 0.3s ease;
+}
+
+/* Instructor Client Logos cards split */
+@media (max-width: 768px) {
+  .proof-blocks-split-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+}
+.proof-block-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  transition: all 0.3s ease;
+}
+.proof-block-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(123, 47, 242, 0.04);
+}
+.proof-block-card h3 {
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  border-bottom: 2px solid rgba(123, 47, 242, 0.08);
+  padding-bottom: 0.5rem;
+}
+.proof-logo-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 1.25rem;
+  align-items: center;
+  justify-items: center;
+}
+.proof-logo-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  opacity: 0.45;
+  filter: grayscale(100%);
+  transition: all 0.3s ease;
+}
+.proof-logo-item img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+.proof-logo-item:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+  transform: scale(1.08);
+}
+
+/* bg-dark section adjustments */
+.bg-dark {
+  background-color: #1A1A2E !important;
+  color: #FFFFFF !important;
+}
+.bg-dark h2 {
+  color: #FFFFFF !important;
+}
+.bg-dark h2::after {
+  background: var(--brand-gradient);
+}
+.bg-dark p {
+  color: #A0A0CB !important;
+}
+.bg-dark .future-card {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+.bg-dark .future-card p {
+  color: #D2D2E6 !important;
+}
+.bg-dark .future-card-label {
+  background: rgba(123, 47, 242, 0.15) !important;
+  color: #D6BCFA !important;
+}
+.bg-dark .future-card-label--ceo {
+  background: rgba(255, 122, 0, 0.15) !important;
+  color: #FFB773 !important;
+}
+.bg-dark .future-question {
+  color: #FFFFFF !important;
+  font-weight: 700;
+}
+
