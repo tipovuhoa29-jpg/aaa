@@ -702,6 +702,102 @@ h2.text-gradient::after {
   font-style: normal;
 }
 
+/* ==========================================================================
+   EPIPHANY QUOTE SECTION
+   ========================================================================== */
+
+.epiphany-section {
+  padding: 5rem 0;
+  background: #1A1A2E;
+  text-align: center;
+}
+
+.epiphany-quote-text {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.45;
+  max-width: 820px;
+  margin: 0 auto;
+  letter-spacing: -0.01em;
+}
+
+@media (max-width: 768px) {
+  .epiphany-quote-text {
+    font-size: 1.5rem;
+  }
+}
+
+/* ==========================================================================
+   OUTPUT CARDS GRID
+   ========================================================================== */
+
+.output-cards-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.output-card {
+  flex: 0 0 calc(33.333% - 1rem);
+  min-width: 220px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  transition: all 0.3s ease;
+}
+
+.output-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(123, 47, 242, 0.1);
+  border-color: var(--accent-primary);
+}
+
+.output-card-icon {
+  width: 56px;
+  height: 56px;
+  background: var(--bg-section-soft);
+  border: 1px solid rgba(123, 47, 242, 0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+  font-size: 1.5rem;
+  color: var(--accent-primary);
+}
+
+.output-card strong {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+}
+
+.output-card p {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .output-card {
+    flex: 0 0 calc(50% - 0.75rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .output-card {
+    flex: 0 0 100%;
+  }
+}
+
 .story-block {
   margin-bottom: 2.5rem;
   position: relative;
