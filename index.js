@@ -32,8 +32,8 @@ if (document.readyState === 'loading') {
    COUNTDOWN TIMER (June 19, 2026, at 08:30 — Day 1 of 3-day workshop)
    ========================================================================== */
 function initCountdown() {
-  // June 19, 2026 at 08:30:00 GMT+7 (which is 01:30:00 UTC)
-  const targetDate = Date.UTC(2026, 5, 19, 1, 30, 0);
+  // Early Bird deadline: June 10, 2026 at 23:59:00 GMT+7
+  const targetDate = new Date('2026-06-10T23:59:00+07:00').getTime();
   
   const daysEl = document.getElementById('cd-days');
   const hoursEl = document.getElementById('cd-hours');
@@ -49,10 +49,11 @@ function initCountdown() {
     if (distance < 0) {
       clearInterval(timerInterval);
       const container = document.querySelector('.countdown-container');
-      if (container) {
-        container.innerHTML = 
-          '<div style="font-size: 1.5rem; font-weight: 700; color: var(--accent-secondary)">WORKSHOP ĐANG DIỄN RA</div>';
-      }
+      const label = document.querySelector('.countdown-heading-label');
+      const endedMsg = document.querySelector('.countdown-ended-message');
+      if (container) container.style.display = 'none';
+      if (label) label.style.display = 'none';
+      if (endedMsg) endedMsg.style.display = 'block';
       return;
     }
     
@@ -83,12 +84,10 @@ function initStickyCTA() {
   let hasPassedHero = false;
   let isViewingForm = false;
   
-  // 1. Detect scroll past 100vh (Hero view)
+  // 1. Detect scroll past 400px (Hero view)
   window.addEventListener('scroll', () => {
     const scrollY = window.scrollY || window.pageYOffset;
-    const viewportHeight = window.innerHeight;
-    
-    hasPassedHero = scrollY > (viewportHeight * 0.85);
+    hasPassedHero = scrollY > 400;
     updateStickyVisibility();
   });
   
