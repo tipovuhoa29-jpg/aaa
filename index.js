@@ -17,13 +17,17 @@ document.addEventListener('DOMContentLoaded', () => {
   initStarPopObserver();
   initMagneticButtons();
   initSpotlightHover();
+  // Custom Modules (Phase 3)
+  initCurriculumTabs();
+  initExitIntentForm();
 });
 
 /* ==========================================================================
    COUNTDOWN TIMER (June 19, 2026, at 08:30 — Day 1 of 3-day workshop)
    ========================================================================== */
 function initCountdown() {
-  const targetDate = new Date('2026-06-19T08:30:00+07:00').getTime();
+  // June 19, 2026 at 08:30:00 GMT+7 (which is 01:30:00 UTC)
+  const targetDate = Date.UTC(2026, 5, 19, 1, 30, 0);
   
   const daysEl = document.getElementById('cd-days');
   const hoursEl = document.getElementById('cd-hours');
@@ -38,8 +42,11 @@ function initCountdown() {
     
     if (distance < 0) {
       clearInterval(timerInterval);
-      document.querySelector('.countdown-container').innerHTML = 
-        '<div style="font-size: 1.5rem; font-weight: 700; color: var(--accent-secondary)">WORKSHOP ĐANG DIỄN RA</div>';
+      const container = document.querySelector('.countdown-container');
+      if (container) {
+        container.innerHTML = 
+          '<div style="font-size: 1.5rem; font-weight: 700; color: var(--accent-secondary)">WORKSHOP ĐANG DIỄN RA</div>';
+      }
       return;
     }
     
@@ -307,13 +314,13 @@ function validateField(input) {
       isValid = false;
       errorMsg = 'Địa chỉ email không đúng định dạng (Ví dụ: name@company.com).';
     }
-  } else if (input.id === 'form-phone' && input.value.trim()) {
+  } else if ((input.id === 'form-phone' || input.id === 'exit-form-phone') && input.value.trim()) {
     const phoneRegex = /^(0[3|5|7|8|9])[0-9]{8}$/;
     if (!phoneRegex.test(input.value.replace(/\s+/g, ''))) {
       isValid = false;
       errorMsg = 'Số điện thoại không hợp lệ (Phải gồm 10 chữ số và bắt đầu bằng 03, 05, 07, 08, hoặc 09).';
     }
-  } else if (input.id === 'form-name' && input.value.trim()) {
+  } else if ((input.id === 'form-name' || input.id === 'exit-form-name') && input.value.trim()) {
     if (input.value.trim().split(/\s+/).length < 2) {
       isValid = false;
       errorMsg = 'Vui lòng nhập đầy đủ cả họ và tên (tối thiểu 2 từ).';
@@ -344,8 +351,8 @@ function initFormHandler() {
   
   if (!form) return;
   
-  // Focus tracking & Real-time validation
-  const formInputs = form.querySelectorAll('input, select');
+  // Focus tracking & Real-time validation (inputs only, select lists removed)
+  const formInputs = form.querySelectorAll('input');
   let formStarted = false;
   let triggerElement = null;
 
@@ -414,18 +421,12 @@ function initFormHandler() {
     const nameVal = document.getElementById('form-name').value.trim();
     const emailVal = document.getElementById('form-email').value.trim();
     const phoneVal = document.getElementById('form-phone').value.trim();
-    const roleSelect = document.getElementById('form-role');
-    const roleVal = roleSelect.options[roleSelect.selectedIndex].text;
-    const taskSelect = document.getElementById('form-task');
-    const taskVal = taskSelect.options[taskSelect.selectedIndex].text;
     
     // Save locally
     const leadData = {
       name: nameVal,
       email: emailVal,
       phone: phoneVal,
-      role: roleVal,
-      task: taskVal,
       submittedAt: new Date().toISOString()
     };
     
@@ -433,9 +434,7 @@ function initFormHandler() {
     
     // Analytics Log
     logGA4Event('form_submit_success', {
-      form_id: 'lead_registration_form_v1',
-      industry_dropdown: taskVal,
-      role_dropdown: roleVal
+      form_id: 'lead_registration_form_v1'
     });
     
     // Open thank-you modal with focus trap
@@ -676,6 +675,104 @@ function initSpotlightHover() {
       const y = ((e.clientY - rect.top) / rect.height) * 100;
       card.style.setProperty('--x', `${x}%`);
       card.style.setProperty('--y', `${y}%`);
+    });
+  });
+}
+
+/* ==========================================================================
+   ADDED MODULES (PHASE 3)
+   ========================================================================== */
+
+/* Curriculum Tabs Nav Toggler */
+function initCurriculumTabs() {
+  const tabs = document.querySelectorAll('.curriculum-tab-btn');
+  const panels = document.querySelectorAll('.curriculum-tab-content');
+  if (tabs.length === 0 || panels.length === 0) return;
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Remove active from all tabs & panels
+      tabs.forEach(t => t.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+
+      // Add active to current tab
+      tab.classList.add('active');
+      const targetId = `day-${tab.dataset.day}-content`;
+      const targetPanel = document.getElementById(targetId);
+      if (targetPanel) {
+        targetPanel.classList.add('active');
+      }
+
+      logGA4Event('click_curriculum_tab', { day: tab.dataset.day });
+    });
+  });
+}
+
+/* Exit Intent Popup Form Handler */
+function initExitIntentForm() {
+  const exitForm = document.getElementById('exit-intent-form');
+  const exitModal = document.getElementById('exit-intent-modal');
+  const thankYouModal = document.getElementById('thank-you-modal');
+  
+  if (!exitForm) return;
+
+  const exitInputs = exitForm.querySelectorAll('input');
+
+  exitInputs.forEach(input => {
+    input.addEventListener('blur', () => validateField(input));
+    input.addEventListener('input', () => {
+      if (input.classList.contains('invalid')) {
+        validateField(input);
+      }
+    });
+  });
+
+  exitForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    let isFormValid = true;
+    let firstInvalidInput = null;
+
+    exitInputs.forEach(input => {
+      const isFieldValid = validateField(input);
+      if (!isFieldValid) {
+        isFormValid = false;
+        if (!firstInvalidInput) firstInvalidInput = input;
+      }
+    });
+
+    if (!isFormValid) {
+      if (firstInvalidInput) firstInvalidInput.focus();
+      return;
+    }
+
+    const nameVal = document.getElementById('exit-form-name').value.trim();
+    const emailVal = document.getElementById('exit-form-email').value.trim();
+    const phoneVal = document.getElementById('exit-form-phone').value.trim();
+
+    const leadData = {
+      name: nameVal,
+      email: emailVal,
+      phone: phoneVal,
+      source: 'exit_intent',
+      submittedAt: new Date().toISOString()
+    };
+
+    localStorage.setItem('assemble_lead_data_exit', JSON.stringify(leadData));
+    logGA4Event('exit_intent_form_submit_success', {
+      form_id: 'exit_intent_form_v1'
+    });
+
+    // Close exit modal, open success thank you modal
+    closeModal(exitModal, null);
+    openModal(thankYouModal);
+
+    // Reset exit form
+    exitForm.reset();
+    exitInputs.forEach(input => {
+      input.classList.remove('invalid');
+      input.removeAttribute('aria-invalid');
+      input.removeAttribute('aria-describedby');
     });
   });
 }
