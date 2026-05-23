@@ -3,370 +3,2395 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- SEO Meta Tags -->
-  <title>ASSEMBLE: Agentic AI | Workshop 3 ngày xây dựng đội hình AI tự vận hành cho chuyên gia & CEO tại HCM · 19-21/06/2026</title>
-  <meta name="description" content="Workshop thực chiến 3 ngày offline tại HCM giúp bạn xây dựng đội hình AI tự vận hành trên dữ liệu thật của mình, không cần biết lập trình. Giới hạn 15 chỗ, hỗ trợ kỹ thuật 1:1.">
-  
-  <!-- OpenGraph Social Sharing -->
-  <meta property="og:title" content="ASSEMBLE: Agentic AI - Workshop 3 Ngày Thực Chiến Xây Dựng Đội Hình AI">
-  <meta property="og:description" content="Mang dữ liệu thật đến, mang dàn nhân sự AI đồng bộ đang chạy thật về nhà. Hỗ trợ kỹ thuật 1:1 tận bàn.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://mastering.sunext.vn/agentic-ai">
-  
-  <!-- Font Preloading -->
+  <title>ASSEMBLE: Agentic AI | Workshop 3 ngày xây dựng đội hình AI tự vận hành</title>
+  <meta name="description" content="Workshop thực chiến 3 ngày offline tại HCM giúp bạn xây dựng đội hình AI tự vận hành trên dữ liệu thật của mình, không cần biết lập trình.">
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <!-- Tabler Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css">
 
-  <!-- Styling -->
-  <link rel="stylesheet" href="index.css">
+  <style>
+    /* ==========================================================================
+       DESIGN SYSTEM — ASSEMBLE: Agentic AI (Premium Tech)
+       ========================================================================== */
+
+    :root {
+      /* Backgrounds */
+      --bg: #F9F6FF;
+      --bg-dark: #1A1A2E;
+      --bg-darker: #13132A;
+      --surface: #FFFFFF;
+
+      /* Foreground */
+      --fg: #1A1A2E;
+      --fg-inverse: #F9F6FF;
+      --muted: #6B6B7B;
+      --muted-light: #A0A0B0;
+
+      /* Brand */
+      --primary: #7B2FF2;
+      --primary-light: #9F5AFF;
+      --accent: #FF7A00;
+      --accent-light: #FF9A40;
+
+      /* Utility */
+      --border: #E8E4F0;
+      --border-dark: #2D2D4E;
+      --shadow: rgba(123, 47, 242, 0.08);
+
+      /* Gradient */
+      --gradient: linear-gradient(135deg, #7B2FF2 0%, #FF7A00 100%);
+
+      /* Typography */
+      --font-display: 'Sora', -apple-system, system-ui, sans-serif;
+      --font-body: 'Inter', -apple-system, system-ui, sans-serif;
+
+      /* Spacing */
+      --space-xs: 0.5rem;
+      --space-sm: 1rem;
+      --space-md: 1.5rem;
+      --space-lg: 2.5rem;
+      --space-xl: 4rem;
+      --space-2xl: 6rem;
+
+      /* Radii */
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-full: 9999px;
+    }
+
+    /* ==========================================================================
+       BASE
+       ========================================================================== */
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Typography */
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); }
+    h2 { font-size: clamp(2rem, 4vw, 2.75rem); }
+    h3 { font-size: clamp(1.25rem, 2.5vw, 1.5rem); }
+
+    p {
+      font-size: 1.125rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    a:hover { color: var(--primary-light); }
+
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* ==========================================================================
+       LAYOUT
+       ========================================================================== */
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    .section { padding: var(--space-2xl) 0; }
+    .section-tight { padding: var(--space-xl) 0; }
+
+    /* ==========================================================================
+       COMPONENTS
+       ========================================================================== */
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 4px 20px rgba(255, 122, 0, 0.3);
+    }
+    .btn-primary:hover {
+      background: #E06A00;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(255, 122, 0, 0.4);
+      color: white;
+    }
+
+    .btn-secondary {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 4px 20px rgba(123, 47, 242, 0.25);
+    }
+    .btn-secondary:hover {
+      background: #6922D9;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(123, 47, 242, 0.35);
+      color: white;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-lg {
+      padding: 1.125rem 2.5rem;
+      font-size: 1.0625rem;
+    }
+
+    /* Badge */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      padding: 0.5rem 1rem;
+      font-family: var(--font-display);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      border-radius: var(--radius-full);
+      letter-spacing: 0.02em;
+    }
+
+    .badge-primary {
+      background: rgba(123, 47, 242, 0.1);
+      color: var(--primary);
+    }
+
+    .badge-accent {
+      background: rgba(255, 122, 0, 0.1);
+      color: var(--accent);
+    }
+
+    .badge-dark {
+      background: var(--bg-darker);
+      color: var(--fg-inverse);
+      border: 1px solid var(--border-dark);
+    }
+
+    /* Card */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: var(--space-lg);
+      transition: all 0.3s ease;
+    }
+    .card:hover {
+      box-shadow: 0 12px 40px var(--shadow);
+      transform: translateY(-4px);
+    }
+
+    /* Section headers */
+    .section-header {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto var(--space-xl);
+    }
+    .section-header h2 {
+      margin-bottom: var(--space-sm);
+    }
+    .section-header p {
+      font-size: 1.125rem;
+    }
+
+    /* ==========================================================================
+       HEADER
+       ========================================================================== */
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(249, 246, 255, 0.9);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: var(--font-display);
+      font-size: 1.375rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .logo-main {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .logo-sub {
+      font-weight: 400;
+      color: var(--muted);
+      -webkit-text-fill-color: var(--muted);
+    }
+
+    /* ==========================================================================
+       HERO — Dark Premium
+       ========================================================================== */
+
+    .hero {
+      background: var(--bg-dark);
+      color: var(--fg-inverse);
+      padding: var(--space-2xl) 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 80%;
+      height: 150%;
+      background: radial-gradient(ellipse at center, rgba(123, 47, 242, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -10%;
+      width: 60%;
+      height: 100%;
+      background: radial-gradient(ellipse at center, rgba(255, 122, 0, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content { max-width: 560px; }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: var(--space-md);
+    }
+
+    .hero h1 {
+      color: white;
+      margin-bottom: var(--space-md);
+      font-size: clamp(2.25rem, 4.5vw, 3rem);
+      line-height: 1.15;
+    }
+
+    .hero-desc {
+      font-size: 1.125rem;
+      color: var(--muted-light);
+      margin-bottom: var(--space-lg);
+      line-height: 1.7;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .hero-cta .btn { width: 100%; }
+
+    /* Scarcity bar */
+    .scarcity-bar {
+      background: var(--bg-darker);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-sm);
+      padding: var(--space-sm);
+      margin-top: var(--space-md);
+    }
+
+    .scarcity-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.875rem;
+      color: var(--muted-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .scarcity-labels strong { color: white; }
+
+    .scarcity-track {
+      height: 6px;
+      background: var(--border-dark);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+    }
+
+    .scarcity-fill {
+      height: 100%;
+      background: var(--gradient);
+      border-radius: var(--radius-full);
+      transition: width 0.5s ease;
+    }
+
+    /* Instructor mini */
+    .instructor-mini {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+      padding-top: var(--space-md);
+      border-top: 1px solid var(--border-dark);
+    }
+
+    .instructor-mini img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid var(--primary);
+    }
+
+    .instructor-mini-text {
+      font-size: 0.875rem;
+      color: var(--muted-light);
+      line-height: 1.5;
+    }
+
+    /* Hero Demo Card */
+    .hero-demo {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+    }
+
+    .demo-header {
+      background: linear-gradient(180deg, #2D2D4E 0%, var(--bg-darker) 100%);
+      padding: 0.875rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .demo-header-top {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .demo-dots {
+      display: flex;
+      gap: 6px;
+    }
+    .demo-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .demo-dot--red { background: #FF5F57; }
+    .demo-dot--yellow { background: #FFBD2E; }
+    .demo-dot--green { background: #28CA42; }
+
+    .demo-title {
+      flex: 1;
+      font-family: var(--font-display);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: white;
+    }
+
+    .demo-status {
+      font-size: 0.75rem;
+      color: #28CA42;
+      font-weight: 600;
+    }
+
+    .demo-url {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--bg-darker);
+      padding: 0.5rem 0.75rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.75rem;
+      color: var(--muted-light);
+    }
+    .demo-url .ti { font-size: 0.875rem; color: #28CA42; }
+
+    .demo-body {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background: var(--surface);
+    }
+
+    /* Chat messages */
+    .msg { display: flex; gap: 0.75rem; }
+    .msg--user { flex-direction: row-reverse; }
+
+    .msg-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .msg-content { flex: 1; max-width: 85%; }
+
+    .msg-bubble {
+      padding: 0.875rem 1rem;
+      border-radius: var(--radius-md);
+      font-size: 0.9375rem;
+      line-height: 1.5;
+    }
+
+    .msg--user .msg-bubble {
+      background: var(--primary);
+      color: white;
+      border-bottom-right-radius: 4px;
+    }
+
+    .msg--ai .msg-bubble {
+      background: var(--bg);
+      color: var(--fg);
+      border-bottom-left-radius: 4px;
+    }
+
+    .msg-meta {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 0.375rem;
+      text-align: right;
+    }
+    .msg--ai .msg-meta { text-align: left; }
+
+    /* Result table in AI response */
+    .result-table {
+      margin-top: 0.75rem;
+      font-size: 0.8125rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+
+    .result-row {
+      display: grid;
+      grid-template-columns: 1.5fr 1.5fr 0.8fr;
+      gap: 0.5rem;
+      padding: 0.625rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .result-row:last-child { border-bottom: none; }
+
+    .result-row--head {
+      background: var(--bg);
+      font-weight: 600;
+      color: var(--fg);
+    }
+
+    .msg-meta--success {
+      color: #28CA42;
+      font-weight: 500;
+    }
+
+    .demo-footer {
+      background: var(--bg);
+      padding: 1rem 1.25rem;
+      font-size: 0.8125rem;
+      color: var(--muted);
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ==========================================================================
+       TRUST STRIP
+       ========================================================================== */
+
+    .trust {
+      background: var(--surface);
+      padding: var(--space-xl) 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .trust-header {
+      text-align: center;
+      margin-bottom: var(--space-lg);
+    }
+
+    .trust-header h3 {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .trust-header p {
+      font-size: 1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .trust-logos {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: var(--space-lg);
+      align-items: center;
+      opacity: 0.7;
+    }
+
+    .trust-logos img {
+      height: 32px;
+      width: auto;
+      filter: grayscale(100%);
+      transition: all 0.3s;
+    }
+    .trust-logos img:hover {
+      filter: grayscale(0%);
+      opacity: 1;
+    }
+
+    .trust-footer {
+      text-align: center;
+      margin-top: var(--space-md);
+    }
+
+    .trust-footer p {
+      font-size: 0.875rem;
+      color: var(--muted);
+    }
+
+    /* ==========================================================================
+       STORY / PAIN SECTION
+       ========================================================================== */
+
+    .story {
+      background: var(--bg);
+    }
+
+    .story-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .story h2 {
+      text-align: center;
+      margin-bottom: var(--space-lg);
+    }
+
+    .story-lead {
+      font-size: 1.25rem;
+      text-align: center;
+      margin-bottom: var(--space-xl);
+      color: var(--muted);
+    }
+
+    .story-block {
+      margin-bottom: var(--space-xl);
+    }
+
+    .story-block p {
+      margin-bottom: var(--space-sm);
+    }
+
+    .story-callout {
+      background: var(--surface);
+      border-left: 4px solid var(--primary);
+      padding: var(--space-md);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      margin: var(--space-lg) 0;
+    }
+
+    .story-callout strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .story-callout p {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    /* Before/After Grid */
+    .ba-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md);
+      margin: var(--space-xl) 0;
+    }
+
+    .ba-card {
+      padding: var(--space-lg);
+      border-radius: var(--radius-md);
+    }
+
+    .ba-card--before {
+      background: rgba(255, 95, 87, 0.05);
+      border: 1px solid rgba(255, 95, 87, 0.2);
+    }
+
+    .ba-card--after {
+      background: rgba(40, 202, 66, 0.05);
+      border: 1px solid rgba(40, 202, 66, 0.2);
+    }
+
+    .ba-badge {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 0.375rem 0.75rem;
+      border-radius: var(--radius-full);
+      margin-bottom: var(--space-md);
+    }
+
+    .ba-card--before .ba-badge {
+      background: rgba(255, 95, 87, 0.1);
+      color: #FF5F57;
+    }
+
+    .ba-card--after .ba-badge {
+      background: rgba(40, 202, 66, 0.1);
+      color: #28CA42;
+    }
+
+    .ba-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+    }
+
+    .ba-list li {
+      display: flex;
+      gap: 0.75rem;
+      font-size: 0.9375rem;
+      line-height: 1.5;
+    }
+
+    .ba-list .ti {
+      flex-shrink: 0;
+      font-size: 1.125rem;
+      margin-top: 2px;
+    }
+
+    .ba-card--before .ti { color: #FF5F57; }
+    .ba-card--after .ti { color: #28CA42; }
+
+    /* Stat Callout */
+    .stat-callout {
+      background: var(--bg-dark);
+      color: white;
+      padding: var(--space-lg);
+      border-radius: var(--radius-md);
+      text-align: center;
+      max-width: 360px;
+      margin: var(--space-xl) auto;
+    }
+
+    .stat-callout-label {
+      font-size: 0.875rem;
+      color: var(--muted-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-callout-arrow {
+      font-size: 1.5rem;
+      color: var(--accent);
+      margin: 0.5rem 0;
+    }
+
+    .stat-callout-value {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .stat-callout-desc {
+      font-size: 0.8125rem;
+      color: var(--muted-light);
+      margin-top: 0.75rem;
+    }
+
+    /* Quote */
+    .story-quote {
+      background: var(--surface);
+      border-radius: var(--radius-md);
+      padding: var(--space-lg);
+      margin-top: var(--space-xl);
+      border: 1px solid var(--border);
+    }
+
+    .story-quote blockquote {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-style: italic;
+      color: var(--fg);
+      margin-bottom: var(--space-sm);
+      line-height: 1.5;
+    }
+
+    .story-quote cite {
+      font-size: 0.875rem;
+      color: var(--muted);
+      font-style: normal;
+    }
+
+    /* ==========================================================================
+       EPIPHANY QUOTE
+       ========================================================================== */
+
+    .epiphany {
+      background: var(--bg-dark);
+      padding: var(--space-xl) 0;
+      text-align: center;
+    }
+
+    .epiphany-quote {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+      font-weight: 600;
+      color: white;
+      line-height: 1.4;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* ==========================================================================
+       TESTIMONIALS
+       ========================================================================== */
+
+    .testimonials {
+      background: var(--surface);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: var(--space-lg);
+      align-items: start;
+    }
+
+    .testimonials-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .testimonial-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+    }
+
+    .testimonial-rating {
+      color: var(--accent);
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: 2px;
+    }
+
+    .testimonial-text {
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--fg);
+      margin-bottom: var(--space-sm);
+      line-height: 1.6;
+    }
+
+    .testimonial-user {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .testimonial-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: white;
+    }
+
+    .testimonial-info strong {
+      display: block;
+      font-size: 0.9375rem;
+      color: var(--primary);
+    }
+
+    .testimonial-info span {
+      font-size: 0.8125rem;
+      color: var(--muted);
+    }
+
+    /* Featured Case Study */
+    .case-study {
+      background: var(--bg-dark);
+      color: white;
+      border-radius: var(--radius-md);
+      padding: var(--space-lg);
+      border-left: 4px solid var(--accent);
+    }
+
+    .case-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      font-family: var(--font-display);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 0.375rem 0.75rem;
+      border-radius: var(--radius-full);
+      margin-bottom: var(--space-md);
+    }
+
+    .case-study h3 {
+      color: white;
+      margin-bottom: var(--space-sm);
+    }
+
+    .case-study p {
+      color: var(--muted-light);
+      font-size: 1rem;
+      margin-bottom: var(--space-lg);
+    }
+
+    .case-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      padding-top: 1.5rem;
+      margin-top: 1.5rem;
+      border-top: 1px solid var(--border-dark);
+      align-items: stretch;
+    }
+
+    .case-stat {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem;
+      background: rgba(255,255,255,0.05);
+      border-radius: var(--radius-sm);
+    }
+
+    .case-stat-value {
+      font-family: var(--font-display);
+      font-size: 2.75rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .case-stat-label {
+      font-size: 0.8125rem;
+      color: var(--muted-light);
+      margin-top: 0.5rem;
+      text-align: center;
+    }
+
+    /* ==========================================================================
+       FRAMEWORK SECTION
+       ========================================================================== */
+
+    .framework {
+      background: var(--bg);
+    }
+
+    .framework-intro {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto var(--space-xl);
+      font-size: 1.125rem;
+      color: var(--muted);
+    }
+
+    .framework-intro strong {
+      color: var(--fg);
+    }
+
+    /* Comparison Table */
+    .comparison-wrapper {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      margin-bottom: var(--space-xl);
+    }
+
+    .comparison-header {
+      text-align: center;
+      padding: var(--space-md);
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .comparison-header h3 {
+      margin: 0;
+      font-size: 1.125rem;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 1rem 1.25rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .comparison-table th {
+      background: var(--bg);
+      font-family: var(--font-display);
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    .comparison-table th:last-child {
+      background: linear-gradient(135deg, rgba(123, 47, 242, 0.08) 0%, rgba(255, 122, 0, 0.08) 100%);
+      color: var(--primary);
+    }
+
+    .comparison-table td {
+      font-size: 0.9375rem;
+    }
+
+    .comparison-table td:last-child {
+      background: rgba(123, 47, 242, 0.03);
+      font-weight: 500;
+      color: var(--fg);
+    }
+
+    .comparison-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Framework Layers */
+    .framework-split {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: var(--space-xl);
+      align-items: start;
+    }
+
+    .framework-diagram {
+      position: sticky;
+      top: 120px;
+    }
+
+    .framework-diagram svg {
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+      display: block;
+    }
+
+    .framework-layers {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .layer-card {
+      display: flex;
+      gap: var(--space-md);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      transition: all 0.3s;
+    }
+
+    .layer-card:hover {
+      box-shadow: 0 8px 30px var(--shadow);
+      border-color: var(--primary);
+    }
+
+    .layer-num {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      background: var(--gradient);
+      border-radius: var(--radius-sm);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-family: var(--font-display);
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .layer-num span {
+      font-size: 0.5rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      opacity: 0.8;
+    }
+
+    .layer-num::after {
+      content: attr(data-num);
+      font-size: 1.25rem;
+    }
+
+    .layer-content h3 {
+      font-size: 1.0625rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .layer-content p {
+      font-size: 0.9375rem;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* Mechanism Banner */
+    .mechanism-banner {
+      background: var(--bg-dark);
+      color: white;
+      padding: var(--space-lg);
+      border-radius: var(--radius-md);
+      margin-top: var(--space-xl);
+    }
+
+    .mechanism-banner h3 {
+      color: white;
+      font-size: 1.125rem;
+      margin-bottom: var(--space-sm);
+    }
+
+    .mechanism-banner p {
+      color: var(--muted-light);
+      font-size: 0.9375rem;
+      margin-bottom: 0;
+    }
+
+    .mechanism-banner p:last-child {
+      margin-top: var(--space-sm);
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
+       OUTPUT SECTION
+       ========================================================================== */
+
+    .output {
+      background: var(--surface);
+    }
+
+    .output-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--space-md);
+    }
+
+    .output-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      position: relative;
+      transition: all 0.3s;
+    }
+
+    .output-card:hover {
+      border-color: var(--primary);
+      box-shadow: 0 8px 30px var(--shadow);
+    }
+
+    .output-num {
+      position: absolute;
+      top: var(--space-sm);
+      right: var(--space-sm);
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--primary);
+      opacity: 0.5;
+    }
+
+    .output-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--gradient);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-sm);
+    }
+
+    .output-icon .ti {
+      font-size: 1.5rem;
+      color: white;
+    }
+
+    .output-card strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      margin-bottom: 0.375rem;
+    }
+
+    .output-card p {
+      font-size: 0.875rem;
+      margin: 0;
+    }
+
+    /* ==========================================================================
+       FUTURE PACING
+       ========================================================================== */
+
+    .future {
+      background: var(--bg-dark);
+      color: white;
+    }
+
+    .future h2 {
+      color: white;
+      text-align: center;
+      margin-bottom: var(--space-xl);
+    }
+
+    .future-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md);
+    }
+
+    .future-card {
+      background: var(--bg-darker);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-md);
+      padding: var(--space-lg);
+    }
+
+    .future-card-label {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 0.375rem 0.75rem;
+      border-radius: var(--radius-full);
+      margin-bottom: var(--space-md);
+    }
+
+    .future-card--specialist .future-card-label {
+      background: rgba(123, 47, 242, 0.2);
+      color: var(--primary-light);
+    }
+
+    .future-card--ceo .future-card-label {
+      background: rgba(255, 122, 0, 0.2);
+      color: var(--accent-light);
+    }
+
+    .future-card p {
+      color: var(--muted-light);
+      font-size: 1rem;
+      margin-bottom: var(--space-sm);
+    }
+
+    .future-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .future-question {
+      text-align: center;
+      margin-top: var(--space-xl);
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      font-style: italic;
+      color: var(--muted-light);
+      line-height: 1.6;
+    }
+
+    /* ==========================================================================
+       CURRICULUM
+       ========================================================================== */
+
+    .curriculum {
+      background: var(--bg);
+    }
+
+    .curriculum-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: var(--space-lg);
+    }
+
+    .curriculum-tab {
+      font-family: var(--font-display);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      padding: 0.875rem 1.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .curriculum-tab:hover {
+      border-color: var(--primary);
+    }
+
+    .curriculum-tab.active {
+      background: var(--gradient);
+      color: white;
+      border-color: transparent;
+    }
+
+    .curriculum-content {
+      display: none;
+    }
+
+    .curriculum-content.active {
+      display: block;
+    }
+
+    .day-header {
+      text-align: center;
+      margin-bottom: var(--space-lg);
+    }
+
+    .day-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .day-subtitle {
+      font-size: 0.875rem;
+      color: var(--primary);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .timeline-slots {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .timeline-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+    }
+
+    .slot-time {
+      font-size: 0.8125rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .slot-title {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: var(--space-sm);
+    }
+
+    .slot-details {
+      list-style: disc;
+      padding-left: 1.25rem;
+      margin-bottom: var(--space-sm);
+    }
+
+    .slot-details li {
+      font-size: 0.9375rem;
+      color: var(--muted);
+      margin-bottom: 0.375rem;
+      line-height: 1.5;
+    }
+
+    .slot-outcome {
+      background: rgba(40, 202, 66, 0.08);
+      border-left: 3px solid #28CA42;
+      padding: 0.75rem 1rem;
+      font-size: 0.9375rem;
+      color: var(--fg);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+
+    /* ==========================================================================
+       INSTRUCTOR
+       ========================================================================== */
+
+    .instructor {
+      background: var(--surface);
+    }
+
+    .instructor-profile {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: var(--space-xl);
+      align-items: start;
+    }
+
+    .instructor-photo {
+      width: 100%;
+      border-radius: var(--radius-md);
+      box-shadow: 0 20px 50px var(--shadow);
+    }
+
+    .instructor-bio h3 {
+      margin-bottom: 0.25rem;
+    }
+
+    .instructor-title {
+      font-size: 1rem;
+      color: var(--primary);
+      font-weight: 500;
+      margin-bottom: var(--space-sm);
+    }
+
+    .instructor-badges {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: var(--space-md);
+    }
+
+    .instructor-badges .badge {
+      font-size: 0.75rem;
+      padding: 0.375rem 0.75rem;
+    }
+
+    .instructor-bio p {
+      font-size: 1rem;
+      margin-bottom: var(--space-sm);
+    }
+
+    /* Proof blocks */
+    .instructor-logos-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: var(--space-xl);
+    }
+
+    .proof-block-card {
+      padding: 2rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+    }
+
+    .proof-block-card h4 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      margin-bottom: var(--space-sm);
+    }
+
+    .proof-logo-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+      gap: 1.25rem;
+      align-items: center;
+      justify-items: center;
+    }
+
+    .proof-logo-item img {
+      height: 28px;
+      opacity: 0.55;
+      filter: grayscale(100%);
+      transition: all 0.3s;
+    }
+
+    .proof-logo-item img:hover {
+      filter: grayscale(0%);
+      opacity: 1;
+    }
+
+    /* ==========================================================================
+       OFFER SECTION
+       ========================================================================== */
+
+    .offer {
+      background: var(--bg);
+    }
+
+    .offer-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .offer-core {
+      background: var(--surface);
+      border: 2px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .offer-badge-header {
+      background: var(--gradient);
+      color: white;
+      text-align: center;
+      padding: 0.75rem;
+      font-family: var(--font-display);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+
+    .offer-items {
+      padding: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .offer-item {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: var(--space-md);
+    }
+
+    .offer-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .offer-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: var(--space-sm);
+      margin-bottom: 0.5rem;
+    }
+
+    .offer-item-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .offer-item-title .ti {
+      color: var(--primary);
+    }
+
+    .offer-item-value {
+      font-size: 0.8125rem;
+      color: var(--muted);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .offer-item-desc {
+      font-size: 0.9375rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* Bonuses */
+    .offer-bonuses {
+      background: var(--bg);
+      padding: var(--space-md);
+      border-top: 1px solid var(--border);
+    }
+
+    .offer-bonuses h4 {
+      font-family: var(--font-display);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      margin-bottom: var(--space-sm);
+    }
+
+    .offer-bonuses ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .offer-bonuses li {
+      color: var(--fg);
+      font-size: 0.9375rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      line-height: 1.6;
+    }
+
+    .offer-bonuses .ti {
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* Form reassurance bullets */
+    .form-reassurance {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 2rem;
+      align-items: center;
+    }
+
+    .form-reassurance-item {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-size: 0.9rem;
+      color: var(--fg-inverse) !important;
+      opacity: 1 !important;
+      font-weight: 500;
+    }
+
+    .form-reassurance-item .ti {
+      color: var(--accent);
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    /* Countdown Timer */
+    .countdown-wrapper {
+      background: rgba(255, 122, 0, 0.08);
+      border: 1px solid rgba(255, 122, 0, 0.2);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin: var(--space-lg) 0;
+      text-align: center;
+    }
+    .countdown-label {
+      font-family: var(--font-display);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+    }
+    .countdown-grid {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .countdown-grid div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      min-width: 64px;
+      padding: 0.5rem;
+    }
+    .countdown-grid span {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--fg);
+      line-height: 1.2;
+    }
+    .countdown-grid em {
+      font-style: normal;
+      font-size: 0.6875rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-top: 0.25rem;
+    }
+    .countdown-ended {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1.5;
+    }
+
+    /* Mini TOC Pill Navigation */
+    .mini-toc {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      padding: 16px 0;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .mini-toc span {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    .mini-toc a {
+      background: rgba(123, 47, 242, 0.06);
+      color: var(--primary);
+      border: 1px solid rgba(123, 47, 242, 0.15);
+      padding: 4px 12px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .mini-toc a:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+    /* Offset so headers are not covered by sticky header/CTA bar */
+    [id] {
+      scroll-margin-top: 80px;
+    }
+
+    /* Guarantee */
+    .guarantee {
+      background: var(--surface);
+      border: 2px solid var(--primary);
+      border-radius: var(--radius-md);
+      padding: var(--space-lg);
+      margin: var(--space-xl) 0;
+    }
+
+    .guarantee-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--primary);
+      color: white;
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-full);
+      margin-bottom: var(--space-md);
+    }
+
+    .guarantee h3 {
+      font-size: 1.25rem;
+      margin-bottom: var(--space-sm);
+    }
+
+    .guarantee p {
+      font-size: 0.9375rem;
+      margin-bottom: var(--space-sm);
+    }
+
+    .guarantee-signature {
+      font-size: 0.875rem;
+      font-style: italic;
+      color: var(--muted);
+      margin-top: var(--space-md);
+      padding-top: var(--space-sm);
+      border-top: 1px solid var(--border);
+    }
+
+    /* Pricing Table */
+    .pricing-table {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .pricing-table h4 {
+      text-align: center;
+      padding: var(--space-sm);
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    .pricing-table table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .pricing-table th,
+    .pricing-table td {
+      padding: 0.875rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9375rem;
+    }
+
+    .pricing-table th {
+      background: var(--bg);
+      font-weight: 600;
+    }
+
+    .pricing-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Final Price */
+    .final-price {
+      background: var(--bg-dark);
+      color: white;
+      border-radius: var(--radius-md);
+      padding: var(--space-lg);
+      text-align: center;
+      margin-top: var(--space-lg);
+    }
+
+    .final-price-label {
+      font-size: 0.875rem;
+      color: var(--muted-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .final-price-value {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .final-price-note {
+      font-size: 0.875rem;
+      color: var(--muted-light);
+      margin-top: 0.5rem;
+    }
+
+    .final-price .btn {
+      margin-top: var(--space-md);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    /* Sticky CTA Bar */
+    .sticky-bar {
+      position: fixed;
+      top: 60px;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transform: translateY(-200%);
+      transition: transform 0.35s ease, top 0.2s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+    .sticky-bar.show {
+      transform: translateY(0);
+    }
+    .sticky-bar .info-text {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--fg);
+    }
+    .sticky-bar-right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+    .sticky-bar-right small {
+      font-size: 11px;
+      color: var(--muted);
+    }
+    
+    @media (max-width: 768px) {
+      .sticky-bar {
+        top: auto !important;
+        bottom: 0;
+        border-top: 1px solid var(--border);
+        border-bottom: none;
+        transform: translateY(200%);
+        padding: 10px 16px;
+      }
+      .sticky-bar .info-text {
+        display: none;
+      }
+      .sticky-bar-right {
+        width: 100%;
+      }
+      .sticky-bar-right .btn {
+        width: 100%;
+      }
+    }
+
+    /* ==========================================================================
+       FAQ
+       ========================================================================== */
+
+    .faq {
+      background: var(--surface);
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md);
+    }
+
+    .faq-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+    }
+
+    .faq-item h4 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .faq-item p {
+      font-size: 0.9375rem;
+      margin: 0;
+    }
+
+    /* ==========================================================================
+       FINAL CTA
+       ========================================================================== */
+
+    .final-cta {
+      background: var(--bg-dark);
+      color: white;
+      text-align: center;
+    }
+
+    .final-cta h2 {
+      color: white;
+      margin-bottom: var(--space-sm);
+    }
+
+    .final-cta p {
+      color: var(--muted-light);
+      max-width: 600px;
+      margin: 0 auto var(--space-lg);
+    }
+
+    .final-cta .btn {
+      min-width: 320px;
+    }
+
+    .final-cta-note {
+      font-size: 0.875rem;
+      color: var(--muted-light);
+      margin-top: var(--space-md);
+    }
+
+    /* Registration Form Styles */
+    #reg-form {
+      max-width: 500px;
+      margin: 2.5rem auto 0;
+      background: var(--bg-darker);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      text-align: left;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .form-field label {
+      font-family: var(--font-display);
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--fg-inverse);
+    }
+    .form-field input {
+      padding: 0.75rem 1rem;
+      background: var(--bg-dark);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-sm);
+      color: white;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-field input:focus {
+      border-color: var(--primary);
+    }
+    #reg-form .btn {
+      width: 100%;
+      min-width: unset;
+      margin-top: 0.5rem;
+    }
+    #reg-form small {
+      display: block;
+      text-align: center;
+      margin-top: 0.75rem;
+      font-size: 0.8rem;
+      color: var(--muted-light);
+    }
+    .field-error {
+      font-size: 0.75rem;
+      color: #ef4444;
+      margin-top: 0.25rem;
+      display: none;
+    }
+    .input-invalid {
+      border-color: #ef4444 !important;
+    }
+
+    /* ==========================================================================
+       FOOTER
+       ========================================================================== */
+
+    .footer {
+      background: var(--bg-darker);
+      color: var(--muted-light);
+      padding: var(--space-lg) 0;
+      text-align: center;
+    }
+
+    .footer p {
+      font-size: 0.875rem;
+      color: var(--muted-light);
+      margin: 0;
+    }
+
+    .footer a {
+      color: var(--muted-light);
+    }
+
+    .footer a:hover {
+      color: white;
+    }
+
+    /* ==========================================================================
+       RESPONSIVE
+       ========================================================================== */
+
+    @media (max-width: 1024px) {
+      .hero-grid,
+      .testimonials-grid,
+      .framework-split,
+      .instructor-profile,
+      .future-grid,
+      .instructor-logos-grid,
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-demo {
+        max-width: 500px;
+        margin: var(--space-lg) auto 0;
+      }
+
+      .framework-diagram {
+        position: static;
+        order: -1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .instructor-logos-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .ba-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .output-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .curriculum-tabs {
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .output-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 1.875rem;
+      }
+
+      .final-price-value {
+        font-size: 2.25rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- ==========================================================================
-       HEADER
-       ========================================================================== -->
-  <a href="#hero-section" class="skip-link">Bỏ qua để vào nội dung chính</a>
-
+  <!-- HEADER -->
   <header class="header">
-    <div class="container header-container">
-      <div class="logo-brand">ASSEMBLE: <span>Agentic AI</span></div>
-      <div>
-        <a href="#final-register-section" class="btn btn-secondary" style="padding: 0.6rem 1.2rem; font-size: 0.95rem; box-shadow: none;">TÔI MUỐN AI ĐỌC DỮ LIỆU CÔNG TY TÔI</a>
+    <div class="container header-inner">
+      <div class="logo">
+        <span class="logo-main">ASSEMBLE:</span> <span class="logo-sub">Agentic AI</span>
       </div>
+      <a href="#final-cta" class="btn btn-primary">Đăng ký ngay</a>
     </div>
   </header>
 
   <main>
 
-    <!-- ==========================================================================
-         SECTION 1 — HERO
-         ========================================================================== -->
-    <section class="hero" id="hero-section" style="position: relative; overflow: hidden;">
-      <!-- Floating Orbs -->
-      <div class="orb orb-1"></div>
-      <div class="orb orb-2"></div>
-      <div class="container grid-2">
-        <!-- Hero Text content -->
-        <div class="hero-text-content">
-          <div class="hero-top-bar">
-            <span class="hero-top-badge"><i class="ti ti-calendar-event"></i> 19–21/06/2026</span>
-            <span class="hero-top-badge"><i class="ti ti-map-pin"></i> Bình Thạnh, HCM</span>
-            <span class="hero-top-badge hero-top-badge--highlight"><i class="ti ti-users"></i> Chỉ còn 5/15 chỗ</span>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-badges">
+            <span class="badge badge-dark"><i class="ti ti-calendar-event"></i> 19–21/06/2026</span>
+            <span class="badge badge-dark"><i class="ti ti-map-pin"></i> Bình Thạnh, HCM</span>
+            <span class="badge badge-accent"><i class="ti ti-users"></i> Chỉ còn 5/15 chỗ</span>
           </div>
+
           <h1>3 ngày. Đội hình AI chạy thật trên dữ liệu của bạn.</h1>
-          
-          <div class="hero-subheadline">
+
+          <p class="hero-desc">
             Phương pháp thực chiến 4 lớp giúp AI đọc hiểu dữ liệu nội bộ của bạn — không dùng ChatGPT chung chung, không cần lập trình.
+          </p>
+
+          <div class="hero-cta">
+            <a href="#final-cta" class="btn btn-primary btn-lg">BẮT ĐẦU 3 NGÀY — TỰ BUILD HỆ THỐNG AI</a>
           </div>
 
-            <div class="hero-cta-area">
-              <a href="#final-register-section" class="btn btn-secondary btn-full btn-cta">TÔI MUỐN AI ĐỌC DỮ LIỆU CÔNG TY TÔI</a>
-            
-            <!-- Scarcity Mini-bar -->
-            <div class="hero-scarcity-mini">
-              <div class="scarcity-mini-labels">
-                <span>Đã đăng ký: <strong>10/15 chỗ</strong></span>
-                <span class="scarcity-mini-remaining">Chỉ còn <strong>5 chỗ trống</strong></span>
-              </div>
-              <div class="scarcity-mini-outer">
-                <div class="scarcity-mini-inner" style="width: 66.6%;"></div>
-              </div>
+          <div class="scarcity-bar">
+            <div class="scarcity-labels">
+              <span>Đã đăng ký: <strong>10/15 chỗ</strong></span>
+              <span>Chỉ còn <strong>5 chỗ</strong></span>
             </div>
-            
-            <div class="hero-instructor-badge">
-              <img src="https://i.postimg.cc/R0rcxyyP/Hung.png" alt="Nguyễn Phước Vĩnh Hưng" class="hero-mini-avatar">
-              <span class="microcopy" style="margin-top: 0; text-align: left; display: inline-block;">Mỗi bàn có 1 technical support đồng hành.<br>Bạn không rời phòng khi hệ thống chưa chạy.</span>
+            <div class="scarcity-track">
+              <div class="scarcity-fill" style="width: 66.6%;"></div>
+            </div>
+          </div>
+
+          <div class="instructor-mini">
+            <img src="https://i.postimg.cc/R0rcxyyP/Hung.png" alt="Nguyễn Phước Vĩnh Hưng">
+            <div class="instructor-mini-text">
+              Mỗi bàn có 1 technical support đồng hành.<br>
+              Bạn không rời phòng khi hệ thống chưa chạy.
             </div>
           </div>
         </div>
 
-        <!-- Hero Visual Area -->
-        <div class="hero-visual-panel">
-          <div class="bot-demo-mockup" style="width: 100%;">
-            <div class="bot-demo-header" style="flex-direction: column; gap: 0.5rem; align-items: stretch; padding: 0.75rem 1rem;">
-              <div class="bot-demo-header-top">
-                <div class="bot-demo-dots">
-                  <div class="bot-demo-dot bot-demo-dot--red"></div>
-                  <div class="bot-demo-dot bot-demo-dot--yellow"></div>
-                  <div class="bot-demo-dot bot-demo-dot--green"></div>
-                </div>
-                <span class="bot-demo-title">AI Agent — CRM Sync System</span>
-                <span class="bot-demo-status">● Live</span>
+        <!-- Demo Card -->
+        <div class="hero-demo">
+          <div class="demo-header">
+            <div class="demo-header-top">
+              <div class="demo-dots">
+                <div class="demo-dot demo-dot--red"></div>
+                <div class="demo-dot demo-dot--yellow"></div>
+                <div class="demo-dot demo-dot--green"></div>
               </div>
-              <div class="bot-demo-url">
-                <i class="ti ti-lock"></i>
-                <span>https://assemble.sunext.vn/crew-sync</span>
+              <span class="demo-title">AI Agent — CRM Sync System</span>
+              <span class="demo-status">● Live</span>
+            </div>
+            <div class="demo-url">
+              <i class="ti ti-lock"></i>
+              <span>https://assemble.sunext.vn/crew-sync</span>
+            </div>
+          </div>
+
+          <div class="demo-body">
+            <div class="msg msg--user">
+              <div class="msg-content">
+                <div class="msg-bubble">Khách hàng nào đang chờ offer từ tuần trước?</div>
+                <div class="msg-meta">Minh · Operations Director</div>
               </div>
             </div>
-            <div class="bot-demo-body">
-              <!-- User message -->
-              <div class="bot-msg bot-msg--user">
-                <div class="bot-msg-bubble">
-                  Khách hàng nào đang chờ offer từ tuần trước?
-                </div>
-                <div class="bot-msg-meta">Minh · Operations Director</div>
-              </div>
-              <!-- Bot response -->
-              <div class="bot-msg bot-msg--ai">
-                <div class="bot-msg-avatar">AI</div>
-                <div>
-                  <div class="bot-msg-bubble">
-                    Tôi tìm thấy <strong>3 khách hàng</strong> đang chờ offer từ 15/05 – 20/05:
-                    <div class="bot-result-table">
-                      <div class="bot-result-row bot-result-row--head">
-                        <span>Khách hàng</span><span>Sản phẩm</span><span>Liên hệ cuối</span>
-                      </div>
-                      <div class="bot-result-row">
-                        <span>Dược Hà Nội JSC</span><span>Amoxicillin 500mg</span><span>19/05</span>
-                      </div>
-                      <div class="bot-result-row">
-                        <span>Medipharm Co.</span><span>Vitamin C 1000mg</span><span>17/05</span>
-                      </div>
-                      <div class="bot-result-row">
-                        <span>HMC Distribution</span><span>Paracetamol 650mg</span><span>15/05</span>
-                      </div>
+
+            <div class="msg msg--ai">
+              <div class="msg-avatar">AI</div>
+              <div class="msg-content">
+                <div class="msg-bubble">
+                  Tôi tìm thấy <strong>3 khách hàng</strong> đang chờ offer từ 15/05 – 20/05:
+                  <div class="result-table">
+                    <div class="result-row result-row--head">
+                      <span>Khách hàng</span><span>Sản phẩm</span><span>Liên hệ</span>
                     </div>
-                    Bạn muốn tôi soạn email offer cho 3 khách này không?
+                    <div class="result-row">
+                      <span>Dược Hà Nội JSC</span><span>Amoxicillin</span><span>19/05</span>
+                    </div>
+                    <div class="result-row">
+                      <span>Medipharm Co.</span><span>Vitamin C</span><span>17/05</span>
+                    </div>
+                    <div class="result-row">
+                      <span>HMC Distribution</span><span>Paracetamol</span><span>15/05</span>
+                    </div>
                   </div>
-                  <div class="bot-msg-meta">Đọc từ Google Sheet CRM · 0.8 giây · Không ra internet</div>
+                  Bạn muốn tôi soạn email offer không?
                 </div>
-              </div>
-              <!-- User follow-up -->
-              <div class="bot-msg bot-msg--user">
-                <div class="bot-msg-bubble">
-                  Soạn email cho Dược Hà Nội đi, chiết khấu 5% theo chính sách tháng 6.
-                </div>
-                <div class="bot-msg-meta">Minh · Operations Director</div>
-              </div>
-              <!-- Bot writing email -->
-              <div class="bot-msg bot-msg--ai">
-                <div class="bot-msg-avatar">AI</div>
-                <div>
-                  <div class="bot-msg-bubble">
-                    Đã soạn xong. Dược Hà Nội đủ điều kiện nhận 5% chiết khấu (đơn > 50M, file <em>Policy_T6_2025.pdf</em>). <strong>n8n đã tự ghi vào CRM và gửi nháp vào email của bạn.</strong>
-                  </div>
-                  <div class="bot-msg-meta bot-msg-meta--success">✓ Ghi CRM · ✓ Email draft gửi · ✓ Luồng n8n hoàn tất</div>
-                </div>
+                <div class="msg-meta">Đọc từ Google Sheet CRM · 0.8 giây</div>
               </div>
             </div>
-            <div class="bot-demo-footer">
-              Giao diện hệ thống AI kết nối trực tiếp với database của doanh nghiệp — bạn sẽ tự build hệ thống này trong 3 ngày 19–21/06 tại HCM
+
+            <div class="msg msg--user">
+              <div class="msg-content">
+                <div class="msg-bubble">Soạn email cho Dược Hà Nội, chiết khấu 5%.</div>
+              </div>
             </div>
+
+            <div class="msg msg--ai">
+              <div class="msg-avatar">AI</div>
+              <div class="msg-content">
+                <div class="msg-bubble">
+                  Đã soạn xong. <strong>n8n đã tự ghi vào CRM và gửi nháp vào email của bạn.</strong>
+                </div>
+                <div class="msg-meta msg-meta--success">✓ Ghi CRM · ✓ Email draft gửi · ✓ Luồng n8n hoàn tất</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="demo-footer">
+            Hệ thống AI kết nối trực tiếp database doanh nghiệp — bạn sẽ tự build trong 3 ngày
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ==========================================================================
-         SECTION 1B — TRUST STRIP
-         ========================================================================== -->
-    <section class="trust-strip">
-      <div class="container text-center">
-        <h3 class="trust-title">ĐÃ ĐÀO TẠO & TRIỂN KHAI AI TẠI:</h3>
-        <p class="trust-subtitle">Phương pháp thực chiến ASSEMBLE được xây dựng từ kinh nghiệm huấn luyện và chuyển giao AI cho các tập đoàn & doanh nghiệp lớn:</p>
-        <div class="logo-wrapper">
-          <!-- Single Track — Infinite Scrolling -->
-          <div class="logo-track">
-            <!-- 10 Logos -->
-            <div class="trust-logo-item" title="FPT"><img src="https://i.postimg.cc/52Sxjk50/FPT.png" alt="FPT"></div>
-            <div class="trust-logo-item" title="MUFG Bank"><img src="https://i.postimg.cc/rwN8zYG5/MUFG.png" alt="MUFG Bank"></div>
-            <div class="trust-logo-item" title="BIDV"><img src="https://i.postimg.cc/4xQJnFvX/BIDV.png" alt="BIDV"></div>
-            <div class="trust-logo-item" title="Prudential"><img src="https://i.postimg.cc/VNsztB4X/Prudential.png" alt="Prudential"></div>
-            <div class="trust-logo-item" title="Vinhomes"><img src="https://i.postimg.cc/BvZJFcNY/Vinhomes.png" alt="Vinhomes"></div>
-            <div class="trust-logo-item" title="VNPT"><img src="https://i.postimg.cc/7LPqzMXB/VNPT.png" alt="VNPT"></div>
-            <div class="trust-logo-item" title="Mitsubishi Motors"><img src="https://i.postimg.cc/RZLMqb1f/Mitsubishi.png" alt="Mitsubishi Motors"></div>
-            <div class="trust-logo-item" title="PetroVietnam Power"><img src="https://i.postimg.cc/7ZnxbQ11/Petro-Vietnam-Power.png" alt="PetroVietnam Power"></div>
-            <div class="trust-logo-item" title="PTSC"><img src="https://i.postimg.cc/Jh7RXcKN/PTSC.png" alt="PTSC"></div>
-            <div class="trust-logo-item" title="VACS"><img src="https://i.postimg.cc/434XcbwW/VACS.png" alt="VACS"></div>
-            <!-- Duplicate for seamless loop (Total 20) -->
-            <div class="trust-logo-item" title="FPT"><img src="https://i.postimg.cc/52Sxjk50/FPT.png" alt="FPT"></div>
-            <div class="trust-logo-item" title="MUFG Bank"><img src="https://i.postimg.cc/rwN8zYG5/MUFG.png" alt="MUFG Bank"></div>
-            <div class="trust-logo-item" title="BIDV"><img src="https://i.postimg.cc/4xQJnFvX/BIDV.png" alt="BIDV"></div>
-            <div class="trust-logo-item" title="Prudential"><img src="https://i.postimg.cc/VNsztB4X/Prudential.png" alt="Prudential"></div>
-            <div class="trust-logo-item" title="Vinhomes"><img src="https://i.postimg.cc/BvZJFcNY/Vinhomes.png" alt="Vinhomes"></div>
-            <div class="trust-logo-item" title="VNPT"><img src="https://i.postimg.cc/7LPqzMXB/VNPT.png" alt="VNPT"></div>
-            <div class="trust-logo-item" title="Mitsubishi Motors"><img src="https://i.postimg.cc/RZLMqb1f/Mitsubishi.png" alt="Mitsubishi Motors"></div>
-            <div class="trust-logo-item" title="PetroVietnam Power"><img src="https://i.postimg.cc/7ZnxbQ11/Petro-Vietnam-Power.png" alt="PetroVietnam Power"></div>
-            <div class="trust-logo-item" title="PTSC"><img src="https://i.postimg.cc/Jh7RXcKN/PTSC.png" alt="PTSC"></div>
-            <div class="trust-logo-item" title="VACS"><img src="https://i.postimg.cc/434XcbwW/VACS.png" alt="VACS"></div>
-          </div>
+    <!-- TRUST STRIP -->
+    <section class="trust">
+      <div class="container">
+        <div class="trust-header">
+          <h3>Đã đào tạo & triển khai AI tại</h3>
+          <p>Phương pháp thực chiến ASSEMBLE được xây dựng từ kinh nghiệm huấn luyện và chuyển giao AI cho các tập đoàn & doanh nghiệp lớn</p>
         </div>
-        <p class="trust-footer">+ 20 tổ chức khác trong 6 ngành</p>
-        <div class="trust-secondary-cta" style="margin-top: 1.5rem;">
-          <a href="#curriculum-section" class="btn btn-outline-primary" style="display: inline-block; padding: 0.65rem 1.5rem; font-size: 0.95rem; text-decoration: none; border-radius: var(--border-radius-sm); border: 2px solid var(--accent-primary); color: var(--accent-primary); font-weight: 600; transition: all 0.3s ease;">Xem Lịch Trình 3 Ngày & Học Phí Chi Tiết →</a>
+
+        <div class="trust-logos">
+          <img src="https://i.postimg.cc/52Sxjk50/FPT.png" alt="FPT">
+          <img src="https://i.postimg.cc/rwN8zYG5/MUFG.png" alt="MUFG Bank">
+          <img src="https://i.postimg.cc/4xQJnFvX/BIDV.png" alt="BIDV">
+          <img src="https://i.postimg.cc/VNsztB4X/Prudential.png" alt="Prudential">
+          <img src="https://i.postimg.cc/BvZJFcNY/Vinhomes.png" alt="Vinhomes">
+          <img src="https://i.postimg.cc/7LPqzMXB/VNPT.png" alt="VNPT">
+          <img src="https://i.postimg.cc/RZLMqb1f/Mitsubishi.png" alt="Mitsubishi">
+          <img src="https://i.postimg.cc/7ZnxbQ11/Petro-Vietnam-Power.png" alt="PetroVietnam">
+        </div>
+
+        <div class="trust-footer">
+          <p>+ 20 tổ chức khác trong 6 ngành</p>
         </div>
       </div>
     </section>
 
-    <!-- ==========================================================================
-         SECTION 2 — STORY / PAIN + EPIPHANY BRIDGE
-         ========================================================================== -->
-    <section class="section-padding" id="story-section">
-      <div class="container story-wrapper">
-        <!-- MINI TOC NAVIGATION -->
-        <div class="mini-toc">
-          <span>Đi đến:</span>
-          <a href="#story-section">Vấn đề &amp; Giải pháp</a>
-          <a href="#framework-section">AI Crew Framework</a>
-          <a href="#output-section">Kết quả 3 ngày</a>
-          <a href="#offer-section">Học phí &amp; Early Bird</a>
-          <a href="#instructor-section">Giảng viên</a>
-          <a href="#final-register-section">Đăng ký ngay</a>
-        </div>
+    <!-- STORY -->
+    <section class="story section" id="story">
+      <div class="container">
+        <div class="story-content">
+          <!-- Mini TOC -->
+          <nav class="mini-toc">
+            <span>Đi đến:</span>
+            <a href="#story">Vấn đề</a>
+            <a href="#framework">Framework 4 lớp</a>
+            <a href="#output">Kết quả 3 ngày</a>
+            <a href="#curriculum">Lịch trình</a>
+            <a href="#instructor">Giảng viên</a>
+            <a href="#offer">Học phí</a>
+          </nav>
 
-        <h2>Tại sao 80% doanh nghiệp học AI xong vẫn "chat cho vui"?</h2>
+          <h2>Tại sao 80% doanh nghiệp học AI xong vẫn "chat cho vui"?</h2>
 
-        <div class="story-lead">Hãy tưởng tượng bức tranh này — đây là tổng hợp từ những gì chúng tôi thấy ở hàng chục doanh nghiệp trong 2 năm qua.</div>
+          <p class="story-lead">Hãy tưởng tượng bức tranh này — đây là tổng hợp từ những gì chúng tôi thấy ở hàng chục doanh nghiệp trong 2 năm qua.</p>
 
-        <div class="story-scene-divider"></div>
+          <div class="story-block">
+            <p>Tháng 4/2025. Một nhà phân phối hàng tiêu dùng tại HCM — 50 nhân sự, 3 kho hàng, bán qua Zalo và Facebook.</p>
+            <p>Họ đã mua ChatGPT Team cho cả phòng. Kết quả sau 3 tháng: nhân viên dùng để viết email và dịch tài liệu. Không ai dùng để trả lời đại lý hay xử lý đơn hàng tự động.</p>
 
-        <div class="story-block">
-          <p>Tháng 4/2025. Một nhà phân phối hàng tiêu dùng tại HCM — 50 nhân sự, 3 kho hàng, bán qua Zalo và Facebook.</p>
-          <p>Họ đã mua ChatGPT Team cho cả phòng. Kết quả sau 3 tháng: nhân viên dùng để viết email và dịch tài liệu. Không ai dùng để trả lời đại lý hay xử lý đơn hàng tự động.</p>
-          <p>Lý do không phải vì nhân viên lười. Lý do đơn giản hơn nhiều.</p>
-
-          <div class="story-callout-box" style="background-color: #FAF5FF; padding: 1.5rem; border-left: 4px solid var(--accent-primary); margin: 2rem 0; border-radius: var(--border-radius-sm);">
-            <strong style="color: var(--accent-primary); font-size: 1.2rem; display: block; margin-bottom: 0.5rem;">AI của họ không biết công ty họ tồn tại.</strong>
-            <p style="margin: 0; font-size: 1.05rem; color: var(--text-muted);">
-              Nó không biết sản phẩm nào còn hàng ở kho nào. Không biết bảng giá theo khu vực. Không biết chính sách đổi trả tháng này. Mỗi lần đại lý hỏi, nhân viên vẫn tra tay, vẫn chat thủ công, vẫn mất 5–10 phút mỗi cuộc.
-            </p>
+            <div class="story-callout">
+              <strong>AI của họ không biết công ty họ tồn tại.</strong>
+              <p>Nó không biết sản phẩm nào còn hàng ở kho nào. Không biết bảng giá theo khu vực. Không biết chính sách đổi trả tháng này.</p>
+            </div>
           </div>
 
-          <!-- BEFORE/AFTER GRID COMPARISON -->
-          <div class="before-after-grid">
+          <!-- Before/After -->
+          <div class="ba-grid">
             <div class="ba-card ba-card--before">
-              <div class="ba-badge ba-badge--before">TRƯỚC WORKSHOP (HỖN LOẠN &amp; THỦ CÔNG)</div>
+              <span class="ba-badge">TRƯỚC WORKSHOP</span>
               <ul class="ba-list">
-                <li><i class="ti ti-x"></i> <strong>Dữ liệu phân mảnh:</strong> Thông tin sản phẩm, tồn kho và bảng giá nằm rải rác trên file Excel cá nhân, Google Sheets và group chat.</li>
-                <li><i class="ti ti-x"></i> <strong>Tra cứu thủ công:</strong> Nhân viên mất 5–10 phút để lục lọi dữ liệu, đối chiếu chính sách rồi mới trả lời được khách hàng.</li>
-                <li><i class="ti ti-x"></i> <strong>Trễ đơn &amp; Nhầm lẫn:</strong> Phản hồi chậm khiến khách bỏ đi, báo sai giá do nhầm lẫn phiên bản file chính sách mới cũ.</li>
+                <li><i class="ti ti-x"></i> <span><strong>Dữ liệu phân mảnh:</strong> Thông tin nằm rải rác trên Excel, Google Sheets và group chat.</span></li>
+                <li><i class="ti ti-x"></i> <span><strong>Tra cứu thủ công:</strong> Mất 5–10 phút để tìm và trả lời khách.</span></li>
+                <li><i class="ti ti-x"></i> <span><strong>Trễ đơn & Nhầm lẫn:</strong> Báo sai giá do nhầm phiên bản file.</span></li>
               </ul>
             </div>
             <div class="ba-card ba-card--after">
-              <div class="ba-badge ba-badge--after">SAU WORKSHOP (ĐỒNG BỘ &amp; TỰ ĐỘNG)</div>
+              <span class="ba-badge">SAU WORKSHOP</span>
               <ul class="ba-list">
-                <li><i class="ti ti-check"></i> <strong>Một nguồn sự thật (Single Truth):</strong> Toàn bộ dữ liệu nội bộ được đồng bộ chuẩn hóa vào bộ nhớ tri thức riêng của AI.</li>
-                <li><i class="ti ti-check"></i> <strong>Phản hồi tức thì:</strong> AI tự động tra cứu chính xác bảng giá, tồn kho thực tế và trả lời khách hàng chỉ trong 2 giây.</li>
-                <li><i class="ti ti-check"></i> <strong>Vận hành khép kín:</strong> Hệ thống tự ghi nhận lead vào CRM, gửi email nháp, báo cáo tự động qua Zalo/Telegram.</li>
+                <li><i class="ti ti-check"></i> <span><strong>Một nguồn sự thật:</strong> Toàn bộ dữ liệu đồng bộ vào bộ nhớ tri thức AI.</span></li>
+                <li><i class="ti ti-check"></i> <span><strong>Phản hồi tức thì:</strong> AI trả lời chính xác trong 2 giây.</span></li>
+                <li><i class="ti ti-check"></i> <span><strong>Vận hành khép kín:</strong> Tự ghi CRM, gửi email nháp, báo cáo tự động.</span></li>
               </ul>
             </div>
           </div>
-        </div>
 
-        <div class="story-divider"></div>
-
-        <div class="story-block">
-          <blockquote style="font-size: 1.25rem; font-style: italic; color: var(--text-main); margin: 2rem 0; padding-left: 1rem; border-left: 3px solid var(--accent-primary);">
-            Đại lý nhắn hỏi: "Kho Q7 còn mã SP-890 không, báo giá em với."<br>
-            Bot trả lời sau 2 giây — từ đúng file bảng giá kho Q7 của họ.
-          </blockquote>
-
-          <!-- STAT CALLOUT BOX -->
-          <div style="background-color: #1A1A2E; color: #FFFFFF; padding: 2rem; border-radius: var(--border-radius-md); text-align: center; max-width: 380px; margin: 3rem auto;">
-            <div style="font-size: 15px; color: #888780; margin-bottom: 0.5rem;">65% câu hỏi đại lý xử lý thủ công</div>
-            <div style="font-size: 2rem; color: #FF7A00; margin: 0.5rem 0;">↓</div>
-            <div style="font-size: 38px; font-weight: 800; color: #FF7A00; line-height: 1.1;">Tự động</div>
-            <div style="font-size: 13px; color: #A0A0CB; margin-top: 0.5rem;">Bot trả lời từ đúng bảng giá và tồn kho của bạn</div>
+          <div class="stat-callout">
+            <div class="stat-callout-label">65% câu hỏi đại lý xử lý thủ công</div>
+            <div class="stat-callout-arrow">↓</div>
+            <div class="stat-callout-value">Tự động</div>
+            <div class="stat-callout-desc">Bot trả lời từ đúng bảng giá và tồn kho của bạn</div>
           </div>
 
-          <!-- Reaction của nhân vật -->
-          <p>Giám đốc vận hành nhìn màn hình. Im lặng 5 giây.</p>
-          <p class="reveal-text">Rồi nói: "Mình đã dùng AI sai hoàn toàn từ đầu."</p>
-
-
-          <p>Và để giao việc được, bạn cần 4 thứ: <strong>Data thật — Kênh thật — Luồng tự động thật — Ứng dụng thật.</strong></p>
-          <p>ASSEMBLE: Agentic AI được xây dựng để dẫn bạn qua cả 4 thứ đó — trên dữ liệu, kênh và quy trình của chính bạn — trong 3 ngày.</p>
-        </div>
-
-        <div class="story-divider"></div>
-
-        <div class="story-block">
-          <p>Đây không phải vấn đề của riêng công ty này. Đây là vấn đề của 80% doanh nghiệp đang dùng AI.</p>
-          <p>Bạn có thể mua mọi subscription AI trên thị trường. Nhưng nếu AI không được kết nối với dữ liệu thật của bạn — không đọc được file Excel doanh thu, không tra được bảng giá, không ghi nhận được lead từ Zalo — thì nó chỉ là một tab trình duyệt mở thêm.</p>
-        </div>
-
-        <div class="story-quote-card">
-          <blockquote>"Tôi tưởng mình đang dùng AI. Hóa ra mình chỉ đang dùng một cái hộp hỏi đáp thông minh hơn Google một chút."</blockquote>
-          <cite>— Tổng hợp từ phản hồi học viên các batch trước</cite>
+          <div class="story-quote">
+            <blockquote>"Tôi tưởng mình đang dùng AI. Hóa ra mình chỉ đang dùng một cái hộp hỏi đáp thông minh hơn Google một chút."</blockquote>
+            <cite>— Tổng hợp từ phản hồi học viên các batch trước</cite>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ==========================================================================
-         EPIPHANY QUOTE SECTION
-         ========================================================================== -->
-    <section class="epiphany-section">
+    <!-- EPIPHANY -->
+    <section class="epiphany">
       <div class="container">
-        <p class="epiphany-quote-text">"AI không phải công cụ để hỏi.<br>AI là đội ngũ để giao việc."</p>
+        <p class="epiphany-quote">"AI không phải công cụ để hỏi.<br>AI là đội ngũ để giao việc."</p>
       </div>
     </section>
 
-    <!-- ==========================================================================
-         SECTION 2B — TESTIMONIALS & CASE STUDY
-         ========================================================================== -->
-    <section class="section-padding bg-soft" id="testimonials-section">
+    <!-- TESTIMONIALS -->
+    <section class="testimonials section">
       <div class="container">
-        <h2 class="text-center">Học viên nói gì về chúng tôi?</h2>
-        
-        <div class="testimonials-container" style="margin-top: 3.5rem; display: grid; grid-template-columns: 3fr 2fr; gap: 2.5rem; align-items: start;">
-          <div class="testimonials-grid" style="display: flex; flex-direction: column; gap: 1.5rem;">
-            <!-- Testimonial 1 -->
-            <div class="testimonial-card" style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-md); padding: 1.75rem; box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
-              <div class="testimonial-rating" style="margin-bottom: 0.5rem; font-size: 1.1rem;"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-              <p class="testimonial-text" style="font-size: 1.05rem; font-style: italic; color: var(--text-main); margin-bottom: 1rem; line-height: 1.5;">"Chúng tôi triển khai bot tự động hóa đơn hàng cho 3 kho tại HCM. Kết quả: Giảm thời gian phản hồi đại lý từ 5 phút xuống 2 giây, gánh 65% câu hỏi tra kho lặp lại. Dự án hoàn thành ngay trong ngày thứ 2."</p>
-              <div class="testimonial-user" style="display: flex; align-items: center; gap: 1rem;">
-                <div class="avatar-initials">PMH</div>
-                <div style="display: flex; flex-direction: column;">
-                  <strong style="color: var(--accent-primary); font-size: 0.95rem;">Phạm Minh Hoàng</strong>
-                  <span style="font-size: 0.85rem; color: var(--text-muted);">Operations Director, HMC Distribution</span>
+        <div class="section-header">
+          <h2>Học viên nói gì về chúng tôi?</h2>
+        </div>
+
+        <div class="testimonials-grid">
+          <div class="testimonials-list">
+            <div class="testimonial-card">
+              <div class="testimonial-rating">★★★★★</div>
+              <p class="testimonial-text">"Chúng tôi triển khai bot tự động hóa đơn hàng cho 3 kho tại HCM. Kết quả: Giảm thời gian phản hồi từ 5 phút xuống 2 giây, gánh 65% câu hỏi tra kho lặp lại."</p>
+              <div class="testimonial-user">
+                <div class="testimonial-avatar">PMH</div>
+                <div class="testimonial-info">
+                  <strong>Phạm Minh Hoàng</strong>
+                  <span>Operations Director, HMC Distribution</span>
                 </div>
               </div>
             </div>
-            
-            <!-- Testimonial 2 -->
-            <div class="testimonial-card" style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-md); padding: 1.75rem; box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
-              <div class="testimonial-rating" style="color: #FF7A00; margin-bottom: 0.5rem; font-size: 1.1rem;">★★★★★</div>
-              <p class="testimonial-text" style="font-size: 1.05rem; font-style: italic; color: var(--text-main); margin-bottom: 1rem; line-height: 1.5;">"Trước đây, team mất 2 tiếng mỗi sáng để tổng hợp tồn kho từ file Excel. Giờ luồng n8n tự chạy từ 7:30 sáng, gửi thẳng báo cáo qua Zalo. Sunext hướng dẫn rất kỹ, stuck chỗ nào là technical support gỡ chỗ đó."</p>
-              <div class="testimonial-user" style="display: flex; align-items: center; gap: 1rem;">
-                <div class="avatar-initials">TTT</div>
-                <div style="display: flex; flex-direction: column;">
-                  <strong style="color: var(--accent-primary); font-size: 0.95rem;">Trần Thị Thu Thảo</strong>
-                  <span style="font-size: 0.85rem; color: var(--text-muted);">Customer Support Lead, Maison Vie</span>
+
+            <div class="testimonial-card">
+              <div class="testimonial-rating">★★★★★</div>
+              <p class="testimonial-text">"Trước đây, team mất 2 tiếng mỗi sáng để tổng hợp tồn kho từ file Excel. Giờ luồng n8n tự chạy từ 7:30 sáng, gửi thẳng báo cáo qua Zalo."</p>
+              <div class="testimonial-user">
+                <div class="testimonial-avatar">TTT</div>
+                <div class="testimonial-info">
+                  <strong>Trần Thị Thu Thảo</strong>
+                  <span>Customer Support Lead, Maison Vie</span>
                 </div>
               </div>
             </div>
-            
-            <!-- Testimonial 3 -->
-            <div class="testimonial-card" style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-md); padding: 1.75rem; box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
-              <div class="testimonial-rating" style="color: #FF7A00; margin-bottom: 0.5rem; font-size: 1.1rem;">★★★★★</div>
-              <p class="testimonial-text" style="font-size: 1.05rem; font-style: italic; color: var(--text-main); margin-bottom: 1rem; line-height: 1.5;">"Là startup nhỏ, tôi sợ không có dev thì không duy trì được AI. Nhưng khi học ASSEMBLE, tôi tự dùng Vibe Coding build được web app CRM quản lý đơn. Hệ thống chạy local bảo mật, không tốn chi phí thuê ngoài."</p>
-              <div class="testimonial-user" style="display: flex; align-items: center; gap: 1rem;">
-                <div class="avatar-initials">LHA</div>
-                <div style="display: flex; flex-direction: column;">
-                  <strong style="color: var(--accent-primary); font-size: 0.95rem;">Lê Huỳnh Anh</strong>
-                  <span style="font-size: 0.85rem; color: var(--text-muted);">Founder, Huỳnh Anh Store</span>
+
+            <div class="testimonial-card">
+              <div class="testimonial-rating">★★★★★</div>
+              <p class="testimonial-text">"Là startup nhỏ, tôi sợ không có dev thì không duy trì được AI. Nhưng tôi tự dùng Vibe Coding build được web app CRM. Hệ thống chạy local bảo mật."</p>
+              <div class="testimonial-user">
+                <div class="testimonial-avatar">LHA</div>
+                <div class="testimonial-info">
+                  <strong>Lê Huỳnh Anh</strong>
+                  <span>Founder, Huỳnh Anh Store</span>
                 </div>
               </div>
             </div>
           </div>
-          
-          <!-- Highlighted Case Study -->
-          <div class="case-study-featured" style="background-color: #1A1A2E; color: #FFFFFF; border-radius: var(--border-radius-md); padding: 2.5rem; box-shadow: 0 20px 40px rgba(123, 47, 242, 0.1); border-left: 5px solid var(--accent-secondary);">
-            <div class="case-study-badge" style="display: inline-block; background-color: var(--accent-secondary); color: #FFF; font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.75rem; border-radius: 20px; margin-bottom: 1.25rem; letter-spacing: 0.5px;">CASE STUDY THỰC TẾ</div>
-            <h3 style="color: #FFFFFF; font-size: 1.4rem; margin-bottom: 1rem;">Ứng dụng thực tế tại Droppii</h3>
-            <p style="color: #A0A0CB; font-size: 1rem; line-height: 1.6; margin-bottom: 2rem;">Triển khai hệ thống bot CSKH đa kênh kết nối trực tiếp với kho dữ liệu sản phẩm và chính sách — gánh 65% câu hỏi lặp lại của khách cộng tác viên, giải phóng đội support để tập trung vào các case phức tạp thực sự cần người xử lý.</p>
-            <div class="case-study-stats" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; border-top: 1px solid #2D2D4E; padding-top: 1.5rem;">
-              <div class="case-stat" style="text-align: center;">
-                <span class="case-stat-num" style="display: block; font-size: 4.5rem; font-weight: 800; color: var(--accent-secondary); line-height: 1;">65%</span>
-                <span class="case-stat-label" style="font-size: 0.85rem; color: #A0A0CB; display: block; margin-top: 0.5rem;">Câu hỏi đại lý tự động trả lời</span>
+
+          <!-- Case Study -->
+          <div class="case-study">
+            <span class="case-badge">CASE STUDY THỰC TẾ</span>
+            <h3>Ứng dụng thực tế tại Droppii</h3>
+            <p>Triển khai hệ thống bot CSKH đa kênh kết nối trực tiếp với kho dữ liệu sản phẩm và chính sách — gánh 65% câu hỏi lặp lại của khách cộng tác viên.</p>
+            <div class="case-stats">
+              <div class="case-stat">
+                <div class="case-stat-value">65%</div>
+                <div class="case-stat-label">Câu hỏi đại lý tự động trả lời</div>
               </div>
-              <div class="case-stat" style="text-align: center;">
-                <span class="case-stat-num" style="display: block; font-size: 4.5rem; font-weight: 800; color: var(--accent-secondary); line-height: 1;">2s</span>
-                <span class="case-stat-label" style="font-size: 0.85rem; color: #A0A0CB; display: block; margin-top: 0.5rem;">Thời gian phản hồi trung bình</span>
+              <div class="case-stat">
+                <div class="case-stat-value">2s</div>
+                <div class="case-stat-label">Thời gian phản hồi trung bình</div>
               </div>
             </div>
           </div>
@@ -374,228 +2399,137 @@
       </div>
     </section>
 
-    <!-- Instructor section moved to post-curriculum location -->
-
-    <!-- ==========================================================================
-         SECTION 3 — UNIQUE MECHANISM: THE AI CREW FRAMEWORK™
-         ========================================================================== -->
-    <section class="section-padding bg-soft" id="framework-section">
+    <!-- FRAMEWORK -->
+    <section class="framework section" id="framework">
       <div class="container">
-        <h2 class="text-gradient">The AI Crew Framework™: Giải pháp 4 lớp giúp AI tự vận hành</h2>
-        <div class="framework-intro">
+        <div class="section-header">
+          <h2>The AI Crew Framework™</h2>
+          <p>Giải pháp 4 lớp giúp AI tự vận hành</p>
+        </div>
+
+        <p class="framework-intro">
           Hàng chục khóa dạy đúng tool này — nhưng tất cả dùng demo data. <strong>ASSEMBLE: Agentic AI là khóa duy nhất yêu cầu bạn mang data thật lên lớp.</strong>
-        </div>
+        </p>
 
-        <!-- Comparison Table -->
-        <div class="comparison-table-wrapper">
-          <h3 class="text-center" style="margin-bottom: 2rem; padding-top: 2rem;">Tại sao data thật tạo ra sự khác biệt?</h3>
+        <!-- Comparison -->
+        <div class="comparison-wrapper">
+          <div class="comparison-header">
+            <h3>Tại sao data thật tạo ra sự khác biệt?</h3>
+          </div>
           <table class="comparison-table">
             <thead>
               <tr>
-                <th>Khóa AI thông thường (Tier 1)</th>
-                <th class="highlight-col">ASSEMBLE: Agentic AI (Tier 2)</th>
+                <th>Khóa AI thông thường</th>
+                <th>ASSEMBLE: Agentic AI</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td data-label="Khóa AI thông thường">Data demo của giảng viên</td>
-                <td class="highlight-col" data-label="ASSEMBLE: Agentic AI">Data thật của doanh nghiệp bạn</td>
+                <td>Data demo của giảng viên</td>
+                <td>Data thật của doanh nghiệp bạn</td>
               </tr>
               <tr>
-                <td data-label="Khóa AI thông thường">Bài toán mẫu cố định</td>
-                <td class="highlight-col" data-label="ASSEMBLE: Agentic AI">Bài toán thật của bạn</td>
+                <td>Bài toán mẫu cố định</td>
+                <td>Bài toán thật của bạn</td>
               </tr>
               <tr>
-                <td data-label="Khóa AI thông thường">Online / Video recorded</td>
-                <td class="highlight-col" data-label="ASSEMBLE: Agentic AI">Offline 3 ngày, cầm tay chỉ việc</td>
+                <td>Online / Video recorded</td>
+                <td>Offline 3 ngày, cầm tay chỉ việc</td>
               </tr>
               <tr>
-                <td data-label="Khóa AI thông thường">Tự deploy sau khi về nhà</td>
-                <td class="highlight-col" data-label="ASSEMBLE: Agentic AI">Deploy ngay trong buổi học</td>
+                <td>Tự deploy sau khi về nhà</td>
+                <td>Deploy ngay trong buổi học</td>
               </tr>
               <tr>
-                <td data-label="Khóa AI thông thường">Hỏi đáp qua group, forum</td>
-                <td class="highlight-col" data-label="ASSEMBLE: Agentic AI">Technical support 1:1 tại bàn</td>
-              </tr>
-              <tr>
-                <td data-label="Khóa AI thông thường">Hệ thống demo mẫu chạy được</td>
-                <td class="highlight-col" data-label="ASSEMBLE: Agentic AI">Hệ thống của bạn chạy thật</td>
+                <td>Hỏi đáp qua group, forum</td>
+                <td>Technical support 1:1 tại bàn</td>
               </tr>
             </tbody>
           </table>
         </div>
-        
-        <div class="framework-content-split">
-          <!-- Left side: SVG Diagram -->
-          <div class="framework-diagram-wrapper">
-            <svg class="ai-crew-svg" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <!-- Background paths -->
-              <circle cx="250" cy="250" r="160" stroke="#E2E8F0" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 6" />
-              <circle cx="250" cy="250" r="80" stroke="#E2E8F0" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 6" />
-              
-              <!-- Connection lines -->
-              <line x1="250" y1="90" x2="250" y2="410" stroke="#7B2FF2" stroke-width="2" class="pulse-path" />
-              <line x1="90" y1="250" x2="410" y2="250" stroke="#FF7A00" stroke-width="2" class="pulse-path" />
-              
-              <!-- Nodes (Representing AI Crew Layers) -->
-              <!-- Data Node -->
-              <g transform="translate(250, 90)">
-                <circle cx="0" cy="0" r="30" fill="url(#grad-purple)" class="pulse-node" />
-                <text x="0" y="5" font-family="sans-serif" font-weight="bold" font-size="11" fill="#FFF" text-anchor="middle">DATA</text>
-                <text x="0" y="48" font-family="sans-serif" font-size="10" fill="#4A4A5A" text-anchor="middle" font-weight="bold">DATA LAYER</text>
-              </g>
-              
-              <!-- Channel Node -->
-              <g transform="translate(410, 250)">
-                <circle cx="0" cy="0" r="30" fill="url(#grad-purple)" class="pulse-node" />
-                <text x="0" y="5" font-family="sans-serif" font-weight="bold" font-size="11" fill="#FFF" text-anchor="middle">CHANNEL</text>
-                <text x="0" y="48" font-family="sans-serif" font-size="10" fill="#4A4A5A" text-anchor="middle" font-weight="bold">CHANNEL LAYER</text>
-              </g>
 
-              <!-- Flow Node -->
-              <g transform="translate(250, 410)">
-                <circle cx="0" cy="0" r="30" fill="url(#grad-purple)" class="pulse-node" />
-                <text x="0" y="5" font-family="sans-serif" font-weight="bold" font-size="11" fill="#FFF" text-anchor="middle">FLOW</text>
-                <text x="0" y="48" font-family="sans-serif" font-size="10" fill="#4A4A5A" text-anchor="middle" font-weight="bold">FLOW LAYER</text>
-              </g>
-
-              <!-- App Node -->
-              <g transform="translate(90, 250)">
-                <circle cx="0" cy="0" r="30" fill="url(#grad-orange)" class="pulse-node" />
-                <text x="0" y="5" font-family="sans-serif" font-weight="bold" font-size="11" fill="#FFF" text-anchor="middle">APP</text>
-                <text x="0" y="48" font-family="sans-serif" font-size="10" fill="#4A4A5A" text-anchor="middle" font-weight="bold">APP LAYER</text>
-              </g>
-              
-              <!-- Central Coordinator Node -->
-              <g transform="translate(250, 250)">
-                <circle cx="0" cy="0" r="45" fill="#1A1A2E" stroke="#7B2FF2" stroke-width="3" />
-                <text x="0" y="-5" font-family="sans-serif" font-weight="bold" font-size="14" fill="#FFF" text-anchor="middle">AI CREW</text>
-                <text x="0" y="15" font-family="sans-serif" font-weight="600" font-size="10" fill="#7B2FF2" text-anchor="middle">SYNC</text>
-              </g>
-
-              <!-- Defs for Gradients -->
-              <defs>
-                <linearGradient id="grad-purple" x1="-30" y1="-30" x2="30" y2="30" gradientUnits="userSpaceOnUse">
-                  <stop offset="0%" stop-color="#9F7AEA" />
-                  <stop offset="100%" stop-color="#7B2FF2" />
-                </linearGradient>
-                <linearGradient id="grad-orange" x1="-30" y1="-30" x2="30" y2="30" gradientUnits="userSpaceOnUse">
-                  <stop offset="0%" stop-color="#ED8936" />
-                  <stop offset="100%" stop-color="#FF7A00" />
-                </linearGradient>
-              </defs>
-            </svg>
+        <!-- Layers -->
+        <div class="framework-layers">
+          <div class="layer-card">
+            <div class="layer-num"><span>LỚP</span></div>
+            <div class="layer-content">
+              <h3>1. DATA LAYER: Dữ liệu thật của bạn</h3>
+              <p>Gom Excel doanh thu, hợp đồng PDF, catalogue sản phẩm, bảng giá — thành một nguồn dữ liệu thống nhất mà AI có thể đọc và tra cứu. Chạy local, dữ liệu không đi ra ngoài.</p>
+            </div>
           </div>
 
-          <!-- Right side: Description Cards -->
-          <div class="framework-layers">
-            <!-- Layer 1 -->
-            <div class="layer-card">
-              <div class="layer-num"><span>LỚP</span>1</div>
-              <div class="layer-content">
-                <div class="layer-icon-wrapper">
-                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>
-                </div>
-                <div class="layer-text">
-                  <h3>DATA LAYER: Dữ liệu thật của bạn</h3>
-                  <p>Gom Excel doanh thu, hợp đồng PDF, catalogue sản phẩm, bảng giá, chính sách — thành một nguồn dữ liệu thống nhất mà AI có thể đọc và tra cứu. Chạy local, dữ liệu không đi ra ngoài. AI đọc từ đúng file của bạn — không bịa, không nhầm.</p>
-                </div>
-              </div>
+          <div class="layer-card">
+            <div class="layer-num"><span>LỚP</span></div>
+            <div class="layer-content">
+              <h3>2. CHANNEL LAYER: Kênh giao tiếp thật</h3>
+              <p>Kết nối AI với Zalo OA, Facebook Messenger, Telegram, Website — tất cả cùng lúc, cùng knowledge base. Khách hỏi ở đâu, AI trả lời ở đó. 24/7.</p>
             </div>
-            <div class="layer-connector"><svg width="2" height="32" viewBox="0 0 2 32" fill="none"><path class="connector-line" d="M1 0V32" stroke="#7B2FF2" stroke-width="2"/></svg></div>
-            <!-- Layer 2 -->
-            <div class="layer-card">
-              <div class="layer-num"><span>LỚP</span>2</div>
-              <div class="layer-content">
-                <div class="layer-icon-wrapper">
-                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-                </div>
-                <div class="layer-text">
-                  <h3>CHANNEL LAYER: Kênh giao tiếp thật</h3>
-                  <p>Kết nối AI với Zalo OA, Facebook Messenger, Telegram, Website, sàn thương mại điện tử — tất cả cùng lúc, cùng knowledge base. Khách hỏi ở đâu, AI trả lời ở đó. 24/7. Không cần ai trực.</p>
-                </div>
-              </div>
+          </div>
+
+          <div class="layer-card">
+            <div class="layer-num"><span>LỚP</span></div>
+            <div class="layer-content">
+              <h3>3. FLOW LAYER: Luồng tự động hoá thật</h3>
+              <p>n8n thiết kế các luồng tự động kết nối toàn bộ: lead tự ghi vào CRM, đơn hàng tự phân loại, báo cáo tự gửi Zalo lúc 7:30 sáng. Không ai làm tay.</p>
             </div>
-            <div class="layer-connector"><svg width="2" height="32" viewBox="0 0 2 32" fill="none"><path class="connector-line" d="M1 0V32" stroke="#7B2FF2" stroke-width="2"/></svg></div>
-            <!-- Layer 3 -->
-            <div class="layer-card">
-              <div class="layer-num"><span>LỚP</span>3</div>
-              <div class="layer-content">
-                <div class="layer-icon-wrapper">
-                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.5 1z"/></svg>
-                </div>
-                <div class="layer-text">
-                  <h3>FLOW LAYER: Luồng tự động hoá thật</h3>
-                  <p>n8n thiết kế các luồng tự động kết nối toàn bộ: lead tự ghi vào CRM, đơn hàng tự phân loại, báo cáo tự gửi Zalo lúc 7:30 sáng. Không ai làm tay. Không ai quên. Không bao giờ muộn.</p>
-                </div>
-              </div>
-            </div>
-            <div class="layer-connector"><svg width="2" height="32" viewBox="0 0 2 32" fill="none"><path class="connector-line" d="M1 0V32" stroke="#7B2FF2" stroke-width="2"/></svg></div>
-            <!-- Layer 4 -->
-            <div class="layer-card">
-              <div class="layer-num"><span>LỚP</span>4</div>
-              <div class="layer-content">
-                <div class="layer-icon-wrapper">
-                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                </div>
-                <div class="layer-text">
-                  <h3>APP LAYER: Ứng dụng nội bộ thật (Vibe Coding)</h3>
-                  <p>Web app quản lý — CRM, dashboard, portal — được build bằng <strong>Vibe Coding</strong>: bạn mô tả bằng tiếng Việt, AI viết code, bạn review và deploy. Không cần biết lập trình. Nhân bản sang chi nhánh thứ 2 trong 30 phút.</p>
-                </div>
-              </div>
+          </div>
+
+          <div class="layer-card">
+            <div class="layer-num"><span>LỚP</span></div>
+            <div class="layer-content">
+              <h3>4. APP LAYER: Ứng dụng nội bộ thật (Vibe Coding)</h3>
+              <p>Web app quản lý — CRM, dashboard, portal — được build bằng Vibe Coding: bạn mô tả bằng tiếng Việt, AI viết code, bạn review và deploy. Không cần biết lập trình.</p>
             </div>
           </div>
         </div>
-        
-        <div class="mechanism-logic-banner">
-          <h3>Hầu hết khóa AI trên thị trường dạy bạn Lớp 1 và Lớp 2 — đôi khi Lớp 3. Lớp 4 gần như không có khóa nào dạy bài bản.</h3>
-          <p>Nếu thiếu Lớp 3 (Flow): dữ liệu và kênh của bạn vẫn là 2 thứ tách rời — AI trả lời khách, nhưng không có gì tự động chạy phía sau.<br>
-          Nếu thiếu Lớp 4 (App): bạn không có giao diện để team sử dụng, không có cách nhân bản hệ thống sang chi nhánh mới.</p>
-          <p style="margin-top: 1rem; font-weight: 700; color: var(--accent-secondary);">Đó là lý do bạn học xong vẫn chỉ "chat cho vui". ASSEMBLE dẫn bạn qua cả 4 lớp trong 3 ngày.</p>
+
+        <div class="mechanism-banner">
+          <h3>Hầu hết khóa AI trên thị trường dạy bạn Lớp 1 và Lớp 2 — đôi khi Lớp 3. Lớp 4 gần như không có khóa nào dạy.</h3>
+          <p>Nếu thiếu Lớp 3: dữ liệu và kênh của bạn vẫn là 2 thứ tách rời. Nếu thiếu Lớp 4: bạn không có giao diện để team sử dụng.</p>
+          <p>Đó là lý do bạn học xong vẫn chỉ "chat cho vui". ASSEMBLE dẫn bạn qua cả 4 lớp trong 3 ngày.</p>
         </div>
       </div>
     </section>
 
-    <!-- ==========================================================================
-         SECTION 4 — OUTPUT / TRANSFORMATION
-         ========================================================================== -->
-    <section class="section-padding bg-white" id="output-section">
+    <!-- OUTPUT -->
+    <section class="output section" id="output">
       <div class="container">
-        <h2>Sau 3 ngày, bạn rời phòng với:</h2>
-        
-        <div class="output-cards-grid" style="margin-top: 3.5rem;">
-          <!-- Card 1 -->
+        <div class="section-header">
+          <h2>Sau 3 ngày, bạn rời phòng với:</h2>
+        </div>
+
+        <div class="output-grid">
           <div class="output-card">
-            <span class="output-card-number">01</span>
-            <div class="output-card-icon"><i class="ti ti-message-circle"></i></div>
+            <span class="output-num">01</span>
+            <div class="output-icon"><i class="ti ti-message-circle"></i></div>
             <strong>Bot AI 24/7 đang chạy thật</strong>
             <p>Zalo/Facebook/Telegram/Website — đọc đúng database của bạn.</p>
           </div>
-          <!-- Card 2 -->
+
           <div class="output-card">
-            <span class="output-card-number">02</span>
-            <div class="output-card-icon"><i class="ti ti-git-branch"></i></div>
+            <span class="output-num">02</span>
+            <div class="output-icon"><i class="ti ti-git-branch"></i></div>
             <strong>Ít nhất 3 luồng n8n tự động</strong>
             <p>Ghi nhận lead, phân loại khách, gửi báo cáo 7:30 sáng.</p>
           </div>
-          <!-- Card 3 -->
+
           <div class="output-card">
-            <span class="output-card-number">03</span>
-            <div class="output-card-icon"><i class="ti ti-device-laptop"></i></div>
+            <span class="output-num">03</span>
+            <div class="output-icon"><i class="ti ti-device-laptop"></i></div>
             <strong>1 web app nội bộ đã deploy</strong>
             <p>CRM hoặc dashboard — build bằng Vibe Coding trong buổi học.</p>
           </div>
-          <!-- Card 4 -->
+
           <div class="output-card">
-            <span class="output-card-number">04</span>
-            <div class="output-card-icon"><i class="ti ti-copy"></i></div>
+            <span class="output-num">04</span>
+            <div class="output-icon"><i class="ti ti-copy"></i></div>
             <strong>Hệ thống nhân bản sang bối cảnh thứ 2</strong>
             <p>Chi nhánh hoặc sản phẩm mới — hoàn thành trong buổi học.</p>
           </div>
-          <!-- Card 5 -->
+
           <div class="output-card">
-            <span class="output-card-number">05</span>
-            <div class="output-card-icon"><i class="ti ti-file-check"></i></div>
+            <span class="output-num">05</span>
+            <div class="output-icon"><i class="ti ti-file-check"></i></div>
             <strong>Bộ hồ sơ bàn giao đầy đủ</strong>
             <p>Prompt, sơ đồ, cấu hình — sẵn sàng mở rộng hoặc bàn giao.</p>
           </div>
@@ -603,712 +2537,361 @@
       </div>
     </section>
 
-    <!-- ==========================================================================
-         SECTION 5 — FUTURE PACING
-         ========================================================================== -->
-    <section class="section-padding bg-dark" id="future-pacing-section">
+    <!-- FUTURE PACING -->
+    <section class="future section">
       <div class="container">
         <h2>90 ngày sau ASSEMBLE — buổi sáng của bạn trông như thế nào?</h2>
-        
-        <div class="future-pacing-grid" style="margin-top: 3.5rem;">
-          <!-- Specialist Card -->
-          <div class="future-card future-card-specialist">
-            <div class="future-card-icon"><i class="ti ti-user"></i></div>
-            <div class="future-card-label future-card-label--specialist">Dành cho Chuyên gia / Manager (50M+/tháng)</div>
+
+        <div class="future-grid">
+          <div class="future-card future-card--specialist">
+            <span class="future-card-label">Dành cho Chuyên gia / Manager</span>
             <p>Thứ Hai tuần sau workshop.</p>
-            <p>Bạn đến họp buổi sáng. Sếp hỏi tại sao báo cáo Q2 đã có sẵn từ sáng sớm, trong khi team vẫn đang chạy deadline. Bạn không giải thích nhiều. Nhưng từ tuần đó, mọi người bắt đầu hỏi bạn một câu khác — không phải <em>"anh/chị làm gì"</em> mà là <em>"anh/chị dùng gì."</em></p>
-            <p>90 ngày sau: bạn là người trong tổ chức biết cách build và vận hành hệ thống AI thật. Không phải người biết dùng ChatGPT. Người biết xây hệ thống.</p>
+            <p>Sếp hỏi tại sao báo cáo Q2 đã có sẵn từ sáng sớm. Từ tuần đó, mọi người bắt đầu hỏi bạn — không phải "anh/chị làm gì" mà là "anh/chị dùng gì."</p>
+            <p>90 ngày sau: bạn là người biết cách build và vận hành hệ thống AI thật. Người biết xây hệ thống.</p>
           </div>
 
-          <!-- CEO Card -->
-          <div class="future-card future-card-ceo">
-            <div class="future-card-icon future-card-icon--ceo"><i class="ti ti-building"></i></div>
-            <div class="future-card-label future-card-label--ceo">Dành cho CEO / Founder</div>
+          <div class="future-card future-card--ceo">
+            <span class="future-card-label">Dành cho CEO / Founder</span>
             <p>Sáng 7:30. Trước khi team vào làm.</p>
-            <p>Zalo đã có: doanh thu hôm qua theo kênh, số lead mới, đơn chờ xử lý, cảnh báo 2 SKU sắp hết tồn kho. Tự động. Không ai làm.</p>
-            <p>Bạn đọc 3 phút. Gửi 2 chỉ thị. Đóng máy. Team vào lúc 8:00 — ngày đã bắt đầu, bạn đã biết mọi thứ.</p>
+            <p>Zalo đã có: doanh thu hôm qua, số lead mới, đơn chờ xử lý, cảnh báo 2 SKU sắp hết tồn kho. Tự động. Không ai làm.</p>
+            <p>Bạn đọc 3 phút. Gửi 2 chỉ thị. Team vào lúc 8:00 — ngày đã bắt đầu, bạn đã biết mọi thứ.</p>
           </div>
         </div>
-        
-        <div class="future-question">
+
+        <p class="future-question">
           "Bạn muốn 90 ngày tới của mình giống sáng nào —<br>tự tay mở Excel, hay mở Zalo đọc báo cáo trong 3 phút?"
-        </div>
+        </p>
       </div>
     </section>
 
-
-
-    <!-- ==========================================================================
-         SECTION 7 & 8 — LỊCH TRÌNH 3 NGÀY CHI TIẾT
-         ========================================================================== -->
-    <section class="section-padding">
+    <!-- CURRICULUM -->
+    <section class="curriculum section" id="curriculum">
       <div class="container">
-        <h2>Từng giờ. Từng kết quả.</h2>
-        
-        <div class="curriculum-tabs-nav">
-          <button class="curriculum-tab-btn active" data-day="1">NGÀY 1 (19/06)</button>
-          <button class="curriculum-tab-btn" data-day="2">NGÀY 2 (20/06)</button>
-          <button class="curriculum-tab-btn" data-day="3">NGÀY 3 (21/06)</button>
+        <div class="section-header">
+          <h2>Từng giờ. Từng kết quả.</h2>
         </div>
 
-        <div class="curriculum-tabs-content" style="margin-top: 2rem;">
-          <!-- DAY 1 PANEL -->
-          <div class="curriculum-tab-content active" id="day-1-content">
-            <div class="timeline-day-header">
-              <div class="timeline-day-title">NGÀY 1 — Thứ Sáu 19/06/2026</div>
-              <div class="timeline-day-subtitle">THIẾT LẬP NỀN TẢNG & KẾT NỐI ĐA KÊNH</div>
-            </div>
-            <div class="timeline-slots">
-              <!-- Day 1 Slot 1 -->
-              <div class="timeline-slot-card">
-                <div class="slot-time">Sáng 8:30 – 12:00 (có Tea Break 10:15)</div>
-                <div class="slot-title font-h3">Khởi tạo Đội hình AI & Kết nối Dữ liệu Thật</div>
-                <ul class="slot-details">
-                  <li>AI đọc hiểu chính xác catalogue, bảng giá và chính sách nội bộ — không bịa thông tin, không nhầm số liệu.</li>
-                  <li>Tạo lập nguồn tri thức độc quyền từ chính dữ liệu thật (Excel, PDF, CRM) bạn mang lên lớp.</li>
-                </ul>
-                <div class="slot-outcome">
-                  ✓ Cuối buổi sáng: Đội hình AI đọc hiểu 100% tài liệu của bạn, trả lời tức thì mọi câu hỏi về sản phẩm/chính sách.
-                </div>
-              </div>
-              
-              <!-- Day 1 Slot 2 -->
-              <div class="timeline-slot-card">
-                <div class="slot-time">Chiều 13:30 – 18:00 (có Tea Break 15:15)</div>
-                <div class="slot-title font-h3">Đưa AI lên Các Kênh & Build Web App Nội bộ</div>
-                <ul class="slot-details">
-                  <li>Bot AI hoạt động đồng bộ trên Zalo OA, Facebook Messenger, Telegram và Website doanh nghiệp.</li>
-                  <li>Ứng dụng CRM quản lý dữ liệu nội bộ được thiết lập và deploy thành công qua phương pháp Vibe Coding (mô tả bằng tiếng Việt, AI tự viết code).</li>
-                </ul>
-                <div class="slot-outcome">
-                  ✓ Cuối ngày 1: Bot CSKH hoạt động 24/7 trên các kênh thực tế và Web App nội bộ đầu tiên đã đi vào vận hành.
-                </div>
-              </div>
-            </div>
+        <div class="curriculum-tabs">
+          <button class="curriculum-tab active" data-day="1">NGÀY 1 (19/06)</button>
+          <button class="curriculum-tab" data-day="2">NGÀY 2 (20/06)</button>
+          <button class="curriculum-tab" data-day="3">NGÀY 3 (21/06)</button>
+        </div>
+
+        <!-- Day 1 -->
+        <div class="curriculum-content active" id="day-1">
+          <div class="day-header">
+            <div class="day-title">NGÀY 1 — Thứ Sáu 19/06/2026</div>
+            <div class="day-subtitle">THIẾT LẬP NỀN TẢNG & KẾT NỐI ĐA KÊNH</div>
           </div>
 
-          <!-- DAY 2 PANEL -->
-          <div class="curriculum-tab-content" id="day-2-content">
-            <div class="timeline-day-header">
-              <div class="timeline-day-title">NGÀY 2 — Thứ Bảy 20/06/2026</div>
-              <div class="timeline-day-subtitle">TỰ ĐỘNG HÓA VẬN HÀNH & NHÂN BẢN HỆ THỐNG</div>
+          <div class="timeline-slots">
+            <div class="timeline-card">
+              <div class="slot-time">Sáng 8:30 – 12:00</div>
+              <div class="slot-title">Khởi tạo Đội hình AI & Kết nối Dữ liệu Thật</div>
+              <ul class="slot-details">
+                <li>AI đọc hiểu chính xác catalogue, bảng giá và chính sách nội bộ</li>
+                <li>Tạo lập nguồn tri thức độc quyền từ chính dữ liệu thật bạn mang lên lớp</li>
+              </ul>
+              <div class="slot-outcome">✓ Cuối buổi sáng: Đội hình AI đọc hiểu 100% tài liệu của bạn</div>
             </div>
-            <div class="timeline-slots">
-              <!-- Day 2 Slot 1 -->
-              <div class="timeline-slot-card">
-                <div class="slot-time">Sáng 8:30 – 12:00 (có Tea Break 10:15)</div>
-                <div class="slot-title font-h3">Xây Dòng Chảy Tự động & Hệ thống Báo cáo</div>
-                <ul class="slot-details">
-                  <li>Luồng thu thập và tự động ghi nhận lead thời gian thực từ các kênh chat thẳng vào CRM.</li>
-                  <li>Hệ thống phân loại khách hàng và tự động chuyển giao cuộc hội thoại thông minh đến đúng nhân sự phụ trách.</li>
-                  <li>Báo cáo kinh doanh tổng hợp tự động gửi trực tiếp vào Zalo lúc 7:30 sáng hàng ngày.</li>
-                </ul>
-                <div class="slot-outcome">
-                  ✓ Cuối buổi sáng: Ít nhất 3 quy trình tự động hóa vận hành cốt lõi chạy mượt mà, không tốn nhân sự thao tác thủ công.
-                </div>
-              </div>
-              
-              <!-- Day 2 Slot 2 -->
-              <div class="timeline-slot-card">
-                <div class="slot-time">Chiều 13:30 – 17:30 (có Tea Break 15:15)</div>
-                <div class="slot-title font-h3">Build Marketing Automation & Nhân bản Toàn hệ thống</div>
-                <ul class="slot-details">
-                  <li>AI tự động sản xuất hàng loạt bài đăng, email, kịch bản marketing từ kho sản phẩm có sẵn.</li>
-                  <li>Nhân bản toàn bộ kiến trúc AI sang chi nhánh hoặc dòng sản phẩm thứ hai chỉ trong 30 phút.</li>
-                </ul>
-                <div class="slot-outcome">
-                  ✓ Cuối ngày 2: Hệ thống marketing tự vận hành hoạt động trơn tru và hệ thống AI được nhân bản thành công sang môi trường mới.
-                </div>
-              </div>
+
+            <div class="timeline-card">
+              <div class="slot-time">Chiều 13:30 – 18:00</div>
+              <div class="slot-title">Đưa AI lên Các Kênh & Build Web App Nội bộ</div>
+              <ul class="slot-details">
+                <li>Bot AI hoạt động đồng bộ trên Zalo OA, Facebook Messenger, Telegram và Website</li>
+                <li>Ứng dụng CRM được deploy qua phương pháp Vibe Coding</li>
+              </ul>
+              <div class="slot-outcome">✓ Cuối ngày 1: Bot CSKH hoạt động 24/7 và Web App nội bộ đầu tiên đã vận hành</div>
             </div>
           </div>
+        </div>
 
-          <!-- DAY 3 PANEL -->
-          <div class="curriculum-tab-content" id="day-3-content">
-            <div class="timeline-day-header">
-              <div class="timeline-day-title">NGÀY 3 — Chủ Nhật 21/06/2026</div>
-              <div class="timeline-day-subtitle">TỐI ƯU HÓA HỆ THỐNG & BÀN GIAO VẬN HÀNH</div>
+        <!-- Day 2 -->
+        <div class="curriculum-content" id="day-2">
+          <div class="day-header">
+            <div class="day-title">NGÀY 2 — Thứ Bảy 20/06/2026</div>
+            <div class="day-subtitle">TỰ ĐỘNG HÓA VẬN HÀNH & NHÂN BẢN HỆ THỐNG</div>
+          </div>
+
+          <div class="timeline-slots">
+            <div class="timeline-card">
+              <div class="slot-time">Sáng 8:30 – 12:00</div>
+              <div class="slot-title">Xây Dòng Chảy Tự động & Hệ thống Báo cáo</div>
+              <ul class="slot-details">
+                <li>Luồng thu thập và tự động ghi nhận lead thời gian thực</li>
+                <li>Hệ thống phân loại khách hàng và chuyển giao thông minh</li>
+                <li>Báo cáo tự động gửi Zalo lúc 7:30 sáng hàng ngày</li>
+              </ul>
+              <div class="slot-outcome">✓ Cuối buổi sáng: Ít nhất 3 quy trình tự động hóa đang chạy</div>
             </div>
-            <div class="timeline-slots">
-              <!-- Day 3 Slot 1 -->
-              <div class="timeline-slot-card">
-                <div class="slot-time">Sáng 8:30 – 12:00 (có Tea Break 10:15)</div>
-                <div class="slot-title font-h3">Cấu Hình Vận Hành Thực Tế & Bảo Mật Local</div>
-                <ul class="slot-details">
-                  <li>Hệ thống AI chạy ổn định 24/7 ở môi trường thực tế, dữ liệu bảo mật local an toàn tuyệt đối.</li>
-                  <li>Tối ưu hóa phản hồi nhanh của chatbot dưới 2 giây và phân quyền truy cập quản lý chi tiết.</li>
-                </ul>
-                <div class="slot-outcome">
-                  ✓ Cuối buổi sáng: Toàn bộ hệ thống AI được đưa lên môi trường production online 24/7 và bảo mật phân quyền hoàn tất.
-                </div>
-              </div>
-              
-              <!-- Day 3 Slot 2 -->
-              <div class="timeline-slot-card">
-                <div class="slot-time">Chiều 13:30 – 17:30 (có Tea Break 15:15)</div>
-                <div class="slot-title font-h3">Bàn Giao Vận Hành & Audit 1:1 Giải Quyết Bài Toán Riêng</div>
-                <ul class="slot-details">
-                  <li>Prompt hệ thống được tinh chỉnh và tối ưu hóa tối đa theo đúng ngữ cảnh thực tế của doanh nghiệp bạn.</li>
-                  <li>Giảng viên audit trực tiếp 1:1 xác nhận độ chính xác trước khi bàn giao hồ sơ vận hành.</li>
-                </ul>
-                <div class="slot-outcome">
-                  ✓ Cuối ngày 3: Nhận hồ sơ bàn giao đầy đủ (prompt, sơ đồ cấu hình) — hệ thống AI sẵn sàng bàn giao cho nhân viên tự kiểm soát.
-                </div>
-              </div>
+
+            <div class="timeline-card">
+              <div class="slot-time">Chiều 13:30 – 17:30</div>
+              <div class="slot-title">Build Marketing Automation & Nhân bản Toàn hệ thống</div>
+              <ul class="slot-details">
+                <li>AI tự động sản xuất bài đăng, email, kịch bản marketing</li>
+                <li>Nhân bản toàn bộ kiến trúc AI sang chi nhánh thứ hai trong 30 phút</li>
+              </ul>
+              <div class="slot-outcome">✓ Cuối ngày 2: Hệ thống marketing tự vận hành và AI nhân bản thành công</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 3 -->
+        <div class="curriculum-content" id="day-3">
+          <div class="day-header">
+            <div class="day-title">NGÀY 3 — Chủ Nhật 21/06/2026</div>
+            <div class="day-subtitle">TỐI ƯU HÓA HỆ THỐNG & BÀN GIAO VẬN HÀNH</div>
+          </div>
+
+          <div class="timeline-slots">
+            <div class="timeline-card">
+              <div class="slot-time">Sáng 8:30 – 12:00</div>
+              <div class="slot-title">Cấu Hình Vận Hành Thực Tế & Bảo Mật Local</div>
+              <ul class="slot-details">
+                <li>Hệ thống AI chạy ổn định 24/7 ở môi trường thực tế</li>
+                <li>Tối ưu hóa phản hồi chatbot dưới 2 giây</li>
+              </ul>
+              <div class="slot-outcome">✓ Cuối buổi sáng: Toàn bộ hệ thống lên production 24/7</div>
+            </div>
+
+            <div class="timeline-card">
+              <div class="slot-time">Chiều 13:30 – 17:30</div>
+              <div class="slot-title">Bàn Giao Vận Hành & Audit 1:1</div>
+              <ul class="slot-details">
+                <li>Prompt hệ thống được tinh chỉnh theo ngữ cảnh doanh nghiệp</li>
+                <li>Giảng viên audit trực tiếp 1:1 trước khi bàn giao</li>
+              </ul>
+              <div class="slot-outcome">✓ Cuối ngày 3: Nhận hồ sơ bàn giao đầy đủ, hệ thống sẵn sàng bàn giao cho nhân viên</div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ==========================================================================
-         SECTION 6 — INSTRUCTOR & CLIENT LOGOS (REORGANIZED)
-         ========================================================================== -->
-    <section class="section-padding bg-soft" id="instructor-section">
+    <!-- INSTRUCTOR -->
+    <section class="instructor section" id="instructor">
       <div class="container">
-        <h2 class="text-center">Người dẫn dắt bạn qua 3 ngày thực chiến</h2>
-        
-        <div class="instructor-profile" style="margin-top: 3.5rem;">
-          <div class="instructor-image-container">
-            <img class="instructor-photo" src="https://i.postimg.cc/R0rcxyyP/Hung.png" alt="Nguyễn Phước Vĩnh Hưng">
-          </div>
-          
+        <div class="section-header">
+          <h2>Người dẫn dắt bạn qua 3 ngày thực chiến</h2>
+        </div>
+
+        <div class="instructor-profile">
+          <img class="instructor-photo" src="https://i.postimg.cc/R0rcxyyP/Hung.png" alt="Nguyễn Phước Vĩnh Hưng">
+
           <div class="instructor-bio">
             <h3>Nguyễn Phước Vĩnh Hưng</h3>
-            <div class="instructor-sub">CAIO, Sunext & Founder Duhava Agency</div>
-            <div class="instructor-stat-badges">
-              <span class="instructor-badge">500.000+ Followers</span>
-              <span class="instructor-badge">300.000+ Group AI</span>
+            <p class="instructor-title">CAIO, Sunext & Founder Duhava Agency</p>
+
+            <div class="instructor-badges">
+              <span class="badge badge-primary">500.000+ Followers</span>
+              <span class="badge badge-accent">300.000+ Group AI</span>
             </div>
+
             <p>Vĩnh Hưng bắt đầu kinh doanh online từ 2016 — trước khi "AI" trở thành buzzword. Hơn 10 năm kinh nghiệm thực tế, anh đã đi qua đủ giai đoạn: từ tự vận hành, đến xây đội, đến tự động hóa doanh nghiệp.</p>
             <p>Điều làm ASSEMBLE khác biệt là Vĩnh Hưng không chia sẻ lý thuyết chung chung. Anh trực tiếp triển khai và tối ưu hóa hệ thống AI thật cho hàng chục đối tác từ SMEs đến tập đoàn lớn.</p>
           </div>
         </div>
-        
-        <!-- Logo proof split blocks -->
-        <div class="proof-blocks-split-grid" style="margin-top: 3.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
-          <!-- Khối 1: Đã đào tạo AI cho -->
+
+        <div class="instructor-logos-grid">
           <div class="proof-block-card">
-            <h3>ĐÃ ĐÀO TẠO AI CHO CÁC DOANH NGHIỆP & TẬP ĐOÀN:</h3>
+            <h4>ĐÃ ĐÀO TẠO AI CHO:</h4>
             <div class="proof-logo-list">
-              <span class="proof-logo-item" title="FPT"><img src="https://i.postimg.cc/52Sxjk50/FPT.png" alt="FPT"></span>
-              <span class="proof-logo-item" title="MUFG Bank"><img src="https://i.postimg.cc/rwN8zYG5/MUFG.png" alt="MUFG Bank"></span>
-              <span class="proof-logo-item" title="BIDV"><img src="https://i.postimg.cc/4xQJnFvX/BIDV.png" alt="BIDV"></span>
-              <span class="proof-logo-item" title="Prudential"><img src="https://i.postimg.cc/VNsztB4X/Prudential.png" alt="Prudential"></span>
-              <span class="proof-logo-item" title="Vinhomes"><img src="https://i.postimg.cc/BvZJFcNY/Vinhomes.png" alt="Vinhomes"></span>
-              <span class="proof-logo-item" title="VNPT"><img src="https://i.postimg.cc/7LPqzMXB/VNPT.png" alt="VNPT"></span>
-              <span class="proof-logo-item" title="Mitsubishi Motors"><img src="https://i.postimg.cc/RZLMqb1f/Mitsubishi.png" alt="Mitsubishi Motors"></span>
-              <span class="proof-logo-item" title="PetroVietnam Power"><img src="https://i.postimg.cc/7ZnxbQ11/Petro-Vietnam-Power.png" alt="PetroVietnam Power"></span>
-              <span class="proof-logo-item" title="PTSC"><img src="https://i.postimg.cc/Jh7RXcKN/PTSC.png" alt="PTSC"></span>
-              <span class="proof-logo-item" title="VACS"><img src="https://i.postimg.cc/434XcbwW/VACS.png" alt="VACS"></span>
+              <div class="proof-logo-item"><img src="https://i.postimg.cc/52Sxjk50/FPT.png" alt="FPT"></div>
+              <div class="proof-logo-item"><img src="https://i.postimg.cc/rwN8zYG5/MUFG.png" alt="MUFG"></div>
+              <div class="proof-logo-item"><img src="https://i.postimg.cc/4xQJnFvX/BIDV.png" alt="BIDV"></div>
+              <div class="proof-logo-item"><img src="https://i.postimg.cc/VNsztB4X/Prudential.png" alt="Prudential"></div>
+              <div class="proof-logo-item"><img src="https://i.postimg.cc/BvZJFcNY/Vinhomes.png" alt="Vinhomes"></div>
             </div>
           </div>
-          <!-- Khối 2: Đã triển khai hệ thống AI cho -->
+
           <div class="proof-block-card">
-            <h3>HỆ THỐNG AI THỰC TẾ ĐÃ ĐƯỢC TRIỂN KHAI CHO:</h3>
+            <h4>HỆ THỐNG AI ĐÃ TRIỂN KHAI CHO:</h4>
             <div class="proof-logo-list">
-              <span class="proof-logo-item" title="Droppii"><img src="https://i.postimg.cc/Jz51td3h/Droppii.png" alt="Droppii"></span>
-              <span class="proof-logo-item" title="Maison Vie"><img src="https://i.postimg.cc/4xQJnFvV/Maison-Vie.png" alt="Maison Vie"></span>
-              <span class="proof-logo-item" title="Poemy"><img src="https://i.postimg.cc/SKQm97V9/Poemy.png" alt="Poemy"></span>
-              <span class="proof-logo-item" title="Huỳnh Anh Store"><img src="https://i.postimg.cc/bw9zdF0S/Huynh-Anh.png" alt="Huỳnh Anh Store"></span>
-              <span class="proof-logo-item" title="Thắng Lợi"><img src="https://i.postimg.cc/yN67RXnj/Thang-Loi.png" alt="Thắng Lợi"></span>
-              <span class="proof-logo-item" title="VAG"><img src="https://i.postimg.cc/N0GQX7bp/VAG.png" alt="VAG"></span>
-              <span class="proof-logo-item" title="Prestige Stay"><img src="https://i.postimg.cc/g0cGhq4R/Prestige-Stay.png" alt="Prestige Stay"></span>
-              <span class="proof-logo-item" title="Crowd-Loan"><img src="https://i.postimg.cc/zGFJ3PwG/Crowd-Loan.png" alt="Crowd-Loan"></span>
-              <span class="proof-logo-item" title="Phương Trường An"><img src="https://i.postimg.cc/QdJXVngS/Phuong-Truong-An.png" alt="Phương Trường An"></span>
+              <div class="proof-logo-item"><img src="https://i.postimg.cc/Jz51td3h/Droppii.png" alt="Droppii"></div>
+              <div class="proof-logo-item"><img src="https://i.postimg.cc/4xQJnFvV/Maison-Vie.png" alt="Maison Vie"></div>
+              <div class="proof-logo-item"><img src="https://i.postimg.cc/SKQm97V9/Poemy.png" alt="Poemy"></div>
+              <div class="proof-logo-item"><img src="https://i.postimg.cc/bw9zdF0S/Huynh-Anh.png" alt="Huỳnh Anh"></div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-
-
-    <!-- ==========================================================================
-         SECTION 9 — OFFER STACK
-         ========================================================================== -->
-    <section class="section-padding bg-soft" id="offer-section">
-      <div class="container offer-stack-wrapper">
-        <h2 class="offer-intro-heading">ASSEMBLE: Agentic AI — Toàn bộ những gì bạn nhận được</h2>
-        
-        <div class="offer-core-offer">
-          <div class="offer-badge-glow">CORE OFFER PACKAGE</div>
-          
-          <!-- Offer Row 1 -->
-          <div class="offer-item-row">
-            <div class="offer-item-header">
-              <div class="offer-item-title"><i class="ti ti-calendar-event offer-item-icon"></i> 01 · 3 NGÀY THỰC HÀNH TRỰC TIẾP</div>
-              <div class="offer-item-value">Trị giá: 30.000.000đ – 80.000.000đ</div>
-            </div>
-            <div class="offer-item-desc">
-              Phòng lab thực chiến, mỗi bàn có 1 technical support đồng hành (tỷ lệ support tối ưu). Bao gồm tea-break sáng và chiều, ăn trưa nhẹ cả 3 ngày. Bạn bị stuck chỗ nào — có người ngồi cạnh giải quyết ngay. Bạn không rời phòng khi hệ thống chưa chạy.
-            </div>
-          </div>
-
-          <!-- Offer Row 2 -->
-          <div class="offer-item-row">
-            <div class="offer-item-header">
-              <div class="offer-item-title"><i class="ti ti-template offer-item-icon"></i> 02 · THE AI CREW FRAMEWORK™ — TEMPLATES ĐỘC QUYỀN</div>
-              <div class="offer-item-value">Tiết kiệm: 3–6 tháng thử sai</div>
-            </div>
-            <div class="offer-item-desc">
-              Bộ prompt bot, skeleton flow n8n, layout web app Antigravity — đã được kiểm chứng qua hàng chục dự án. Dùng lại cho chi nhánh mới, sản phẩm mới không mất thêm công.
-            </div>
-          </div>
-
-          <!-- Offer Row 3 -->
-          <div class="offer-item-row">
-            <div class="offer-item-header">
-              <div class="offer-item-title"><i class="ti ti-package offer-item-icon"></i> 03 · BỘ HỒ SƠ BÀN GIAO HOÀN CHỈNH</div>
-              <div class="offer-item-value">Đóng gói sẵn</div>
-            </div>
-            <div class="offer-item-desc">
-              Toàn bộ sơ đồ luồng, cấu hình hệ thống, checklist vận hành và backup — đóng gói sẵn để bàn giao cho nhân sự phụ trách hoặc tự mở rộng.
-            </div>
-          </div>
-
-          <!-- Bonuses -->
-          <div class="offer-bonus-block">
-            <h3 class="offer-bonus-label">QUÀ TẶNG KÈM ĐẶC BIỆT:</h3>
-            <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem;">
-              <li><i class="ti ti-headset offer-item-icon"></i> <strong>BONUS 01:</strong> Buổi Online Q&A sau khóa (90 phút) giải quyết câu hỏi phát sinh khi về triển khai thực tế.</li>
-              <li><i class="ti ti-users offer-item-icon"></i> <strong>BONUS 02:</strong> 6 tháng Cộng đồng doanh nghiệp Agentic AI — chia sẻ template, support kỹ thuật, cập nhật tool mới.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Guarantee Banner (Moved here to reduce friction before pricing) -->
-        <div class="guarantee-banner" style="margin-top: 3.5rem; margin-bottom: 3.5rem;">
-          <div class="guarantee-badge">
-            <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:currentColor;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            CAM KẾT CHẤT LƯỢNG
-          </div>
-          
-          <h3>Cam kết đơn giản: bạn không rời phòng khi hệ thống chưa chạy.</h3>
-          <p>Nếu sau 3 ngày thực hành trực tiếp, bạn chưa build xong ít nhất <strong>1 bot đa kênh đang chạy thật</strong> và <strong>1 luồng n8n tự động đang vận hành</strong> — bạn được tham gia lại batch tiếp theo của ASSEMBLE hoàn toàn <strong>miễn phí học phí.</strong></p>
-          <p>Không câu hỏi. Không điều kiện phức tạp. Chỉ cần bạn đến đủ 3 ngày với laptop và bài toán thật của mình.</p>
-          <p>Lý do chúng tôi tự tin đưa ra cam kết này: trong toàn bộ các batch trước, chưa có học viên nào rời phòng mà hệ thống chưa chạy. Vì mỗi bàn có 1 technical support đồng hành để đảm bảo điều đó không xảy ra.</p>
-          
-          <div class="guarantee-signature">
-            — Nguyễn Phước Vĩnh Hưng, Founder Duhava Agency & Giảng viên ASSEMBLE: Agentic AI
-          </div>
-        </div>
-
-        <!-- ==========================================================================
-             SECTION 8B — CONSOLIDATED PROOF & ROI
-             ========================================================================== -->
-        <div class="proof-roi-section-container" style="margin-top: 4rem; margin-bottom: 4rem;">
-          <h3 class="text-center" style="margin-bottom: 0.5rem;">Hiệu quả đầu tư (ROI) &amp; Kết quả đã kiểm chứng</h3>
-          <p class="text-center" style="color: var(--text-muted); max-width: 600px; margin: 0 auto 2.5rem auto; font-size: 0.95rem;">Những con số thực tế từ các học viên trước và mô hình tài chính giúp bạn tối ưu hóa chi phí vận hành ngay sau khóa học.</p>
-          
-          <div class="proof-roi-grid">
-            <!-- Block 1: Droppii Stats -->
-            <div class="roi-card proof-card">
-              <div class="roi-card-header" style="display: flex; align-items: center; gap: 0.75rem; justify-content: center; margin-bottom: 1rem;">
-                <img src="https://i.postimg.cc/Jz51td3h/Droppii.png" alt="Droppii" style="height: 24px; width: auto; filter: none;">
-                <h4 style="margin: 0; font-size: 1rem; font-weight: 700; color: var(--text-main);">CASE STUDY DROPPII</h4>
-              </div>
-              <div class="proof-roi-stats" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1rem;">
-                <div style="text-align: center;">
-                  <span class="proof-roi-num">65%</span>
-                  <span style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-top: 0.25rem;">Câu hỏi tự động</span>
-                </div>
-                <div style="text-align: center;">
-                  <span class="proof-roi-num">2s</span>
-                  <span style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-top: 0.25rem;">Phản hồi</span>
-                </div>
-              </div>
-              <div style="font-size: 0.8rem; color: var(--text-muted); text-align: center; border-top: 1px solid var(--border-color); padding-top: 0.75rem; margin-top: 0.75rem; line-height: 1.4;">
-                Hệ thống bot CSKH đa kênh kết nối trực tiếp kho dữ liệu chính sách và sản phẩm.
-              </div>
-            </div>
-
-            <!-- Block 2: Track Record -->
-            <div class="roi-card proof-card">
-              <div class="roi-card-header" style="text-align: center; margin-bottom: 1rem;">
-                <h4 style="margin: 0; font-size: 1rem; font-weight: 700; color: var(--text-main);">UY TÍN ĐÀO TẠO</h4>
-              </div>
-              <div class="proof-roi-stats" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1rem;">
-                <div style="text-align: center;">
-                  <span class="proof-roi-num">100%</span>
-                  <span style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-top: 0.25rem;">Học viên có bot chạy</span>
-                </div>
-                <div style="text-align: center;">
-                  <span class="proof-roi-num">3</span>
-                  <span style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-top: 0.25rem;">Batch hoàn thành</span>
-                </div>
-              </div>
-              <div style="font-size: 0.8rem; color: var(--text-muted); text-align: center; border-top: 1px solid var(--border-color); padding-top: 0.75rem; margin-top: 0.75rem; line-height: 1.4;">
-                Hỗ trợ technical 1:1 trực tiếp tại bàn. Stuck chỗ nào gỡ ngay chỗ đó.
-              </div>
-            </div>
-
-            <!-- Block 3: ROI Manager -->
-            <div class="roi-card">
-              <div class="roi-card-header" style="text-align: center; margin-bottom: 0.75rem;">
-                <h4 style="margin: 0; font-size: 1rem; font-weight: 700; color: var(--accent-primary);">CHO CHUYÊN GIA / MANAGER</h4>
-              </div>
-              <div class="roi-card-body">
-                <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem; line-height: 1.4; text-align: left;">
-                  <li style="display: flex; gap: 0.25rem;"><i class="ti ti-check" style="color: #16A34A; flex-shrink: 0; margin-top: 2px;"></i> <span>1 dự án freelance AI ngoài giờ: 8M – 20M / dự án.</span></li>
-                  <li style="display: flex; gap: 0.25rem;"><i class="ti ti-check" style="color: #16A34A; flex-shrink: 0; margin-top: 2px;"></i> <span>Chỉ cần 1 dự án để thu hồi toàn bộ học phí đầu tư.</span></li>
-                  <li style="display: flex; gap: 0.25rem;"><i class="ti ti-check" style="color: #16A34A; flex-shrink: 0; margin-top: 2px;"></i> <span>Tăng 15-25% hiệu suất cá nhân (thặng dư 7.5M-12.5M/tháng).</span></li>
-                </ul>
-              </div>
-              <div class="roi-card-footer" style="text-align: center; margin-top: auto; padding-top: 0.75rem; border-top: 1px solid var(--border-color); font-weight: 700; color: var(--accent-secondary); font-size: 0.9rem;">
-                Hoàn vốn: Dưới 1 tháng
-              </div>
-            </div>
-
-            <!-- Block 4: ROI CEO -->
-            <div class="roi-card">
-              <div class="roi-card-header" style="text-align: center; margin-bottom: 0.75rem;">
-                <h4 style="margin: 0; font-size: 1rem; font-weight: 700; color: var(--accent-primary);">CHO CEO / FOUNDER</h4>
-              </div>
-              <div class="roi-card-body">
-                <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem; line-height: 1.4; text-align: left;">
-                  <li style="display: flex; gap: 0.25rem;"><i class="ti ti-check" style="color: #16A34A; flex-shrink: 0; margin-top: 2px;"></i> <span>Tiết kiệm 5M – 7M/tháng từ bot tự động CSKH.</span></li>
-                  <li style="display: flex; gap: 0.25rem;"><i class="ti ti-check" style="color: #16A34A; flex-shrink: 0; margin-top: 2px;"></i> <span>AI gánh 60% câu hỏi lặp lại, không cần thêm nhân sự.</span></li>
-                  <li style="display: flex; gap: 0.25rem;"><i class="ti ti-check" style="color: #16A34A; flex-shrink: 0; margin-top: 2px;"></i> <span>Giảm trễ đơn về 0, giữ chân đại lý &amp; đối tác tốt hơn.</span></li>
-                </ul>
-              </div>
-              <div class="roi-card-footer" style="text-align: center; margin-top: auto; padding-top: 0.75rem; border-top: 1px solid var(--border-color); font-weight: 700; color: var(--accent-secondary); font-size: 0.9rem;">
-                Hoàn vốn: 1.3 – 1.5 tháng
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Table Anchor -->
-        <div class="offer-table-anchor">
-          <h3 class="text-center" style="margin-bottom: 0.5rem;">Mức Chi Phí Đầu Tư</h3>
-          <table class="anchor-table">
-            <thead>
-              <tr>
-                <th>Dịch Vụ / Khóa Học</th>
-                <th>Mức Chi Phí Trên Thị Trường</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Chi phí đào tạo AI corporate trên thị trường</td>
-                <td>25.000.000đ / người / khóa</td>
-              </tr>
-              <tr style="background-color: #F0EAFF;">
-                <td><strong>ASSEMBLE: Agentic AI (Early Bird trước 10/06/2026)</strong></td>
-                <td><strong>7.997.000đ</strong></td>
-              </tr>
-              <tr style="background-color: #FFF2E6;">
-                <td><strong>Giá chính thức (Từ ngày 11/06/2026)</strong></td>
-                <td><strong>8.997.000đ</strong></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        
-        <!-- Early Bird Exclusive -->
-        <div class="early-bird-exclusive">
-          <div class="early-bird-badge">GIỚI HẠN EARLY BIRD</div>
-          <h3>⭐ Early Bird Exclusive — Chỉ dành cho đăng ký trước 23:59 ngày 10/06/2026</h3>
-          <p><strong>1 buổi Online Audit 1:1 (30 phút) cùng Giảng viên trước ngày 19/06</strong></p>
-          <p>Buổi audit giúp bạn định hình kiến trúc dữ liệu và bài toán cụ thể của mình trước khi lên lớp — để ngày 1 bạn bước vào đã biết mình sẽ build gì, không mất thời gian định hướng.</p>
-          <div class="early-bird-placeholder">Platform: Google Meet (Booking link tự động gửi sau thanh toán. Hạn sử dụng: Trước 15/06/2026)</div>
-        </div>
-        <!-- Final anchor CTA -->
-        <div class="offer-cta-block">
-          <a href="#final-register-section" class="btn btn-secondary btn-cta">TÔI MUỐN AI ĐỌC DỮ LIỆU CÔNG TY TÔI</a>
-          <span class="microcopy" style="margin-top: 0.75rem; display: block; text-align: center; color: var(--text-muted);">Chỉ còn 5 chỗ Early Bird</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         SECTION 10 — OBJECTION BLOCK
-         ========================================================================== -->
-    <section class="section-padding">
+    <!-- OFFER -->
+    <section class="offer section" id="offer">
       <div class="container">
-        <h2>Những câu hỏi doanh nghiệp và chuyên gia thường hỏi trước khi đăng ký</h2>
-        
-        <div class="faq-grid" style="margin-top: 3.5rem;">
-          <!-- Item 1 -->
-          <div class="faq-card">
-            <h3>Q: "Workshop 3 ngày có ngắn quá không? Tôi sợ không áp dụng được."</h3>
-            <p>Không ngắn vì format là offline thực chiến 100%. Tỷ lệ hỗ trợ kỹ thuật 1:1 ngồi ngay cạnh bàn bạn đảm bảo lỗi phát sinh được gỡ ngay lập tức. Bạn không rời phòng khi hệ thống chưa chạy.</p>
-          </div>
-          
-          <!-- Item 2 -->
-          <div class="faq-card">
-            <h3>Q: "Tôi không có nhân sự kỹ thuật — liệu có làm được không?"</h3>
-            <p>Đây chính xác là lý do workshop này được thiết kế theo format offline với technical support 1:1 tại mỗi bàn. Bạn không cần biết lập trình. Bạn không cần hiểu code. Khi bị stuck — và bạn sẽ bị stuck — có người ngồi cạnh giải quyết ngay trong buổi học. 100% học viên các batch trước rời phòng với hệ thống đang chạy.</p>
-          </div>
-          
-          <!-- Item 3 -->
-          <div class="faq-card">
-            <h3>Q: "Tôi không có doanh nghiệp riêng — chỉ là nhân viên/manager, có áp dụng được không?"</h3>
-            <p>Hoàn toàn được. Bạn sẽ build hệ thống AI cho bài toán của phòng ban, dự án hoặc use case cá nhân của mình. Nhiều học viên dùng ASSEMBLE để build tool tự động hóa công việc của chính họ — và trở thành người không thể thay thế trong team. Một số bắt đầu nhận dự án freelance AI automation ngay sau khóa.</p>
-          </div>
-          
-          <!-- Item 4 -->
-          <div class="faq-card">
-            <h3>Q: "Tôi lo về bảo mật dữ liệu nội bộ khi dùng AI."</h3>
-            <p>Đây là lý do chính xác chúng tôi dùng OpenClaw — chạy local trên máy tính của bạn, dữ liệu không đi ra ngoài internet. Dữ liệu của bạn chỉ tồn tại trên máy chủ nội bộ của bạn — không qua server bên thứ ba, không rủi ro rò rỉ.</p>
-          </div>
-          
-          <!-- Item 5 -->
-          <div class="faq-card">
-            <h3>Q: "Học xong về ai maintain hệ thống?"</h3>
-            <p>ASSEMBLE không chỉ dạy bạn build — mà dạy bạn hiểu hệ thống đủ để tự vận hành và mở rộng. Bộ hồ sơ bàn giao đầy đủ prompt, sơ đồ luồng và cấu hình giúp bạn hoặc bất kỳ nhân sự nào cũng có thể tiếp quản. Cộng đồng 6 tháng sau khóa là nơi bạn hỏi khi gặp vấn đề phát sinh.</p>
-          </div>
-          
-          <!-- Item 6 -->
-          <div class="faq-card">
-            <h3>Q: "Phương pháp này phù hợp với doanh nghiệp nhỏ của tôi không?"</h3>
-            <p>The AI Crew Framework™ đã được triển khai cho cả tập đoàn lẫn doanh nghiệp 10–50 nhân sự (MaisonVie, Poemy, Julyhouse). Framework được thiết kế để scale — từ 1 người vận hành một mình đến cả tổ chức. Bạn mang dữ liệu và bài toán của mình đến — hệ thống được build theo đúng quy mô và nhu cầu đó.</p>
-          </div>
-          
-          <!-- Item 7 -->
-          <div class="faq-card">
-            <h3>Q: "8.997.000đ có đáng không?"</h3>
-            <p>Hãy tính thử. Một nhân viên CSKH tại HCM: 8–12 triệu/tháng. Một luồng n8n tự động gánh 60% công việc đó: tiết kiệm 5–7 triệu/tháng. Học phí 8.997.000đ — hoàn vốn trong 1.5 tháng. Nếu bạn là chuyên gia 50M+/tháng: chỉ cần 1 dự án freelance AI automation (8–20 triệu/dự án) là đã thu hồi học phí và có lãi ngay lập tức.</p>
-          </div>
-          
-          <!-- Item 8 -->
-          <div class="faq-card">
-            <h3>Q: "Khác gì so với các khóa AI tôi từng học?"</h3>
-            <p>Các khóa AI khác dạy bạn dùng tool — ChatGPT, Midjourney, automation cơ bản. ASSEMBLE dạy bạn build hệ thống hoàn chỉnh trên dữ liệu thật của mình. Không có bài tập mẫu. Bạn mang bài toán thật của doanh nghiệp lên lớp — và rời đi với hệ thống đó đang chạy. Đây là phương pháp thực chiến được kiểm chứng qua hàng chục triển khai doanh nghiệp thật — không phải nội dung được tạo ra để bán khóa học.</p>
-          </div>
+        <div class="section-header">
+          <h2>ASSEMBLE: Agentic AI</h2>
+          <p>Toàn bộ những gì bạn nhận được</p>
         </div>
-      </div>
-    </section>
 
+        <div class="offer-wrapper">
+          <div class="offer-core">
+            <div class="offer-badge-header">CORE OFFER PACKAGE</div>
 
+            <div class="offer-items">
+              <div class="offer-item">
+                <div class="offer-item-header">
+                  <div class="offer-item-title"><i class="ti ti-calendar-event"></i> 01 · 3 NGÀY THỰC HÀNH TRỰC TIẾP</div>
+                  <div class="offer-item-value">Trị giá: 30–80 triệu</div>
+                </div>
+                <p class="offer-item-desc">Phòng lab thực chiến, mỗi bàn có 1 technical support đồng hành. Bao gồm tea-break và ăn trưa cả 3 ngày.</p>
+              </div>
 
-    <!-- ==========================================================================
-         SECTION 12 — URGENCY & SCARCITY
-         ========================================================================== -->
-    <section class="section-padding">
-      <div class="container text-center">
-        <h2>Tại sao chỉ 15 chỗ — và tại sao con số này là nghiêm túc</h2>
-        
-        <!-- Countdown boxes -->
-        <div class="countdown-wrapper" style="margin-bottom: 2rem;">
-          <p class="countdown-heading-label">ƯU ĐÃI EARLY BIRD HẾT HẠN SAU:</p>
-          <div class="countdown-container">
-            <div class="countdown-box">
-              <span class="countdown-num" id="cd-days">00</span>
-              <span class="countdown-label">Ngày</span>
-            </div>
-            <div class="countdown-box">
-              <span class="countdown-num" id="cd-hours">00</span>
-              <span class="countdown-label">Giờ</span>
-            </div>
-            <div class="countdown-box">
-              <span class="countdown-num" id="cd-minutes">00</span>
-              <span class="countdown-label">Phút</span>
-            </div>
-            <div class="countdown-box">
-              <span class="countdown-num" id="cd-seconds">00</span>
-              <span class="countdown-label">Giây</span>
-            </div>
-          </div>
-          <div class="countdown-ended-message" style="display: none; text-align: center; margin-top: 1rem;">
-            <div style="font-size: 1.5rem; font-weight: 800; color: var(--accent-secondary);">Early Bird đã kết thúc — giá hiện tại 8.997.000đ</div>
-            <div style="font-size: 1rem; color: var(--text-muted); margin-top: 0.5rem; font-style: italic;">Bạn vẫn có thể giữ chỗ cho batch 19–21/06 với mức giá hiện tại.</div>
-          </div>
-        </div>
-        
-        <div class="scarcity-text">
-          <p>ASSEMBLE không phải webinar. Không phải khóa học online có thể mở cho 500 người cùng lúc.</p>
-          <p style="margin-top: 1rem;">Mỗi học viên cần 1 technical support đồng hành tại bàn. Số lượng technical support chúng tôi có thể deploy trong 3 ngày là giới hạn cứng. Khi vượt quá tỷ lệ support:học viên cho phép — chất lượng hỗ trợ giảm, và cam kết <em>"không rời phòng khi chưa chạy"</em> không còn thực hiện được. Đó là lý do duy nhất và thật sự của giới hạn 15 chỗ.</p>
-        </div>
-        
-        <!-- Scarcity progress bar -->
-        <!-- UPDATE: Thay data-registered khi có đăng ký mới. Max = 15. Bar tự tính % -->
-        <div class="progress-bar-wrapper" id="scarcity-bar" data-registered="10" data-total="15">
-          <div class="progress-bar-labels">
-            <span id="progress-label-registered">Đã đăng ký: 10/15 chỗ</span>
-            <span id="progress-label-remaining" style="color: var(--accent-secondary);">Còn trống: 5 chỗ</span>
-          </div>
-          <div class="progress-bar-outer">
-            <div class="progress-bar-inner" id="progress-bar-fill"></div>
-          </div>
-        </div>
-        
-        <div class="urgency-deadline">
-          <i class="ti ti-clock-hour-4"></i> Early Bird 7.997.000đ + Audit 1:1: Hết hạn lúc 23:59 ngày 10/06/2026
-        </div>
-      </div>
-    </section>
+              <div class="offer-item">
+                <div class="offer-item-header">
+                  <div class="offer-item-title"><i class="ti ti-template"></i> 02 · THE AI CREW FRAMEWORK™</div>
+                  <div class="offer-item-value">Tiết kiệm: 3–6 tháng</div>
+                </div>
+                <p class="offer-item-desc">Bộ prompt bot, skeleton flow n8n, layout web app — đã được kiểm chứng qua hàng chục dự án.</p>
+              </div>
 
-    <!-- ==========================================================================
-         SECTION 13 — WHO THIS IS NOT FOR
-         ========================================================================== -->
-    <section class="section-padding bg-soft">
-      <div class="container">
-        <div class="not-for-box">
-          <h3 class="text-center" style="color: #DC2626;">ASSEMBLE không dành cho tất cả mọi người</h3>
-          <p class="text-center" style="font-size: 1.05rem;">Chương trình này <strong>KHÔNG</strong> phù hợp nếu bạn:</p>
-          
-          <div class="not-for-list">
-            <div class="not-for-item">
-              <span>✗</span>
-              <div>Chỉ muốn "học cho biết" về AI, không có ý định triển khai thực tế trong vòng 30 ngày sau khóa.</div>
-            </div>
-            <div class="not-for-item">
-              <span>✗</span>
-              <div>Không mang laptop cá nhân đến — toàn bộ 3 ngày là thực hành trực tiếp, không có phần nào ngồi xem demo.</div>
-            </div>
-            <div class="not-for-item">
-              <span>✗</span>
-              <div>Không có dữ liệu thật, quy trình thật hoặc bài toán thật để mang vào buổi học — bạn sẽ không có gì để build.</div>
-            </div>
-            <div class="not-for-item">
-              <span>✗</span>
-              <div>Không có quyền thay đổi cách vận hành của tổ chức hoặc dự án mình — kể cả build xong cũng không có chỗ deploy.</div>
-            </div>
-            <div class="not-for-item">
-              <span>✗</span>
-              <div>Không thể sắp xếp 3 ngày liên tiếp (Thứ 6 – CN) — chương trình yêu cầu tham gia đủ cả 3 ngày để hệ thống hoàn chỉnh.</div>
-            </div>
-          </div>
-          <p class="text-center" style="font-size: 0.95rem; font-style: italic; margin-top: 2rem; color: var(--text-muted);">
-            Nếu bạn thấy những điều trên không mô tả mình — bạn phù hợp để tham gia.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         SECTION 14 — FAQ & LOCATION
-         ========================================================================== -->
-    <section class="section-padding" id="logistics-venue-section">
-      <div class="container">
-        <h2>Câu hỏi thường gặp & Địa điểm</h2>
-        
-        <div class="grid-2" style="margin-top: 3.5rem;">
-          <!-- FAQ Open Cards -->
-          <div class="faq-list-grid" id="faq-section">
-            <!-- FAQ 1 -->
-            <div class="faq-card">
-              <h3>Tôi cần chuẩn bị gì trước khi đến?</h3>
-              <p>Laptop cá nhân (Windows hoặc Mac), kết nối internet ổn định, và tài liệu nội bộ bạn muốn AI đọc (bảng giá, catalogue, chính sách, báo cáo — bất kỳ file nào đang dùng thực tế). Nếu đăng ký Early Bird, buổi Audit 1:1 trước ngày 19/06 sẽ giúp bạn chuẩn bị cụ thể hơn.</p>
-            </div>
-            
-            <!-- FAQ 2 -->
-            <div class="faq-card">
-              <h3>Có ghi hình lại không nếu tôi lỡ 1 phần?</h3>
-              <p>Chương trình không ghi hình — đây là quyết định có chủ đích để bảo vệ chất lượng thực hành và sự tập trung của học viên. Tuy nhiên, tất cả tài liệu hướng dẫn được cung cấp dưới dạng PDF điện tử để ôn lại sau.</p>
-            </div>
-            
-            <!-- FAQ 3 -->
-            <div class="faq-card">
-              <h3>Thanh toán như thế nào?</h3>
-              <p>Chuyển khoản ngân hàng. Thông tin chi tiết sẽ được gửi qua email/Zalo ngay sau khi submit form đăng ký.</p>
-            </div>
-            
-            <!-- FAQ 4 -->
-            <div class="faq-card">
-              <h3>Nếu có việc đột xuất không đi được thì sao?</h3>
-              <p>Nếu có lý do bất khả kháng không tham dự được, bạn có thể chuyển sang batch tiếp theo (nếu có). Liên hệ sớm để chúng tôi sắp xếp.</p>
-            </div>
-          </div>
-          
-          <!-- Location details card -->
-          <div class="card" style="display: flex; flex-direction: column; justify-content: space-between;">
-            <div>
-              <h3 style="color: var(--accent-primary);">Địa điểm & Đi lại</h3>
-              <p><strong>93/16 Xô Viết Nghệ Tĩnh, Phường 17, Quận Bình Thạnh, TP.HCM.</strong></p>
-              <p style="font-size: 0.95rem; color: var(--text-muted);">
-                Có chỗ đỗ xe máy thuận tiện tại khuôn viên. Gần nhiều điểm đỗ xe ô tô công cộng trên trục đường chính Xô Viết Nghệ Tĩnh.
-              </p>
-            </div>
-            
-            <!-- Google Maps embed -->
-            <div class="map-embed-wrapper">
-              <iframe
-                src="https://maps.google.com/maps?q=93%2F16+Xo+Viet+Nghe+Tinh%2C+Phuong+17%2C+Quan+Binh+Thanh%2C+TP.HCM&output=embed&z=17&hl=vi"
-                width="100%"
-                height="200"
-                style="border:0; border-radius:8px; display:block;"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-                title="Bản đồ 93/16 Xô Viết Nghệ Tĩnh, Bình Thạnh, TP.HCM">
-              </iframe>
-            </div>
-            
-            <a href="https://maps.google.com/?q=93/16+Xo+Viet+Nghe+Tinh+Binh+Thanh+HCM" target="_blank" rel="noopener" class="btn btn-primary text-center map-link">MỞ GOOGLE MAPS</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         SECTION 15 — CTA CUỐI + FORM ĐĂNG KÝ
-         ========================================================================== -->
-    <section class="section-padding bg-soft" id="final-register-section">
-      <div class="container final-form-wrapper">
-        <h2 class="text-center">Giữ chỗ cho mình tại ASSEMBLE: Agentic AI</h2>
-        <p class="text-center" style="font-size: 1.25rem; font-weight: 600; color: var(--text-main); margin-bottom: 0.25rem;">
-          Thứ 6, 7 & CN · 19–21/06/2026 · 93/16 Xô Viết Nghệ Tĩnh, Gia Định, HCM
-        </p>
-        <p class="text-center" style="color: var(--accent-secondary); font-weight: 700; font-size: 1.15rem;" id="form-scarcity-text">
-          Chỉ còn 5/15 chỗ trống của đợt này
-        </p>
-        
-        <div class="final-form-box">
-          <p style="font-size: 1.1rem; color: var(--text-muted); text-align: center; margin-bottom: 2rem;">
-            Bạn đã đọc đến đây. Điều đó nói lên một điều: bạn không tìm kiếm một khóa học AI khác để nghe lý thuyết. Bạn muốn hệ thống thật, chạy thật, dùng được thật. ASSEMBLE được thiết kế cho đúng điều đó.
-          </p>
-          
-          <form id="lead-register-form" novalidate>
-            <!-- Name -->
-            <div class="form-group">
-              <label for="form-name">Họ và tên *</label>
-              <input type="text" id="form-name" class="form-control" placeholder="Nguyễn Văn A" required aria-required="true">
-              <div class="field-error" id="error-name" aria-live="polite"></div>
-            </div>
-            
-            <!-- Email -->
-            <div class="form-group">
-              <label for="form-email">Email làm việc *</label>
-              <input type="email" id="form-email" class="form-control" placeholder="name@company.com" required aria-required="true">
-              <div class="field-error" id="error-email" aria-live="polite"></div>
-            </div>
-            
-            <!-- Phone -->
-            <div class="form-group">
-              <label for="form-phone">Số điện thoại Zalo *</label>
-              <input type="tel" id="form-phone" class="form-control" placeholder="0901234567" required aria-required="true">
-              <div class="field-error" id="error-phone" aria-live="polite"></div>
-            </div>
-            
-            <button type="submit" class="btn btn-secondary btn-cta btn-full" style="margin-top: 1.5rem;">
-              TÔI MUỐN AI ĐỌC DỮ LIỆU CÔNG TY TÔI
-            </button>
-            
-            <div class="form-submit-subtext">
-              <i class="ti ti-lock"></i> Không trừ tiền ngay — Đội ngũ sẽ liên hệ xác nhận qua Zalo trong 24h
-            </div>
-            
-            <!-- Mini Trust Strip inside Form Area -->
-            <div class="form-trust-container" style="margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.25rem; text-align: center;">
-              <span style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-bottom: 0.75rem; letter-spacing: 0.5px; text-transform: uppercase;">Phương pháp triển khai đã kiểm chứng tại:</span>
-              <div class="form-trust-logos" style="display: flex; justify-content: center; gap: 1.25rem; align-items: center; opacity: 0.45; filter: grayscale(100%);">
-                <img src="https://i.postimg.cc/52Sxjk50/FPT.png" alt="FPT" style="height: 18px; object-fit: contain;">
-                <img src="https://i.postimg.cc/rwN8zYG5/MUFG.png" alt="MUFG" style="height: 18px; object-fit: contain;">
-                <img src="https://i.postimg.cc/VNsztB4X/Prudential.png" alt="Prudential" style="height: 18px; object-fit: contain;">
-                <img src="https://i.postimg.cc/BvZJFcNY/Vinhomes.png" alt="Vinhomes" style="height: 18px; object-fit: contain;">
+              <div class="offer-item">
+                <div class="offer-item-header">
+                  <div class="offer-item-title"><i class="ti ti-package"></i> 03 · BỘ HỒ SƠ BÀN GIAO</div>
+                  <div class="offer-item-value">Đóng gói sẵn</div>
+                </div>
+                <p class="offer-item-desc">Toàn bộ sơ đồ luồng, cấu hình hệ thống, checklist vận hành và backup.</p>
               </div>
             </div>
-          </form>
-          
-          <span class="microcopy text-center" style="display: block; margin-top: 1rem;">
-            Chúng tôi sẽ liên hệ qua Zalo/Email để khảo sát bài toán thực tế của bạn trước ngày 19/06.
-          </span>
+
+            <div class="offer-bonuses">
+              <h4>QUÀ TẶNG ĐẶC BIỆT:</h4>
+              <ul>
+                <li><i class="ti ti-headset"></i> <strong>BONUS 01:</strong> Buổi Online Q&A sau khóa (90 phút)</li>
+                <li><i class="ti ti-users"></i> <strong>BONUS 02:</strong> 6 tháng Cộng đồng doanh nghiệp Agentic AI</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Guarantee -->
+          <div class="guarantee">
+            <div class="guarantee-badge">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              CAM KẾT CHẤT LƯỢNG
+            </div>
+            <h3>Cam kết đơn giản: bạn không rời phòng khi hệ thống chưa chạy.</h3>
+            <p>Nếu sau 3 ngày, bạn chưa build xong ít nhất 1 bot đa kênh đang chạy thật và 1 luồng n8n tự động — bạn được tham gia lại batch tiếp theo hoàn toàn miễn phí.</p>
+            <p>Không câu hỏi. Không điều kiện phức tạp. Chỉ cần bạn đến đủ 3 ngày với laptop và bài toán thật.</p>
+            <div class="guarantee-signature">— Nguyễn Phước Vĩnh Hưng, Founder Duhava Agency</div>
+          </div>
+
+          <!-- Pricing -->
+          <div class="pricing-table">
+            <h4>Mức Chi Phí Đầu Tư</h4>
+            <table>
+              <tbody>
+                <tr>
+                  <td>Đào tạo AI corporate trên thị trường</td>
+                  <td><strong>25.000.000đ / người</strong></td>
+                </tr>
+                <tr>
+                  <td>Triển khai bot CSKH đa kênh</td>
+                  <td><strong>30.000.000đ+</strong></td>
+                </tr>
+                <tr>
+                  <td>Build web app CRM nội bộ</td>
+                  <td><strong>50.000.000đ+</strong></td>
+                </tr>
+                <tr>
+                  <td>Automation n8n flows</td>
+                  <td><strong>20.000.000đ+</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Countdown Timer -->
+          <div class="countdown-wrapper">
+            <p class="countdown-label">ƯU ĐÃI EARLY BIRD HẾT HẠN SAU:</p>
+            <div class="countdown-grid">
+              <div><span id="cd-days">00</span><em>Ngày</em></div>
+              <div><span id="cd-hours">00</span><em>Giờ</em></div>
+              <div><span id="cd-mins">00</span><em>Phút</em></div>
+              <div><span id="cd-secs">00</span><em>Giây</em></div>
+            </div>
+            <p class="countdown-ended" style="display:none">Early Bird đã kết thúc — giá hiện tại 8.997.000đ. Bạn vẫn có thể giữ chỗ cho batch 19–21/06.</p>
+          </div>
+
+          <div class="final-price">
+            <div class="final-price-label">Học phí đầu tư cho 3 ngày ASSEMBLE</div>
+            <div class="final-price-value">12.900.000đ</div>
+            <div class="final-price-note">Early Bird: 9.900.000đ (còn 3 suất)</div>
+            <a href="#final-cta" class="btn btn-primary btn-lg">TÔI MUỐN AI ĐỌC DỮ LIỆU CÔNG TY TÔI</a>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Câu hỏi thường gặp</h2>
+        </div>
+
+        <div class="faq-grid">
+          <div class="faq-item">
+            <h4>Tôi không biết lập trình, có theo được không?</h4>
+            <p>Được. ASSEMBLE được thiết kế cho người không có nền tảng kỹ thuật. Bạn sẽ dùng Vibe Coding — mô tả bằng tiếng Việt, AI viết code cho bạn.</p>
+          </div>
+
+          <div class="faq-item">
+            <h4>Tôi cần chuẩn bị gì?</h4>
+            <p>Laptop cá nhân và dữ liệu thật của doanh nghiệp bạn (Excel tồn kho, bảng giá, chính sách, catalogue sản phẩm...).</p>
+          </div>
+
+          <div class="faq-item">
+            <h4>Sau khóa học, tôi có được hỗ trợ tiếp không?</h4>
+            <p>Có. Bạn được tham gia cộng đồng Agentic AI trong 6 tháng để hỏi đáp, chia sẻ template và nhận cập nhật tool mới.</p>
+          </div>
+
+          <div class="faq-item">
+            <h4>Dữ liệu của tôi có bị lộ không?</h4>
+            <p>Không. Hệ thống chạy local trên máy của bạn, dữ liệu không đi ra internet. Bạn kiểm soát hoàn toàn.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta section" id="final-cta">
+      <div class="container">
+        <h2>Bạn đã sẵn sàng xây dựng đội hình AI của mình?</h2>
+        <p>19–21/06/2026 · Bình Thạnh, HCM · Chỉ còn 5/15 chỗ</p>
         
-        <!-- Form Footer details -->
+        <!-- Registration Form -->
+        <form id="reg-form" novalidate>
+          <div class="form-field">
+            <label for="reg-name">Họ và tên *</label>
+            <input type="text" id="reg-name" required placeholder="Nguyễn Văn A">
+            <span class="field-error" id="error-name">Vui lòng nhập Họ và tên</span>
+          </div>
+          <div class="form-field">
+            <label for="reg-email">Email làm việc *</label>
+            <input type="email" id="reg-email" required placeholder="name@company.com">
+            <span class="field-error" id="error-email">Vui lòng nhập Email làm việc hợp lệ</span>
+          </div>
+          <div class="form-field">
+            <label for="reg-phone">Số điện thoại Zalo *</label>
+            <input type="tel" id="reg-phone" required placeholder="0901234567">
+            <span class="field-error" id="error-phone">Vui lòng nhập Số điện thoại Zalo</span>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg">TÔI MUỐN AI ĐỌC DỮ LIỆU CÔNG TY TÔI</button>
+          <small>Không trừ tiền ngay — đội ngũ sẽ liên hệ qua Zalo trong 24h</small>
+        </form>
+
+        <!-- Success Message -->
+        <div id="thank-you-message" style="display:none; background:rgba(34,197,94,0.1); border:1px solid rgba(34,197,94,0.3); border-radius:8px; padding:20px; text-align:center; margin-top:20px; color:#86efac; max-width:500px; margin-left:auto; margin-right:auto;">
+          <h3 style="color:#22c55e; margin-bottom:10px; font-family:var(--font-display);">Đăng ký thành công!</h3>
+          <p style="font-size: 14px; color: #86efac; line-height: 1.6;">Cảm ơn bạn đã đăng ký. Đội ngũ của chúng tôi sẽ liên hệ qua Zalo trong vòng 24h tới.</p>
+        </div>
+
+        <p class="final-cta-note" style="margin-top: 1.5rem;">Hoặc liên hệ Zalo 0901.xxx.xxx để được tư vấn</p>
+
+        <!-- Reassurance Bullets -->
         <div class="form-reassurance">
           <div class="form-reassurance-item">
             <i class="ti ti-circle-check"></i> Hỗ trợ kỹ thuật 1:1 tại bàn — không rời phòng khi hệ thống chưa chạy
@@ -1325,103 +2908,158 @@
 
   </main>
 
-  <!-- ==========================================================================
-       FOOTER
-       ========================================================================== -->
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
-      <p>© 2026 Sunext. All rights reserved. | ASSEMBLE: Agentic AI Workshop</p>
-      <p style="font-size: 0.8rem; color: #A0A0CB; margin-top: 0.5rem;">Document Version: Sales Letter v1.0 | 93/16 Xô Viết Nghệ Tĩnh, Gia Định, HCM</p>
+      <p>© 2026 ASSEMBLE: Agentic AI by Sunext · <a href="#">Chính sách bảo mật</a> · <a href="#">Điều khoản sử dụng</a></p>
     </div>
   </footer>
 
-  <!-- ==========================================================================
-       STICKY CTA BAR
-       ========================================================================== -->
-  <div class="sticky-cta-bar" id="sticky-cta-bar">
-    <div class="container sticky-cta-container">
-      <div class="sticky-info">
-        <h3>ASSEMBLE · 19–21/06 · ⚡ Còn 5/15 chỗ</h3>
-      </div>
-      <div style="display: flex; flex-direction: column; align-items: center; gap: 0.25rem;">
-        <a href="#final-register-section" class="btn btn-secondary btn-cta" style="padding: 0.75rem 1.5rem; font-size: 0.95rem; box-shadow: none;">Giữ 1 trong 5 chỗ cuối →</a>
-        <span class="sticky-anxiety-text" style="font-size: 0.7rem; color: var(--text-muted); font-style: italic;">Không trừ tiền ngay — đội ngũ sẽ gọi tư vấn trước</span>
-      </div>
-    </div>
-  </div>
+  <script>
+    // Curriculum tabs
+    document.querySelectorAll('.curriculum-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const day = tab.dataset.day;
 
-  <!-- ==========================================================================
-       MODAL: EXIT INTENT POPUP
-       ========================================================================== -->
-  <div class="modal-overlay" id="exit-intent-modal" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1" aria-labelledby="exit-modal-title" aria-describedby="exit-modal-desc">
-    <div class="modal-box">
-      <button class="modal-close-btn" id="exit-modal-close" aria-label="Đóng hộp thoại">×</button>
-      <h3 class="modal-title" id="exit-modal-title" style="color: var(--accent-primary);">Tải miễn phí: Checklist 5 bước chuẩn bị dữ liệu nội bộ cho AI Agent</h3>
-      <p class="modal-desc" id="exit-modal-desc">
-        Để lại thông tin bên dưới để nhận ngay bản Checklist hướng dẫn chuẩn bị dữ liệu (Excel, PDF, CRM) và nhận thêm 1 buổi Audit 1:1 (30 phút) miễn phí cùng CAIO Sunext trước thềm học.
-      </p>
-      <form id="exit-intent-form" novalidate style="margin-top: 1.5rem; text-align: left;">
-        <div class="form-group" style="margin-bottom: 1rem;">
-          <label for="exit-form-name" style="font-weight: 600; font-size: 0.9rem; margin-bottom: 0.25rem; display: block; color: var(--text-main);">Họ và tên *</label>
-          <input type="text" id="exit-form-name" class="form-control" placeholder="Nguyễn Văn A" required aria-required="true" style="border: 1px solid var(--border-color); color: var(--text-main); background: white;">
-          <div class="field-error" id="error-exit-name" aria-live="polite"></div>
-        </div>
-        <div class="form-group" style="margin-bottom: 1rem;">
-          <label for="exit-form-email" style="font-weight: 600; font-size: 0.9rem; margin-bottom: 0.25rem; display: block; color: var(--text-main);">Email làm việc *</label>
-          <input type="email" id="exit-form-email" class="form-control" placeholder="name@company.com" required aria-required="true" style="border: 1px solid var(--border-color); color: var(--text-main); background: white;">
-          <div class="field-error" id="error-exit-email" aria-live="polite"></div>
-        </div>
-        <div class="form-group" style="margin-bottom: 1.5rem;">
-          <label for="exit-form-phone" style="font-weight: 600; font-size: 0.9rem; margin-bottom: 0.25rem; display: block; color: var(--text-main);">Số điện thoại Zalo *</label>
-          <input type="tel" id="exit-form-phone" class="form-control" placeholder="0901234567" required aria-required="true" style="border: 1px solid var(--border-color); color: var(--text-main); background: white;">
-          <div class="field-error" id="error-exit-phone" aria-live="polite"></div>
-        </div>
-        <button type="submit" class="btn btn-secondary btn-full btn-cta">TẢI CHECKLIST & ĐĂNG KÝ AUDIT MIỄN PHÍ</button>
-      </form>
-    </div>
-  </div>
+        document.querySelectorAll('.curriculum-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.curriculum-content').forEach(c => c.classList.remove('active'));
 
-  <!-- ==========================================================================
-       MODAL: THANK YOU
-       ========================================================================== -->
-  <div class="modal-overlay" id="thank-you-modal" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1" aria-labelledby="thank-you-title" aria-describedby="thank-you-desc">
-    <div class="modal-box thank-you-box">
-      <button class="modal-close-btn" id="thank-you-close" aria-label="Đóng hộp thoại">×</button>
-      <div class="thank-you-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-      </div>
-      <h3 class="modal-title" id="thank-you-title" style="color: #2D3748;">Đăng Ký Thành Công!</h3>
-      <p class="modal-desc" id="thank-you-desc">
-        Cảm ơn bạn đã đăng ký tham gia workshop **ASSEMBLE: Agentic AI**. Đội ngũ Sunext sẽ liên hệ xác nhận thông tin thanh toán qua Zalo trong vòng 24 giờ tới.
-      </p>
+        tab.classList.add('active');
+        document.getElementById('day-' + day).classList.add('active');
+      });
+    });
 
-      <!-- Checklist download note -->
-      <div style="background-color: #F0FDF4; border: 1px solid #BBF7D0; border-radius: var(--border-radius-sm); padding: 1.25rem; text-align: left; margin-bottom: 1.5rem; display: flex; align-items: flex-start; gap: 0.75rem;">
-        <div style="color: #16A34A; font-size: 1.5rem; margin-top: 0.15rem;"><i class="ti ti-download"></i></div>
-        <div>
-          <h5 style="margin: 0 0 0.25rem 0; color: #16A34A; font-size: 0.95rem; font-weight: 700;">Tải về: Checklist 5 bước chuẩn bị dữ liệu nội bộ</h5>
-          <p style="margin: 0 0 0.5rem 0; font-size: 0.85rem; color: #15803D; line-height: 1.4;">Tài liệu giúp bạn định hình và dọn dẹp dữ liệu (Excel, PDF, CRM) trước khi mang lên lớp để AI đọc chính xác nhất.</p>
-          <a href="https://mastering.sunext.vn/assets/checklist-data-preparation.pdf" download target="_blank" id="download-checklist-btn" style="font-size: 0.85rem; color: var(--accent-primary); font-weight: 700; text-decoration: underline; display: inline-flex; align-items: center; gap: 0.25rem;">
-            Tải ngay bản PDF (Miễn phí) <i class="ti ti-arrow-right"></i>
-          </a>
-        </div>
-      </div>
+    // Countdown JS
+    const countdownTarget = new Date('2026-06-10T23:59:00+07:00').getTime();
+
+    function tickCountdown() {
+      const diff = countdownTarget - Date.now();
+      if (diff <= 0) {
+        const grid = document.querySelector('.countdown-grid');
+        const ended = document.querySelector('.countdown-ended');
+        if (grid) grid.style.display = 'none';
+        if (ended) ended.style.display = 'block';
+        return;
+      }
       
-      <div style="background-color: var(--bg-section-soft); border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); padding: 1.5rem; text-align: left; margin-bottom: 1.5rem;">
-        <h4 style="font-size: 1.05rem; color: var(--accent-secondary); margin-bottom: 0.5rem;">⭐ Bước Tiếp Theo Của Bạn:</h4>
-        <p style="font-size: 0.95rem; margin: 0; line-height: 1.5;">
-          Nếu bạn thuộc nhóm đăng ký sớm (trước 10/06), vui lòng đặt lịch cuộc gọi **Online Audit 1:1 (30 phút)** với giảng viên dưới đây để khảo sát dữ liệu trước buổi học.
-        </p>
-      </div>
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+
+      const daysEl = document.getElementById('cd-days');
+      const hoursEl = document.getElementById('cd-hours');
+      const minsEl = document.getElementById('cd-mins');
+      const secsEl = document.getElementById('cd-secs');
+
+      if (daysEl) daysEl.textContent = String(d).padStart(2, '0');
+      if (hoursEl) hoursEl.textContent = String(h).padStart(2, '0');
+      if (minsEl) minsEl.textContent = String(m).padStart(2, '0');
+      if (secsEl) secsEl.textContent = String(s).padStart(2, '0');
+    }
+    // Sticky CTA Bar JS
+    const bar = document.getElementById('sticky-bar');
+    const ctaForm = document.getElementById('final-cta');
+
+    if (bar && ctaForm) {
+      const observer = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+          bar.classList.remove('show');
+        }
+      }, { threshold: 0.1 });
       
-      <div class="thank-you-buttons">
-        <a href="https://calendly.com/sunext/agentic-ai-audit" target="_blank" rel="noopener" class="btn btn-secondary btn-gradient">Đặt Lịch Hẹn Audit 1:1</a>
-        <a href="https://zalo.me/g/assemble-agentic" target="_blank" rel="noopener" class="btn btn-primary" style="background-color: #0068FF; color: white;">Tham Gia Nhóm Hỗ Trợ Zalo</a>
-      </div>
+      observer.observe(ctaForm);
+
+      window.addEventListener('scroll', () => {
+        if (window.innerWidth > 768) {
+          const header = document.querySelector('header');
+          const headerH = header ? header.offsetHeight : 60;
+          const pastHeader = window.scrollY > headerH;
+          bar.style.top = pastHeader ? '0' : headerH + 'px';
+        } else {
+          bar.style.top = '';
+        }
+
+        const rect = ctaForm.getBoundingClientRect();
+        const isFormVisible = rect.top < window.innerHeight && rect.bottom >= 0;
+
+        if (window.scrollY > 400 && !isFormVisible) {
+          bar.classList.add('show');
+        } else {
+          bar.classList.remove('show');
+        }
+      });
+    }
+
+    // Registration Form Validation & Submit
+    const regForm = document.getElementById('reg-form');
+    const thankYouMsg = document.getElementById('thank-you-message');
+
+    if (regForm && thankYouMsg) {
+      regForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const nameInput = document.getElementById('reg-name');
+        const emailInput = document.getElementById('reg-email');
+        const phoneInput = document.getElementById('reg-phone');
+
+        let isValid = true;
+
+        // Reset errors
+        [nameInput, emailInput, phoneInput].forEach(input => {
+          if (input) {
+            input.classList.remove('input-invalid');
+            const errorEl = input.nextElementSibling;
+            if (errorEl && errorEl.classList.contains('field-error')) {
+              errorEl.style.display = 'none';
+            }
+          }
+        });
+
+        // Validate Name
+        if (nameInput && !nameInput.value.trim()) {
+          nameInput.classList.add('input-invalid');
+          const err = document.getElementById('error-name');
+          if (err) err.style.display = 'block';
+          isValid = false;
+        }
+
+        // Validate Email
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (emailInput && !emailPattern.test(emailInput.value.trim())) {
+          emailInput.classList.add('input-invalid');
+          const err = document.getElementById('error-email');
+          if (err) err.style.display = 'block';
+          isValid = false;
+        }
+
+        // Validate Phone
+        if (phoneInput && !phoneInput.value.trim()) {
+          phoneInput.classList.add('input-invalid');
+          const err = document.getElementById('error-phone');
+          if (err) err.style.display = 'block';
+          isValid = false;
+        }
+
+        if (isValid) {
+          regForm.style.display = 'none';
+          thankYouMsg.style.display = 'block';
+        }
+      });
+    }
+
+    tickCountdown();
+    setInterval(tickCountdown, 1000);
+  </script>
+
+  <!-- Sticky CTA Bar -->
+  <div class="sticky-bar" id="sticky-bar">
+    <span class="info-text">ASSEMBLE · 19–21/06 · ⚡ Còn 5/15 chỗ</span>
+    <div class="sticky-bar-right">
+      <a href="#final-cta" class="btn btn-primary">Giữ 1 trong 5 chỗ cuối →</a>
+      <small>Không trừ tiền ngay — đội ngũ sẽ gọi tư vấn trước</small>
     </div>
   </div>
 
-  <!-- JavaScript file -->
-  <script src="index.js"></script>
 </body>
 </html>
