@@ -2144,6 +2144,194 @@
         font-size: 2.25rem;
       }
     }
+
+    /* ==========================================================================
+       HERO REVEAL & GLOW EFFECTS
+       ========================================================================== */
+    .hero-badges, .hero h1, .hero-desc, .hero-cta, .scarcity-bar, .instructor-mini {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: hero-reveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .hero-badges { animation-delay: 0.05s; }
+    .hero h1 { animation-delay: 0.15s; }
+    .hero-desc { animation-delay: 0.25s; }
+    .hero-cta { animation-delay: 0.35s; }
+    .scarcity-bar { animation-delay: 0.45s; }
+    .instructor-mini { animation-delay: 0.55s; }
+    @keyframes hero-reveal {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Scarcity Bar overrides */
+    .scarcity-fill {
+      width: 0% !important;
+      transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.6s !important;
+    }
+    .scarcity-fill.animated {
+      width: 66.6% !important;
+    }
+
+    /* CTA glow pulse */
+    @keyframes cta-glow {
+      0%, 100% { box-shadow: 0 4px 20px rgba(255, 122, 0, 0.3); }
+      50%     { box-shadow: 0 4px 40px rgba(255, 122, 0, 0.6), 0 0 0 4px rgba(255, 122, 0, 0.1); }
+    }
+    .hero-cta .btn-primary { animation: cta-glow 3s ease-in-out infinite; }
+    .hero-cta .btn-primary:hover { animation-play-state: paused; }
+
+    /* ==========================================================================
+       MARQUEE TRUST STRIP
+       ========================================================================== */
+    .trust-marquee-wrap {
+      overflow: hidden;
+      mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+      padding: 10px 0;
+    }
+    .trust-marquee-track {
+      display: flex;
+      gap: 48px;
+      width: max-content;
+      align-items: center;
+      animation: marquee 22s linear infinite;
+    }
+    .trust-marquee-wrap:hover .trust-marquee-track {
+      animation-play-state: paused;
+    }
+    .trust-marquee-track img {
+      height: 32px;
+      width: auto;
+      filter: grayscale(100%) opacity(0.55);
+      transition: filter 0.3s ease, opacity 0.3s ease;
+    }
+    .trust-marquee-track img:hover {
+      filter: grayscale(0%) opacity(1);
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ==========================================================================
+       FAQ ACCORDION
+       ========================================================================== */
+    .faq-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 0 24px !important;
+    }
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      font-size: 1rem;
+      font-weight: 600;
+      font-family: var(--font-display);
+      color: var(--fg);
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-icon {
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      font-size: 1.25rem;
+      color: var(--primary);
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+    }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+    }
+    .faq-item.open .faq-a {
+      max-height: 400px;
+      opacity: 1;
+      padding: 12px 0;
+    }
+
+    /* ==========================================================================
+       PRICING GLOW, FORM INPUT FOCUS & COUNTDOWN TRANSITION
+       ========================================================================== */
+    .final-price {
+      transition: box-shadow 0.8s ease, border-color 0.8s ease;
+    }
+    .final-price.in-view {
+      box-shadow: 0 0 0 1px rgba(255,122,0,0.3), 0 8px 48px rgba(255,122,0,0.15);
+      border-color: rgba(255,122,0,0.3);
+    }
+
+    #reg-form input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(123,47,242,0.15);
+      transition: all 0.2s ease;
+    }
+
+    .countdown-grid span {
+      display: inline-block;
+      transition: transform 0.15s ease;
+    }
+    .countdown-grid span.flip {
+      transform: translateY(-4px) scale(1.1);
+    }
+
+    /* Framework Layer hover zoom & Stagger delays */
+    .layer-card:nth-child(1) { transition-delay: 0s; }
+    .layer-card:nth-child(2) { transition-delay: 0.1s; }
+    .layer-card:nth-child(3) { transition-delay: 0.2s; }
+    .layer-card:nth-child(4) { transition-delay: 0.3s; }
+    .layer-card:hover .layer-num {
+      transform: scale(1.1);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    
+    /* Early Bird Badge pulse animation */
+    .early-bird-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 122, 0, 0.12);
+      border: 1px solid rgba(255, 122, 0, 0.3);
+      color: var(--accent);
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      margin-top: 8px;
+      animation: badge-pulse 4s ease-in-out infinite;
+    }
+    .demo-badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #FF7A00;
+      animation: blink-badge-dot 1.5s ease-in-out infinite;
+    }
+    @keyframes badge-pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255,122,0,0.3); }
+      50%  { box-shadow: 0 0 0 6px rgba(255,122,0,0); }
+    }
+    @keyframes blink-badge-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .final-price-regular {
+      font-size: 0.9rem;
+      color: var(--muted-light);
+      margin-bottom: 4px;
+    }
+    .final-price-regular s {
+      text-decoration: line-through;
+    }
   </style>
 </head>
 <body>
@@ -2177,7 +2365,7 @@
           </p>
 
           <div class="hero-cta">
-            <a href="#final-cta" class="btn btn-primary btn-lg">BẮT ĐẦU 3 NGÀY — TỰ BUILD HỆ THỐNG AI</a>
+            <a href="#final-cta" class="btn btn-primary btn-lg">TÔI MUỐN XÂY ĐỘI NGŨ AI CHẠY THẬT</a>
           </div>
 
           <div class="scarcity-bar">
@@ -2186,7 +2374,7 @@
               <span>Chỉ còn <strong>5 chỗ</strong></span>
             </div>
             <div class="scarcity-track">
-              <div class="scarcity-fill" style="width: 66.6%;"></div>
+              <div class="scarcity-fill"></div>
             </div>
           </div>
 
@@ -2282,15 +2470,39 @@
           <p>Phương pháp thực chiến ASSEMBLE được xây dựng từ kinh nghiệm huấn luyện và chuyển giao AI cho các tập đoàn & doanh nghiệp lớn</p>
         </div>
 
-        <div class="trust-logos">
-          <img src="https://i.postimg.cc/52Sxjk50/FPT.png" alt="FPT">
-          <img src="https://i.postimg.cc/rwN8zYG5/MUFG.png" alt="MUFG Bank">
-          <img src="https://i.postimg.cc/4xQJnFvX/BIDV.png" alt="BIDV">
-          <img src="https://i.postimg.cc/VNsztB4X/Prudential.png" alt="Prudential">
-          <img src="https://i.postimg.cc/BvZJFcNY/Vinhomes.png" alt="Vinhomes">
-          <img src="https://i.postimg.cc/7LPqzMXB/VNPT.png" alt="VNPT">
-          <img src="https://i.postimg.cc/RZLMqb1f/Mitsubishi.png" alt="Mitsubishi">
-          <img src="https://i.postimg.cc/7ZnxbQ11/Petro-Vietnam-Power.png" alt="PetroVietnam">
+        <div class="trust-marquee-wrap">
+          <div class="trust-marquee-track">
+            <!-- First 14 -->
+            <img src="https://i.postimg.cc/52Sxjk50/FPT.png" alt="FPT">
+            <img src="https://i.postimg.cc/rwN8zYG5/MUFG.png" alt="MUFG">
+            <img src="https://i.postimg.cc/4xQJnFvX/BIDV.png" alt="BIDV">
+            <img src="https://i.postimg.cc/VNsztB4X/Prudential.png" alt="Prudential">
+            <img src="https://i.postimg.cc/BvZJFcNY/Vinhomes.png" alt="Vinhomes">
+            <img src="https://i.postimg.cc/7LPqzMXB/VNPT.png" alt="VNPT">
+            <img src="https://i.postimg.cc/RZLMqb1f/Mitsubishi.png" alt="Mitsubishi">
+            <img src="https://i.postimg.cc/7ZnxbQ11/Petro-Vietnam-Power.png" alt="PV Power">
+            <img src="https://i.postimg.cc/Jh7RXcKN/PTSC.png" alt="PTSC">
+            <img src="https://i.postimg.cc/434XcbwW/VACS.png" alt="VACS">
+            <img src="https://i.postimg.cc/T3JRhHjy/HTV.png" alt="HTV">
+            <img src="https://i.postimg.cc/CxsFd6CB/Gau-Do.png" alt="Gấu Đỏ">
+            <img src="https://i.postimg.cc/1zRyFcMj/Yen-Viet.png" alt="YenViet">
+            <img src="https://i.postimg.cc/yN67RXnn/Trung-Son-Pharma.png" alt="Trung Sơn Pharma">
+            <!-- Duplicate 14 to loop -->
+            <img src="https://i.postimg.cc/52Sxjk50/FPT.png" alt="FPT">
+            <img src="https://i.postimg.cc/rwN8zYG5/MUFG.png" alt="MUFG">
+            <img src="https://i.postimg.cc/4xQJnFvX/BIDV.png" alt="BIDV">
+            <img src="https://i.postimg.cc/VNsztB4X/Prudential.png" alt="Prudential">
+            <img src="https://i.postimg.cc/BvZJFcNY/Vinhomes.png" alt="Vinhomes">
+            <img src="https://i.postimg.cc/7LPqzMXB/VNPT.png" alt="VNPT">
+            <img src="https://i.postimg.cc/RZLMqb1f/Mitsubishi.png" alt="Mitsubishi">
+            <img src="https://i.postimg.cc/7ZnxbQ11/Petro-Vietnam-Power.png" alt="PV Power">
+            <img src="https://i.postimg.cc/Jh7RXcKN/PTSC.png" alt="PTSC">
+            <img src="https://i.postimg.cc/434XcbwW/VACS.png" alt="VACS">
+            <img src="https://i.postimg.cc/T3JRhHjy/HTV.png" alt="HTV">
+            <img src="https://i.postimg.cc/CxsFd6CB/Gau-Do.png" alt="Gấu Đỏ">
+            <img src="https://i.postimg.cc/1zRyFcMj/Yen-Viet.png" alt="YenViet">
+            <img src="https://i.postimg.cc/yN67RXnn/Trung-Son-Pharma.png" alt="Trung Sơn Pharma">
+          </div>
         </div>
 
         <div class="trust-footer">
@@ -2418,6 +2630,7 @@
 
           <!-- Case Study -->
           <div class="case-study scroll-reveal">
+            <img src="https://i.postimg.cc/Jz51td3h/Droppii.png" alt="Droppii" style="height:36px; margin-bottom:12px; filter: brightness(0) invert(1);">
             <span class="case-badge">CASE STUDY THỰC TẾ</span>
             <h3>Ứng dụng thực tế tại Droppii</h3>
             <p>Triển khai hệ thống bot CSKH đa kênh kết nối trực tiếp với kho dữ liệu sản phẩm và chính sách — gánh 65% câu hỏi lặp lại của khách cộng tác viên.</p>
@@ -2488,7 +2701,7 @@
         <!-- Layers -->
         <div class="framework-layers">
           <div class="layer-card scroll-reveal">
-            <div class="layer-num"><span>LỚP</span></div>
+            <div class="layer-num" data-num="1"><span>LỚP</span></div>
             <div class="layer-content">
               <h3>1. DATA LAYER: Dữ liệu thật của bạn</h3>
               <p>Gom Excel doanh thu, hợp đồng PDF, catalogue sản phẩm, bảng giá — thành một nguồn dữ liệu thống nhất mà AI có thể đọc và tra cứu. Chạy local, dữ liệu không đi ra ngoài.</p>
@@ -2496,7 +2709,7 @@
           </div>
 
           <div class="layer-card scroll-reveal">
-            <div class="layer-num"><span>LỚP</span></div>
+            <div class="layer-num" data-num="2"><span>LỚP</span></div>
             <div class="layer-content">
               <h3>2. CHANNEL LAYER: Kênh giao tiếp thật</h3>
               <p>Kết nối AI với Zalo OA, Facebook Messenger, Telegram, Website — tất cả cùng lúc, cùng knowledge base. Khách hỏi ở đâu, AI trả lời ở đó. 24/7.</p>
@@ -2504,7 +2717,7 @@
           </div>
 
           <div class="layer-card scroll-reveal">
-            <div class="layer-num"><span>LỚP</span></div>
+            <div class="layer-num" data-num="3"><span>LỚP</span></div>
             <div class="layer-content">
               <h3>3. FLOW LAYER: Luồng tự động hoá thật</h3>
               <p>n8n thiết kế các luồng tự động kết nối toàn bộ: lead tự ghi vào CRM, đơn hàng tự phân loại, báo cáo tự gửi Zalo lúc 7:30 sáng. Không ai làm tay.</p>
@@ -2512,7 +2725,7 @@
           </div>
 
           <div class="layer-card scroll-reveal">
-            <div class="layer-num"><span>LỚP</span></div>
+            <div class="layer-num" data-num="4"><span>LỚP</span></div>
             <div class="layer-content">
               <h3>4. APP LAYER: Ứng dụng nội bộ thật (Vibe Coding)</h3>
               <p>Web app quản lý — CRM, dashboard, portal — được build bằng Vibe Coding: bạn mô tả bằng tiếng Việt, AI viết code, bạn review và deploy. Không cần biết lập trình.</p>
@@ -2570,6 +2783,9 @@
             <strong>Bộ hồ sơ bàn giao đầy đủ</strong>
             <p>Prompt, sơ đồ, cấu hình — sẵn sàng mở rộng hoặc bàn giao.</p>
           </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+          <a href="#final-cta" class="btn btn-secondary btn-lg scroll-reveal">GIỮ CHỖ XÂY ĐỘI HÌNH AI CỦA TÔI</a>
         </div>
       </div>
     </section>
@@ -2733,23 +2949,33 @@
 
         <div class="instructor-logos-grid">
           <div class="proof-block-card">
-            <h4>ĐÃ ĐÀO TẠO AI CHO:</h4>
+            <h4>ĐÃ ĐÀO TẠO AI CHO CÁC DOANH NGHIỆP & TẬP ĐOÀN:</h4>
             <div class="proof-logo-list">
-              <div class="proof-logo-item"><img src="https://i.postimg.cc/52Sxjk50/FPT.png" alt="FPT"></div>
-              <div class="proof-logo-item"><img src="https://i.postimg.cc/rwN8zYG5/MUFG.png" alt="MUFG"></div>
-              <div class="proof-logo-item"><img src="https://i.postimg.cc/4xQJnFvX/BIDV.png" alt="BIDV"></div>
-              <div class="proof-logo-item"><img src="https://i.postimg.cc/VNsztB4X/Prudential.png" alt="Prudential"></div>
-              <div class="proof-logo-item"><img src="https://i.postimg.cc/BvZJFcNY/Vinhomes.png" alt="Vinhomes"></div>
+              <div class="proof-logo-item" title="FPT"><img src="https://i.postimg.cc/52Sxjk50/FPT.png" alt="FPT"></div>
+              <div class="proof-logo-item" title="MUFG Bank"><img src="https://i.postimg.cc/rwN8zYG5/MUFG.png" alt="MUFG"></div>
+              <div class="proof-logo-item" title="BIDV"><img src="https://i.postimg.cc/4xQJnFvX/BIDV.png" alt="BIDV"></div>
+              <div class="proof-logo-item" title="Prudential"><img src="https://i.postimg.cc/VNsztB4X/Prudential.png" alt="Prudential"></div>
+              <div class="proof-logo-item" title="Vinhomes"><img src="https://i.postimg.cc/BvZJFcNY/Vinhomes.png" alt="Vinhomes"></div>
+              <div class="proof-logo-item" title="VNPT"><img src="https://i.postimg.cc/7LPqzMXB/VNPT.png" alt="VNPT"></div>
+              <div class="proof-logo-item" title="Mitsubishi Motors"><img src="https://i.postimg.cc/RZLMqb1f/Mitsubishi.png" alt="Mitsubishi Motors"></div>
+              <div class="proof-logo-item" title="PetroVietnam Power"><img src="https://i.postimg.cc/7ZnxbQ11/Petro-Vietnam-Power.png" alt="PetroVietnam Power"></div>
+              <div class="proof-logo-item" title="PTSC"><img src="https://i.postimg.cc/Jh7RXcKN/PTSC.png" alt="PTSC"></div>
+              <div class="proof-logo-item" title="VACS"><img src="https://i.postimg.cc/434XcbwW/VACS.png" alt="VACS"></div>
             </div>
           </div>
 
           <div class="proof-block-card">
-            <h4>HỆ THỐNG AI ĐÃ TRIỂN KHAI CHO:</h4>
+            <h4>HỆ THỐNG AI THỰC TẾ ĐÃ ĐƯỢC TRIỂN KHAI CHO:</h4>
             <div class="proof-logo-list">
-              <div class="proof-logo-item"><img src="https://i.postimg.cc/Jz51td3h/Droppii.png" alt="Droppii"></div>
-              <div class="proof-logo-item"><img src="https://i.postimg.cc/4xQJnFvV/Maison-Vie.png" alt="Maison Vie"></div>
-              <div class="proof-logo-item"><img src="https://i.postimg.cc/SKQm97V9/Poemy.png" alt="Poemy"></div>
-              <div class="proof-logo-item"><img src="https://i.postimg.cc/bw9zdF0S/Huynh-Anh.png" alt="Huỳnh Anh"></div>
+              <div class="proof-logo-item" title="Droppii"><img src="https://i.postimg.cc/Jz51td3h/Droppii.png" alt="Droppii"></div>
+              <div class="proof-logo-item" title="Maison Vie"><img src="https://i.postimg.cc/4xQJnFvV/Maison-Vie.png" alt="Maison Vie"></div>
+              <div class="proof-logo-item" title="Poemy"><img src="https://i.postimg.cc/SKQm97V9/Poemy.png" alt="Poemy"></div>
+              <div class="proof-logo-item" title="Huỳnh Anh Store"><img src="https://i.postimg.cc/bw9zdF0S/Huynh-Anh.png" alt="Huỳnh Anh Store"></div>
+              <div class="proof-logo-item" title="Thắng Lợi"><img src="https://i.postimg.cc/yN67RXnj/Thang-Loi.png" alt="Thắng Lợi"></div>
+              <div class="proof-logo-item" title="VAG"><img src="https://i.postimg.cc/N0GQX7bp/VAG.png" alt="VAG"></div>
+              <div class="proof-logo-item" title="Prestige Stay"><img src="https://i.postimg.cc/g0cGhq4R/Prestige-Stay.png" alt="Prestige Stay"></div>
+              <div class="proof-logo-item" title="Crowd-Loan"><img src="https://i.postimg.cc/zGFJ3PwG/Crowd-Loan.png" alt="Crowd-Loan"></div>
+              <div class="proof-logo-item" title="Phương Trường An"><img src="https://i.postimg.cc/QdJXVngS/Phuong-Truong-An.png" alt="Phương Trường An"></div>
             </div>
           </div>
         </div>
@@ -2853,10 +3079,14 @@
           </div>
 
           <div class="final-price">
-            <div class="final-price-label">Học phí đầu tư cho 3 ngày ASSEMBLE</div>
-            <div class="final-price-value">8.997.000đ</div>
-            <div class="final-price-note">⚡ Early Bird trước 10/06: 7.997.000đ — tiết kiệm 1.000.000đ</div>
-            <a href="#final-cta" class="btn btn-primary btn-lg">TÔI MUỐN AI ĐỌC DỮ LIỆU CÔNG TY TÔI</a>
+            <div class="final-price-label">Học phí 3 ngày ASSEMBLE</div>
+            <div class="final-price-regular">Giá thường: <s>8.997.000đ</s></div>
+            <div class="final-price-value">7.997.000đ</div>
+            <div class="early-bird-badge">
+              <span class="demo-badge-dot"></span>
+              Early Bird · Hết 10/06 · Tiết kiệm 1.000.000đ
+            </div>
+            <a href="#final-cta" class="btn btn-primary btn-lg">TÔI MUỐN XÂY ĐỘI NGŨ AI CHẠY THẬT</a>
           </div>
         </div>
       </div>
@@ -2871,23 +3101,43 @@
 
         <div class="faq-grid">
           <div class="faq-item">
-            <h4>Tôi không biết lập trình, có theo được không?</h4>
-            <p>Được. ASSEMBLE được thiết kế cho người không có nền tảng kỹ thuật. Bạn sẽ dùng Vibe Coding — mô tả bằng tiếng Việt, AI viết code cho bạn.</p>
+            <button class="faq-q" aria-expanded="false">
+              Tôi không biết lập trình, có theo được không?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              <p>Được. ASSEMBLE được thiết kế cho người không có nền tảng kỹ thuật. Bạn sẽ dùng Vibe Coding — mô tả bằng tiếng Việt, AI viết code cho bạn.</p>
+            </div>
           </div>
 
           <div class="faq-item">
-            <h4>Tôi cần chuẩn bị gì?</h4>
-            <p>Laptop cá nhân và dữ liệu thật của doanh nghiệp bạn (Excel tồn kho, bảng giá, chính sách, catalogue sản phẩm...).</p>
+            <button class="faq-q" aria-expanded="false">
+              Tôi cần chuẩn bị gì?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              <p>Laptop cá nhân và dữ liệu thật của doanh nghiệp bạn (Excel tồn kho, bảng giá, chính sách, catalogue sản phẩm...).</p>
+            </div>
           </div>
 
           <div class="faq-item">
-            <h4>Sau khóa học, tôi có được hỗ trợ tiếp không?</h4>
-            <p>Có. Bạn được tham gia cộng đồng Agentic AI trong 6 tháng để hỏi đáp, chia sẻ template và nhận cập nhật tool mới.</p>
+            <button class="faq-q" aria-expanded="false">
+              Sau khóa học, tôi có được hỗ trợ tiếp không?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              <p>Có. Bạn được tham gia cộng đồng Agentic AI trong 6 tháng để hỏi đáp, chia sẻ template và nhận cập nhật tool mới.</p>
+            </div>
           </div>
 
           <div class="faq-item">
-            <h4>Dữ liệu của tôi có bị lộ không?</h4>
-            <p>Không. Hệ thống chạy local trên máy của bạn, dữ liệu không đi ra internet. Bạn kiểm soát hoàn toàn.</p>
+            <button class="faq-q" aria-expanded="false">
+              Dữ liệu của tôi có bị lộ không?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              <p>Không. Hệ thống chạy local trên máy của bạn, dữ liệu không đi ra internet. Bạn kiểm soát hoàn toàn.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -2916,7 +3166,7 @@
             <input type="tel" id="reg-phone" required placeholder="0901234567">
             <span class="field-error" id="error-phone">Vui lòng nhập Số điện thoại Zalo</span>
           </div>
-          <button type="submit" class="btn btn-primary btn-lg">TÔI MUỐN AI ĐỌC DỮ LIỆU CÔNG TY TÔI</button>
+          <button type="submit" class="btn btn-primary btn-lg">TÔI MUỐN XÂY ĐỘI NGŨ AI CHẠY THẬT</button>
           <small>Không trừ tiền ngay — đội ngũ sẽ liên hệ qua Zalo trong 24h</small>
         </form>
 
@@ -2989,10 +3239,20 @@
       const minsEl = document.getElementById('cd-mins');
       const secsEl = document.getElementById('cd-secs');
 
-      if (daysEl) daysEl.textContent = String(d).padStart(2, '0');
-      if (hoursEl) hoursEl.textContent = String(h).padStart(2, '0');
-      if (minsEl) minsEl.textContent = String(m).padStart(2, '0');
-      if (secsEl) secsEl.textContent = String(s).padStart(2, '0');
+      function updateDigit(el, val) {
+        if (!el) return;
+        const targetStr = String(val).padStart(2, '0');
+        if (el.textContent !== targetStr) {
+          el.classList.add('flip');
+          el.textContent = targetStr;
+          setTimeout(() => el.classList.remove('flip'), 150);
+        }
+      }
+
+      updateDigit(daysEl, d);
+      updateDigit(hoursEl, h);
+      updateDigit(minsEl, m);
+      updateDigit(secsEl, s);
     }
     // Sticky CTA Bar JS
     const bar = document.getElementById('sticky-bar');
@@ -3087,6 +3347,48 @@
 
     tickCountdown();
     setInterval(tickCountdown, 1000);
+
+    // Scarcity Bar Animate JS
+    const scarcityFill = document.querySelector('.scarcity-fill');
+    if (scarcityFill) {
+      setTimeout(() => scarcityFill.classList.add('animated'), 800);
+    }
+
+    // Typing Cursor effect for CRM Success line
+    const typingLine = document.querySelector('.msg-meta--success');
+    if (typingLine) {
+      const originalText = typingLine.textContent;
+      typingLine.textContent = '';
+      let i = 0;
+      const timer = setInterval(() => {
+        if (i < originalText.length) {
+          typingLine.textContent += originalText[i++];
+        } else {
+          clearInterval(timer);
+        }
+      }, 40);
+    }
+
+    // FAQ Accordion click handler
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        item.classList.toggle('open');
+        btn.setAttribute('aria-expanded', item.classList.contains('open'));
+      });
+    });
+
+    // Pricing Card glow trigger
+    const priceCard = document.querySelector('.final-price');
+    if (priceCard) {
+      const priceObserver = new IntersectionObserver(([e]) => {
+        if (e.isIntersecting) {
+          priceCard.classList.add('in-view');
+          priceObserver.unobserve(priceCard);
+        }
+      }, { threshold: 0.3 });
+      priceObserver.observe(priceCard);
+    }
 
     // Scroll Reveal JS
     const revealEls = document.querySelectorAll('.scroll-reveal');
