@@ -9,9 +9,9 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <!-- Tabler Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/@tabler/icons-webfont@3.31.0/tabler-icons.min.css">
 
   <style>
     /* ==========================================================================
@@ -46,7 +46,7 @@
       --gradient: linear-gradient(135deg, #7B2FF2 0%, #FF7A00 100%);
 
       /* Typography */
-      --font-display: 'Sora', -apple-system, system-ui, sans-serif;
+      --font-display: 'Be Vietnam Pro', -apple-system, system-ui, sans-serif;
       --font-body: 'Inter', -apple-system, system-ui, sans-serif;
 
       /* Spacing */
@@ -152,8 +152,8 @@
     }
     .btn-primary:hover {
       background: #E06A00;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(255, 122, 0, 0.4);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 10px 25px rgba(255, 122, 0, 0.45);
       color: white;
     }
 
@@ -164,8 +164,8 @@
     }
     .btn-secondary:hover {
       background: #6922D9;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(123, 47, 242, 0.35);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 10px 25px rgba(123, 47, 242, 0.45);
       color: white;
     }
 
@@ -452,9 +452,46 @@
     }
 
     .demo-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
       font-size: 0.75rem;
       color: #28CA42;
       font-weight: 600;
+    }
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #28CA42;
+      border-radius: 50%;
+      display: inline-block;
+      position: relative;
+    }
+    .pulse-dot::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: #28CA42;
+      border-radius: 50%;
+      top: 0;
+      left: 0;
+      animation: pulse 1.8s infinite ease-in-out;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.8; }
+      100% { transform: scale(2.5); opacity: 0; }
+    }
+
+    /* Scroll Reveal Transition Styles */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .scroll-reveal.fade-up {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .demo-url {
@@ -2172,7 +2209,7 @@
                 <div class="demo-dot demo-dot--green"></div>
               </div>
               <span class="demo-title">AI Agent — CRM Sync System</span>
-              <span class="demo-status">● Live</span>
+              <span class="demo-status"><span class="pulse-dot"></span>Live</span>
             </div>
             <div class="demo-url">
               <i class="ti ti-lock"></i>
@@ -2277,7 +2314,7 @@
             <a href="#offer">Học phí</a>
           </nav>
 
-          <h2>Tại sao 80% doanh nghiệp học AI xong vẫn "chat cho vui"?</h2>
+          <h2 class="scroll-reveal">Tại sao 80% doanh nghiệp học AI xong vẫn "chat cho vui"?</h2>
 
           <p class="story-lead">Hãy tưởng tượng bức tranh này — đây là tổng hợp từ những gì chúng tôi thấy ở hàng chục doanh nghiệp trong 2 năm qua.</p>
 
@@ -2293,7 +2330,7 @@
 
           <!-- Before/After -->
           <div class="ba-grid">
-            <div class="ba-card ba-card--before">
+            <div class="ba-card ba-card--before scroll-reveal">
               <span class="ba-badge">TRƯỚC WORKSHOP</span>
               <ul class="ba-list">
                 <li><i class="ti ti-x"></i> <span><strong>Dữ liệu phân mảnh:</strong> Thông tin nằm rải rác trên Excel, Google Sheets và group chat.</span></li>
@@ -2301,7 +2338,7 @@
                 <li><i class="ti ti-x"></i> <span><strong>Trễ đơn & Nhầm lẫn:</strong> Báo sai giá do nhầm phiên bản file.</span></li>
               </ul>
             </div>
-            <div class="ba-card ba-card--after">
+            <div class="ba-card ba-card--after scroll-reveal">
               <span class="ba-badge">SAU WORKSHOP</span>
               <ul class="ba-list">
                 <li><i class="ti ti-check"></i> <span><strong>Một nguồn sự thật:</strong> Toàn bộ dữ liệu đồng bộ vào bộ nhớ tri thức AI.</span></li>
@@ -2337,12 +2374,12 @@
     <section class="testimonials section">
       <div class="container">
         <div class="section-header">
-          <h2>Học viên nói gì về chúng tôi?</h2>
+          <h2 class="scroll-reveal">Học viên nói gì về chúng tôi?</h2>
         </div>
 
         <div class="testimonials-grid">
           <div class="testimonials-list">
-            <div class="testimonial-card">
+            <div class="testimonial-card scroll-reveal">
               <div class="testimonial-rating">★★★★★</div>
               <p class="testimonial-text">"Chúng tôi triển khai bot tự động hóa đơn hàng cho 3 kho tại HCM. Kết quả: Giảm thời gian phản hồi từ 5 phút xuống 2 giây, gánh 65% câu hỏi tra kho lặp lại."</p>
               <div class="testimonial-user">
@@ -2354,7 +2391,7 @@
               </div>
             </div>
 
-            <div class="testimonial-card">
+            <div class="testimonial-card scroll-reveal">
               <div class="testimonial-rating">★★★★★</div>
               <p class="testimonial-text">"Trước đây, team mất 2 tiếng mỗi sáng để tổng hợp tồn kho từ file Excel. Giờ luồng n8n tự chạy từ 7:30 sáng, gửi thẳng báo cáo qua Zalo."</p>
               <div class="testimonial-user">
@@ -2366,7 +2403,7 @@
               </div>
             </div>
 
-            <div class="testimonial-card">
+            <div class="testimonial-card scroll-reveal">
               <div class="testimonial-rating">★★★★★</div>
               <p class="testimonial-text">"Là startup nhỏ, tôi sợ không có dev thì không duy trì được AI. Nhưng tôi tự dùng Vibe Coding build được web app CRM. Hệ thống chạy local bảo mật."</p>
               <div class="testimonial-user">
@@ -2380,7 +2417,7 @@
           </div>
 
           <!-- Case Study -->
-          <div class="case-study">
+          <div class="case-study scroll-reveal">
             <span class="case-badge">CASE STUDY THỰC TẾ</span>
             <h3>Ứng dụng thực tế tại Droppii</h3>
             <p>Triển khai hệ thống bot CSKH đa kênh kết nối trực tiếp với kho dữ liệu sản phẩm và chính sách — gánh 65% câu hỏi lặp lại của khách cộng tác viên.</p>
@@ -2403,7 +2440,7 @@
     <section class="framework section" id="framework">
       <div class="container">
         <div class="section-header">
-          <h2>The AI Crew Framework™</h2>
+          <h2 class="scroll-reveal">The AI Crew Framework™</h2>
           <p>Giải pháp 4 lớp giúp AI tự vận hành</p>
         </div>
 
@@ -2450,7 +2487,7 @@
 
         <!-- Layers -->
         <div class="framework-layers">
-          <div class="layer-card">
+          <div class="layer-card scroll-reveal">
             <div class="layer-num"><span>LỚP</span></div>
             <div class="layer-content">
               <h3>1. DATA LAYER: Dữ liệu thật của bạn</h3>
@@ -2458,7 +2495,7 @@
             </div>
           </div>
 
-          <div class="layer-card">
+          <div class="layer-card scroll-reveal">
             <div class="layer-num"><span>LỚP</span></div>
             <div class="layer-content">
               <h3>2. CHANNEL LAYER: Kênh giao tiếp thật</h3>
@@ -2466,7 +2503,7 @@
             </div>
           </div>
 
-          <div class="layer-card">
+          <div class="layer-card scroll-reveal">
             <div class="layer-num"><span>LỚP</span></div>
             <div class="layer-content">
               <h3>3. FLOW LAYER: Luồng tự động hoá thật</h3>
@@ -2474,7 +2511,7 @@
             </div>
           </div>
 
-          <div class="layer-card">
+          <div class="layer-card scroll-reveal">
             <div class="layer-num"><span>LỚP</span></div>
             <div class="layer-content">
               <h3>4. APP LAYER: Ứng dụng nội bộ thật (Vibe Coding)</h3>
@@ -2495,39 +2532,39 @@
     <section class="output section" id="output">
       <div class="container">
         <div class="section-header">
-          <h2>Sau 3 ngày, bạn rời phòng với:</h2>
+          <h2 class="scroll-reveal">Sau 3 ngày, bạn rời phòng với:</h2>
         </div>
 
         <div class="output-grid">
-          <div class="output-card">
+          <div class="output-card scroll-reveal">
             <span class="output-num">01</span>
             <div class="output-icon"><i class="ti ti-message-circle"></i></div>
             <strong>Bot AI 24/7 đang chạy thật</strong>
             <p>Zalo/Facebook/Telegram/Website — đọc đúng database của bạn.</p>
           </div>
 
-          <div class="output-card">
+          <div class="output-card scroll-reveal">
             <span class="output-num">02</span>
             <div class="output-icon"><i class="ti ti-git-branch"></i></div>
             <strong>Ít nhất 3 luồng n8n tự động</strong>
             <p>Ghi nhận lead, phân loại khách, gửi báo cáo 7:30 sáng.</p>
           </div>
 
-          <div class="output-card">
+          <div class="output-card scroll-reveal">
             <span class="output-num">03</span>
             <div class="output-icon"><i class="ti ti-device-laptop"></i></div>
             <strong>1 web app nội bộ đã deploy</strong>
             <p>CRM hoặc dashboard — build bằng Vibe Coding trong buổi học.</p>
           </div>
 
-          <div class="output-card">
+          <div class="output-card scroll-reveal">
             <span class="output-num">04</span>
             <div class="output-icon"><i class="ti ti-copy"></i></div>
             <strong>Hệ thống nhân bản sang bối cảnh thứ 2</strong>
             <p>Chi nhánh hoặc sản phẩm mới — hoàn thành trong buổi học.</p>
           </div>
 
-          <div class="output-card">
+          <div class="output-card scroll-reveal">
             <span class="output-num">05</span>
             <div class="output-icon"><i class="ti ti-file-check"></i></div>
             <strong>Bộ hồ sơ bàn giao đầy đủ</strong>
@@ -2540,17 +2577,17 @@
     <!-- FUTURE PACING -->
     <section class="future section">
       <div class="container">
-        <h2>90 ngày sau ASSEMBLE — buổi sáng của bạn trông như thế nào?</h2>
+        <h2 class="scroll-reveal">90 ngày sau ASSEMBLE — buổi sáng của bạn trông như thế nào?</h2>
 
         <div class="future-grid">
-          <div class="future-card future-card--specialist">
+          <div class="future-card future-card--specialist scroll-reveal">
             <span class="future-card-label">Dành cho Chuyên gia / Manager</span>
             <p>Thứ Hai tuần sau workshop.</p>
             <p>Sếp hỏi tại sao báo cáo Q2 đã có sẵn từ sáng sớm. Từ tuần đó, mọi người bắt đầu hỏi bạn — không phải "anh/chị làm gì" mà là "anh/chị dùng gì."</p>
             <p>90 ngày sau: bạn là người biết cách build và vận hành hệ thống AI thật. Người biết xây hệ thống.</p>
           </div>
 
-          <div class="future-card future-card--ceo">
+          <div class="future-card future-card--ceo scroll-reveal">
             <span class="future-card-label">Dành cho CEO / Founder</span>
             <p>Sáng 7:30. Trước khi team vào làm.</p>
             <p>Zalo đã có: doanh thu hôm qua, số lead mới, đơn chờ xử lý, cảnh báo 2 SKU sắp hết tồn kho. Tự động. Không ai làm.</p>
@@ -2568,7 +2605,7 @@
     <section class="curriculum section" id="curriculum">
       <div class="container">
         <div class="section-header">
-          <h2>Từng giờ. Từng kết quả.</h2>
+          <h2 class="scroll-reveal">Từng giờ. Từng kết quả.</h2>
         </div>
 
         <div class="curriculum-tabs">
@@ -2817,8 +2854,8 @@
 
           <div class="final-price">
             <div class="final-price-label">Học phí đầu tư cho 3 ngày ASSEMBLE</div>
-            <div class="final-price-value">12.900.000đ</div>
-            <div class="final-price-note">Early Bird: 9.900.000đ (còn 3 suất)</div>
+            <div class="final-price-value">8.997.000đ</div>
+            <div class="final-price-note">⚡ Early Bird trước 10/06: 7.997.000đ — tiết kiệm 1.000.000đ</div>
             <a href="#final-cta" class="btn btn-primary btn-lg">TÔI MUỐN AI ĐỌC DỮ LIỆU CÔNG TY TÔI</a>
           </div>
         </div>
@@ -3050,6 +3087,18 @@
 
     tickCountdown();
     setInterval(tickCountdown, 1000);
+
+    // Scroll Reveal JS
+    const revealEls = document.querySelectorAll('.scroll-reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-up');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => revealObserver.observe(el));
   </script>
 
   <!-- Sticky CTA Bar -->
