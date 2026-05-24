@@ -2597,7 +2597,7 @@
               <div class="testimonial-user">
                 <div class="testimonial-avatar">PMH</div>
                 <div class="testimonial-info">
-                  <strong>Phạm Minh Hoàng</strong>
+                  <strong>Phạm Minh Hoàng <span style="display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 8px; font-weight: 800; color: var(--primary); border: 1px solid var(--primary); padding: 1px 4px; border-radius: 3px; margin-left: 6px; letter-spacing: 0.5px; line-height: 1.1; vertical-align: middle; text-transform: uppercase;">HMC</span></strong>
                   <span>Operations Director, HMC Distribution</span>
                 </div>
               </div>
@@ -2609,7 +2609,7 @@
               <div class="testimonial-user">
                 <div class="testimonial-avatar">TTT</div>
                 <div class="testimonial-info">
-                  <strong>Trần Thị Thu Thảo</strong>
+                  <strong>Trần Thị Thu Thảo <img src="https://i.postimg.cc/4xQJnFvV/Maison-Vie.png" alt="Maison Vie" style="height: 12px; margin-left: 6px; vertical-align: middle; opacity: 0.85;"></strong>
                   <span>Customer Support Lead, Maison Vie</span>
                 </div>
               </div>
@@ -2621,7 +2621,7 @@
               <div class="testimonial-user">
                 <div class="testimonial-avatar">LHA</div>
                 <div class="testimonial-info">
-                  <strong>Lê Huỳnh Anh</strong>
+                  <strong>Lê Huỳnh Anh <img src="https://i.postimg.cc/bw9zdF0S/Huynh-Anh.png" alt="Huỳnh Anh" style="height: 12px; margin-left: 6px; vertical-align: middle; opacity: 0.85;"></strong>
                   <span>Founder, Huỳnh Anh Store</span>
                 </div>
               </div>
@@ -2630,7 +2630,7 @@
 
           <!-- Case Study -->
           <div class="case-study scroll-reveal">
-            <img src="https://i.postimg.cc/Jz51td3h/Droppii.png" alt="Droppii" style="height:36px; margin-bottom:12px; filter: brightness(0) invert(1);">
+            <img src="https://i.postimg.cc/Jz51td3h/Droppii.png" alt="Droppii" style="height:40px; margin-bottom:12px; filter: brightness(0) invert(1);">
             <span class="case-badge">CASE STUDY THỰC TẾ</span>
             <h3>Ứng dụng thực tế tại Droppii</h3>
             <p>Triển khai hệ thống bot CSKH đa kênh kết nối trực tiếp với kho dữ liệu sản phẩm và chính sách — gánh 65% câu hỏi lặp lại của khách cộng tác viên.</p>
@@ -2699,36 +2699,148 @@
         </div>
 
         <!-- Layers -->
-        <div class="framework-layers">
-          <div class="layer-card scroll-reveal">
-            <div class="layer-num" data-num="1"><span>LỚP</span></div>
-            <div class="layer-content">
-              <h3>1. DATA LAYER: Dữ liệu thật của bạn</h3>
-              <p>Gom Excel doanh thu, hợp đồng PDF, catalogue sản phẩm, bảng giá — thành một nguồn dữ liệu thống nhất mà AI có thể đọc và tra cứu. Chạy local, dữ liệu không đi ra ngoài.</p>
-            </div>
+        <div class="framework-split">
+          <div class="framework-diagram scroll-reveal">
+            <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg" class="framework-architecture-svg">
+              <defs>
+                <linearGradient id="centerGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#7B2FF2" />
+                  <stop offset="100%" stop-color="#FF7A00" />
+                </linearGradient>
+                <linearGradient id="layer1Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#06b6d4" />
+                  <stop offset="100%" stop-color="#3b82f6" />
+                </linearGradient>
+                <linearGradient id="layer2Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#10b981" />
+                  <stop offset="100%" stop-color="#059669" />
+                </linearGradient>
+                <linearGradient id="layer3Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#8b5cf6" />
+                  <stop offset="100%" stop-color="#6d28d9" />
+                </linearGradient>
+                <linearGradient id="layer4Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#ff7a00" />
+                  <stop offset="100%" stop-color="#ea580c" />
+                </linearGradient>
+                
+                <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="6" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+              </defs>
+
+              <style>
+                @keyframes pulse {
+                  0%, 100% { transform: scale(1); opacity: 0.95; }
+                  50% { transform: scale(1.03); opacity: 1; filter: drop-shadow(0 0 12px rgba(123, 47, 242, 0.6)); }
+                }
+                @keyframes dashflow {
+                  to {
+                    stroke-dashoffset: -20;
+                  }
+                }
+                .svg-node-center {
+                  animation: pulse 4s ease-in-out infinite;
+                  transform-origin: 250px 200px;
+                }
+                .svg-connect-line {
+                  stroke-dasharray: 6, 6;
+                  animation: dashflow 2s linear infinite;
+                }
+                .svg-node {
+                  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                }
+                .svg-node:hover {
+                  transform: scale(1.05);
+                  filter: brightness(1.2);
+                }
+                .svg-node-1 { transform-origin: 100px 100px; }
+                .svg-node-2 { transform-origin: 400px 100px; }
+                .svg-node-3 { transform-origin: 100px 300px; }
+                .svg-node-4 { transform-origin: 400px 300px; }
+                .svg-text {
+                  font-family: 'Be Vietnam Pro', sans-serif;
+                  fill: #e8e5f8;
+                  font-size: 11px;
+                  font-weight: 600;
+                  text-anchor: middle;
+                }
+                .svg-text-title {
+                  font-size: 13px;
+                  font-weight: 800;
+                  fill: #ffffff;
+                }
+              </style>
+
+              <path d="M 100 100 L 250 200" stroke="#3b82f6" stroke-width="2" class="svg-connect-line" />
+              <path d="M 400 100 L 250 200" stroke="#10b981" stroke-width="2" class="svg-connect-line" />
+              <path d="M 250 200 L 100 300" stroke="#8b5cf6" stroke-width="2" class="svg-connect-line" />
+              <path d="M 250 200 L 400 300" stroke="#ff7a00" stroke-width="2" class="svg-connect-line" />
+
+              <g class="svg-node-center">
+                <circle cx="250" cy="200" r="50" fill="url(#centerGlow)" filter="url(#glow)" />
+                <text x="250" y="195" class="svg-text svg-text-title">AI CREW</text>
+                <text x="250" y="212" class="svg-text" font-size="9" fill="#ffd8a8" letter-spacing="1">ORCHESTRATOR</text>
+              </g>
+
+              <g class="svg-node svg-node-1">
+                <rect x="20" y="60" width="160" height="80" rx="10" fill="url(#layer1Grad)" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" />
+                <text x="100" y="95" class="svg-text svg-text-title">1. DATA LAYER</text>
+                <text x="100" y="115" class="svg-text" fill="#cffafc" font-size="9">Excel, PDF, Knowledge Base</text>
+              </g>
+
+              <g class="svg-node svg-node-2">
+                <rect x="320" y="60" width="160" height="80" rx="10" fill="url(#layer2Grad)" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" />
+                <text x="400" y="95" class="svg-text svg-text-title">2. CHANNEL LAYER</text>
+                <text x="400" y="115" class="svg-text" fill="#d1fae5" font-size="9">Zalo OA, Mess, Telegram</text>
+              </g>
+
+              <g class="svg-node svg-node-3">
+                <rect x="20" y="260" width="160" height="80" rx="10" fill="url(#layer3Grad)" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" />
+                <text x="100" y="295" class="svg-text svg-text-title">3. FLOW LAYER</text>
+                <text x="100" y="315" class="svg-text" fill="#ede9fe" font-size="9">n8n Automation Engine</text>
+              </g>
+
+              <g class="svg-node svg-node-4">
+                <rect x="320" y="260" width="160" height="80" rx="10" fill="url(#layer4Grad)" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" />
+                <text x="400" y="295" class="svg-text svg-text-title">4. APP LAYER</text>
+                <text x="400" y="315" class="svg-text" fill="#ffedd5" font-size="9">Internal UI (Vibe Coding)</text>
+              </g>
+            </svg>
           </div>
 
-          <div class="layer-card scroll-reveal">
-            <div class="layer-num" data-num="2"><span>LỚP</span></div>
-            <div class="layer-content">
-              <h3>2. CHANNEL LAYER: Kênh giao tiếp thật</h3>
-              <p>Kết nối AI với Zalo OA, Facebook Messenger, Telegram, Website — tất cả cùng lúc, cùng knowledge base. Khách hỏi ở đâu, AI trả lời ở đó. 24/7.</p>
+          <div class="framework-layers">
+            <div class="layer-card scroll-reveal">
+              <div class="layer-num" data-num="1"><span>LỚP</span></div>
+              <div class="layer-content">
+                <h3>1. DATA LAYER: Dữ liệu thật của bạn</h3>
+                <p>Gom Excel doanh thu, hợp đồng PDF, catalogue sản phẩm, bảng giá — thành một nguồn dữ liệu thống nhất mà AI có thể đọc và tra cứu. Chạy local, dữ liệu không đi ra ngoài.</p>
+              </div>
             </div>
-          </div>
 
-          <div class="layer-card scroll-reveal">
-            <div class="layer-num" data-num="3"><span>LỚP</span></div>
-            <div class="layer-content">
-              <h3>3. FLOW LAYER: Luồng tự động hoá thật</h3>
-              <p>n8n thiết kế các luồng tự động kết nối toàn bộ: lead tự ghi vào CRM, đơn hàng tự phân loại, báo cáo tự gửi Zalo lúc 7:30 sáng. Không ai làm tay.</p>
+            <div class="layer-card scroll-reveal">
+              <div class="layer-num" data-num="2"><span>LỚP</span></div>
+              <div class="layer-content">
+                <h3>2. CHANNEL LAYER: Kênh giao tiếp thật</h3>
+                <p>Kết nối AI với Zalo OA, Facebook Messenger, Telegram, Website — tất cả cùng lúc, cùng knowledge base. Khách hỏi ở đâu, AI trả lời ở đó. 24/7.</p>
+              </div>
             </div>
-          </div>
 
-          <div class="layer-card scroll-reveal">
-            <div class="layer-num" data-num="4"><span>LỚP</span></div>
-            <div class="layer-content">
-              <h3>4. APP LAYER: Ứng dụng nội bộ thật (Vibe Coding)</h3>
-              <p>Web app quản lý — CRM, dashboard, portal — được build bằng Vibe Coding: bạn mô tả bằng tiếng Việt, AI viết code, bạn review và deploy. Không cần biết lập trình.</p>
+            <div class="layer-card scroll-reveal">
+              <div class="layer-num" data-num="3"><span>LỚP</span></div>
+              <div class="layer-content">
+                <h3>3. FLOW LAYER: Luồng tự động hoá thật</h3>
+                <p>n8n thiết kế các luồng tự động kết nối toàn bộ: lead tự ghi vào CRM, đơn hàng tự phân loại, báo cáo tự gửi Zalo lúc 7:30 sáng. Không ai làm tay.</p>
+              </div>
+            </div>
+
+            <div class="layer-card scroll-reveal">
+              <div class="layer-num" data-num="4"><span>LỚP</span></div>
+              <div class="layer-content">
+                <h3>4. APP LAYER: Ứng dụng nội bộ thật (Vibe Coding)</h3>
+                <p>Web app quản lý — CRM, dashboard, portal — được build bằng Vibe Coding: bạn mô tả bằng tiếng Việt, AI viết code, bạn review và deploy. Không cần biết lập trình.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -3075,7 +3187,7 @@
               <div><span id="cd-mins">00</span><em>Phút</em></div>
               <div><span id="cd-secs">00</span><em>Giây</em></div>
             </div>
-            <p class="countdown-ended" style="display:none">Early Bird đã kết thúc — giá hiện tại 8.997.000đ. Bạn vẫn có thể giữ chỗ cho batch 19–21/06.</p>
+            <p class="countdown-ended" style="display:none">Early Bird đã kết thúc — giá hiện tại 8.997.000đ.<br><small style="display:block; margin-top: 4px; opacity: 0.85;">Bạn vẫn có thể giữ chỗ cho batch 19–21/06 với mức giá hiện tại.</small></p>
           </div>
 
           <div class="final-price">
